@@ -1,0 +1,83 @@
+/* Benefits — numbered 3-column grid */
+.benefits {
+  background: var(--color-cream);
+}
+
+.benefits .benefits-wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 120px var(--gutter);
+}
+
+/* Section head */
+.benefits .benefits-eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-bottom: 16px;
+}
+
+.benefits .benefits-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: var(--weight-regular);
+  color: var(--color-ink);
+  line-height: 1.1;
+  margin-bottom: 72px;
+}
+
+/* Grid */
+.benefits .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+}
+
+/* Card */
+.benefits .benefits-num {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: var(--weight-light);
+  color: rgba(45 74 62 / 15%);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.benefits .benefits-card-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+  margin-bottom: 16px;
+}
+
+.benefits .benefits-accent {
+  width: 32px;
+  height: 2px;
+  background: var(--color-copper);
+  margin-bottom: 20px;
+}
+
+.benefits .benefits-card-desc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-body);
+}
+
+@media (max-width: 600px) {
+  .benefits .benefits-wrap {
+    padding: 60px 20px;
+  }
+
+  .benefits .benefits-title {
+    margin-bottom: 48px;
+  }
+
+  .benefits .benefits-grid {
+    gap: 40px;
+  }
+}

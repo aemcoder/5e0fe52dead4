@@ -1,0 +1,81 @@
+/* Anchors — numbered principles list with roman numerals */
+.anchors {
+  background: var(--color-cream);
+}
+
+.anchors .anchors-wrap {
+  max-width: var(--maxw-anchors);
+  margin: 0 auto;
+  padding: 120px var(--gutter);
+}
+
+/* Section head */
+.anchors .anchors-eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-bottom: 16px;
+}
+
+.anchors .anchors-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: var(--weight-regular);
+  color: var(--color-ink);
+  line-height: 1.15;
+  margin-bottom: 64px;
+}
+
+/* Items */
+.anchors .anchors-item {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid rgba(26 26 26 / 10%);
+}
+
+.anchors .anchors-item-last {
+  border-bottom: 1px solid rgba(26 26 26 / 10%);
+}
+
+.anchors .anchors-numeral {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--color-copper);
+  flex-shrink: 0;
+  font-weight: var(--weight-medium);
+  min-width: 28px;
+}
+
+.anchors .anchors-item-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.anchors .anchors-item-desc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-body);
+}
+
+@media (max-width: 600px) {
+  .anchors .anchors-wrap {
+    padding: 60px 20px;
+  }
+
+  .anchors .anchors-title {
+    margin-bottom: 40px;
+  }
+
+  .anchors .anchors-item {
+    gap: 20px;
+  }
+}

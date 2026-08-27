@@ -1,0 +1,52 @@
+/* Image Quote — full-width image with overlaid text */
+.image-quote {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-quote .image-quote-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 40vw, 440px);
+}
+
+.image-quote .image-quote-media {
+  width: 100%;
+  height: 100%;
+}
+
+.image-quote .image-quote-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.8) saturate(0.85);
+}
+
+.image-quote .image-quote-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(245 240 235 / 0%), rgba(26 26 26 / 60%));
+  pointer-events: none;
+}
+
+.image-quote .image-quote-text {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 30px);
+  font-style: italic;
+  color: rgba(245 240 235 / 80%);
+  padding: 0 var(--gutter);
+}
+
+@media (max-width: 600px) {
+  .image-quote .image-quote-text {
+    bottom: 24px;
+    padding: 0 20px;
+  }
+}
