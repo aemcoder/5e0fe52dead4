@@ -6,30 +6,41 @@
 export default function decorate(block) {
   // Each child div is a card row.
   // EDS delivers: block > div(row) > div(icon-cell) + div(label-cell)
-  block.setAttribute('role', 'list');
+  block.setAttribute("role", "list");
 
   [...block.children].forEach((card) => {
-    card.setAttribute('role', 'listitem');
+    card.setAttribute("role", "listitem");
 
-    const link = card.querySelector('a');
+    const link = card.querySelector("a");
     if (link) {
-      card.setAttribute('aria-label', link.textContent.trim());
-      card.style.cursor = 'pointer';
+      card.setAttribute("aria-label", link.textContent.trim());
+      card.style.cursor = "pointer";
 
-      // Navigate only to same-origin or root-relative paths
-      card.addEventListener('click', (e) => {
-        if (!e.target.closest('a')) {
-          link.click();
+      // Validate that the link target is same-origin before programmatic navigation
+      const isSameOrigin = (() => {
+        try {
+          return (
+            new URL(link.href, window.location.origin).origin ===
+            window.location.origin
+          );
+        } catch {
+          return false;
         }
-      });
+      })();
 
-      card.setAttribute('tabindex', '0');
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          link.click();
-        }
-      });
+      if (isSameOrigin) {
+        card.addEventListener("click", (e) => {
+          if (!e.target.closest("a")) link.click();
+        });
+
+        card.setAttribute("tabindex", "0");
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            link.click();
+          }
+        });
+      }
     }
   });
 }
