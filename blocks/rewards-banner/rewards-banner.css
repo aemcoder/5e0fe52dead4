@@ -1,0 +1,118 @@
+.rewards-banner {
+  --banner-bg: #1a3a4a;
+  --banner-text: #fff;
+  --banner-btn-bg: #dc6e52;
+  --banner-btn-hover: #c45a3e;
+  --banner-padding: 48px 40px;
+  --banner-gap: 48px;
+  --banner-left-width: 240px;
+
+  background-color: var(--banner-bg);
+  background-image: url("/drafts/images/reward-banner-v1.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 100%;
+  color: var(--banner-text);
+  padding: var(--banner-padding);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Row */
+.rewards-banner > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--banner-gap);
+  max-width: var(--content-max-width, 1360px);
+  margin: 0 auto;
+}
+
+/* Left spacer cell — lets the background SVG bow show through */
+.rewards-banner > div > div:first-child {
+  flex: 0 0 auto;
+  width: var(--banner-left-width);
+  min-height: 1px;
+}
+
+/* Text cell */
+.rewards-banner > div > div:last-child {
+  flex: 1;
+  text-align: center;
+}
+
+.rewards-banner h2 {
+  color: var(--banner-text);
+  font-family: var(--heading-font-family, serif);
+  font-size: var(--heading-font-size-xl, 28px);
+  font-weight: 700;
+  font-style: italic;
+  margin: 0 0 0.5em;
+  line-height: 1.2;
+}
+
+.rewards-banner p {
+  color: var(--banner-text);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--body-font-size-s, 16px);
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0 0 1em;
+  opacity: 0.92;
+}
+
+/* Button — override global .primary teal with coral CTA */
+main .rewards-banner a.button:any-link {
+  display: inline-block;
+  background-color: var(--banner-btn-bg);
+  color: var(--banner-text);
+  border-color: var(--banner-btn-bg);
+  border-radius: 24px;
+  padding: 12px 32px;
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--body-font-size-s, 16px);
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+
+main .rewards-banner a.button:any-link:hover,
+main .rewards-banner a.button:any-link:focus-visible {
+  background-color: var(--banner-btn-hover);
+  border-color: var(--banner-btn-hover);
+  color: var(--banner-text);
+  text-decoration: none;
+}
+
+main .rewards-banner .button-wrapper {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .rewards-banner > div > div:last-child {
+    text-align: left;
+  }
+}
+
+@media (width >= 900px) {
+  .rewards-banner {
+    --banner-padding: 40px 60px;
+    --banner-left-width: 280px;
+    padding: var(--banner-padding);
+  }
+
+  .rewards-banner > div {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .rewards-banner > div > div:last-child {
+    text-align: left;
+  }
+
+  .rewards-banner h2 {
+    font-size: var(--heading-font-size-xl, 36px);
+  }
+}

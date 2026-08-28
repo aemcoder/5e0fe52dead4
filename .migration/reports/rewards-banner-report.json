@@ -1,0 +1,63 @@
+{
+  "blockName": "rewards-banner",
+  "sourceUrl": "https://frescopa.coffee/",
+  "timestamp": "2025-08-28T12:57:00Z",
+  "status": "success",
+  "files": {
+    "css": "blocks/rewards-banner/rewards-banner.css",
+    "js": "blocks/rewards-banner/rewards-banner.js",
+    "plainHtml": "drafts/rewards-banner.plain.html",
+    "previewHtml": "drafts/rewards-banner-preview.html"
+  },
+  "images": [
+    {
+      "source": "https://frescopa.coffee/styles/backgrounds/reward-banner-v1.svg",
+      "local": "/drafts/images/reward-banner-v1.svg"
+    }
+  ],
+  "edsVerification": {
+    "hlx": true,
+    "codeBasePath": "",
+    "bodyAppear": true,
+    "blockLoaded": true,
+    "blockStatus": "loaded"
+  },
+  "visualVerification": {
+    "iterationsUsed": 3,
+    "previewWorked": true,
+    "iterations": [
+      {
+        "iteration": 1,
+        "changes": "Initial implementation with SVG as left-cell img and CSS background-image. Decompressed gzip SVG.",
+        "gaps": ["SVG not loading (was gzip-compressed)", "Button not decorated (no strong/em wrapper)"]
+      },
+      {
+        "iteration": 2,
+        "changes": "Fixed SVG decompression. Wrapped link in <strong> to satisfy custom decorateButtons() pattern. Button now coral.",
+        "gaps": ["SVG img shows tiny at 260px wide (SVG is 1360x180)", "Background-image duplicated with img"]
+      },
+      {
+        "iteration": 3,
+        "changes": "Changed to background-image only for SVG (CSS background-size: auto 100%). Left cell is a spacer. Background SVG bow visible. Button coral confirmed.",
+        "gaps": ["Section not full-bleed in preview (preview limitation — full-bleed set by orchestrator via section metadata)"]
+      }
+    ],
+    "finalAssessment": "Close visual match: dark teal background, golden bow/ribbon from SVG visible on left, white italic heading, white body text, coral pill button. Full-bleed will apply in production via section metadata."
+  },
+  "contentModel": {
+    "rows": 1,
+    "description": "Single row, two cells: left spacer (background SVG bow shows through), right text+CTA"
+  },
+  "hasHiddenPanes": false,
+  "designTokens": {
+    "--banner-bg": "#1a3a4a",
+    "--banner-text": "#ffffff",
+    "--banner-btn-bg": "#dc6e52",
+    "--banner-left-width": "280px"
+  },
+  "issues": [
+    "SVG reward-banner-v1.svg was served gzip-compressed — decompressed locally for drafts.",
+    "Custom decorateButtons() requires <strong><a> for primary buttons (not plain <p><a>). Updated content model accordingly.",
+    "Section full-bleed handled by orchestrator (section.full-width) — not set in preview HTML."
+  ]
+}
