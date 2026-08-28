@@ -1,0 +1,114 @@
+/* product-categories block — horizontal row of 5 icon + label cards */
+
+.product-categories {
+  --card-bg: #fff;
+  --card-shadow: rgba(0, 0, 0, 0.12) 0 10px 20px 0;
+  --card-radius: 12px;
+  --card-gap: 16px;
+  --icon-height: 100px;
+  --label-color: #58181d;
+  --label-size: 14px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--card-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* each row = one card */
+.product-categories > div {
+  flex: 1 1 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 24px 16px 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-categories > div:hover {
+  transform: translateY(-3px);
+  box-shadow: rgba(0, 0, 0, 0.18) 0 14px 28px 0;
+}
+
+/* icon cell */
+.product-categories > div > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--icon-height);
+  margin-bottom: 16px;
+}
+
+.product-categories > div > div:first-child picture,
+.product-categories > div > div:first-child img {
+  display: block;
+  max-width: 100%;
+  max-height: var(--icon-height);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* label cell */
+.product-categories > div > div:last-child {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-categories > div > div:last-child p {
+  margin: 0;
+  font-size: var(--label-size);
+  font-weight: 500;
+  color: var(--label-color);
+}
+
+/* reset EDS button decoration on the category links */
+main .product-categories .button-container {
+  display: inline;
+  margin: 0;
+}
+
+main .product-categories a.button:any-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--label-size);
+  font-weight: 500;
+  color: var(--label-color);
+  text-decoration: none;
+  white-space: normal;
+  text-overflow: unset;
+  overflow: visible;
+  border-radius: 0;
+  display: inline;
+  transition: color 0.15s ease;
+}
+
+main .product-categories a.button:any-link:hover {
+  color: var(--link-hover-color, #a33532);
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  .product-categories {
+    --label-size: 16px;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (width >= 900px) {
+  .product-categories {
+    --card-gap: 20px;
+    --label-size: 18px;
+  }
+}
