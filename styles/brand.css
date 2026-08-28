@@ -1,0 +1,32 @@
+:root {
+  /* Fonts */
+  --heading-font-family: "Libre Baskerville", Baskerville, Georgia, serif;
+  --body-font-family: "Roboto", sans-serif;
+  --fixed-font-family:
+    "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
+
+  /* Brand Colors */
+  --background-color: #fff;
+  --text-color: #58181d;
+  --link-color: #58181d;
+  --link-hover-color: #a33532;
+
+  /* Brand Accent Colors */
+  --color-maroon: #58181d;
+  --color-red: #a33532;
+  --color-coral: #dc6e52;
+  --color-amber: #eba439;
+  --color-teal: #1a5a5e;
+  --color-beige: #f4e9dc;
+
+  /* Layout */
+  --nav-height: 70px;
+  --content-max-width: 1360px;
+  --content-gutter: 40px;
+  --section-padding: 64px;
+}
+
+html,
+body {
+  overflow: auto;
+}

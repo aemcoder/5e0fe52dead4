@@ -28,7 +28,9 @@
   box-shadow: var(--card-shadow);
   padding: 24px 16px 20px;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .product-categories > div:hover {

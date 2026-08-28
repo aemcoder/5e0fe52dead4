@@ -1,0 +1,104 @@
+/* ============================================================
+   Featured Products — two-card layout
+   ============================================================ */
+
+.featured-products {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Each card */
+.featured-products-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color, #fff);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+  border: 1px solid var(--line-color, #e8d8c8);
+}
+
+/* Card image area */
+.featured-products-card-image {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.featured-products-card-image picture {
+  display: block;
+}
+
+.featured-products-card-image img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card text area */
+.featured-products-card-body {
+  padding: 32px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.featured-products-card-body h2 {
+  font-size: var(--heading-font-size-l, 24px);
+  color: var(--text-color, #58181d);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.featured-products-card-body p {
+  margin: 0;
+  color: var(--body-text-color, #3d2922);
+  font-size: var(--body-font-size-s, 16px);
+  line-height: 1.6;
+}
+
+/* CTA button — teal filled */
+main .featured-products a.button:any-link {
+  display: inline-block;
+  background-color: var(--accent, #1a5a5e);
+  color: #fff;
+  border: 2px solid var(--accent, #1a5a5e);
+  border-radius: 24px;
+  padding: 10px 28px;
+  font-weight: 700;
+  font-size: var(--body-font-size-s, 16px);
+  text-decoration: none;
+  margin-top: 8px;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+  align-self: flex-start;
+}
+
+main .featured-products a.button:any-link:hover,
+main .featured-products a.button:any-link:focus-visible {
+  background-color: var(--accent-hover, #133f42);
+  border-color: var(--accent-hover, #133f42);
+}
+
+main .featured-products .button-container {
+  margin: 0;
+}
+
+/* Desktop — two cards side by side */
+@media (width >= 900px) {
+  .featured-products {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .featured-products-card {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .featured-products-card-image img {
+    height: 360px;
+  }
+}

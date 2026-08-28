@@ -8,13 +8,13 @@
  * @param {HTMLElement} block
  */
 export default function decorate(block) {
-  const rows = [...block.children];
-  if (rows.length === 0) return;
+ const rows = [...block.children];
+ if (rows.length === 0) return;
 
-  const row = rows[0];
-  const cells = [...row.children];
+ const row = rows[0];
+ const cells = [...row.children];
 
-  if (cells.length >= 2) {
-    cells[1].classList.add('rewards-banner-content');
-  }
+ if (cells.length >= 2) {
+  cells[1].classList.add("rewards-banner-content");
+ }
 }

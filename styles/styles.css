@@ -1,3 +1,5 @@
+@import url("brand.css");
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -11,30 +13,26 @@
  */
 
 :root {
-  /* colors — from Figma (Experience Workspace) */
+  /* colors — Fréscopa brand */
   --background-color: #fff;
-  --light-color: #f7f8ff;        /* indigo/100 — section bg */
-  --dark-color: #505050;         /* neutral-subdued */
-  --text-color: #131313;         /* content/typography/title */
-  --body-text-color: #292929;    /* content/typography/body */
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --light-color: #f4e9dc; /* frescopa beige */
+  --dark-color: #5a4a42; /* warm brown */
+  --text-color: #58181d; /* frescopa maroon */
+  --body-text-color: #3d2922; /* warm dark */
+  --link-color: #58181d;
+  --link-hover-color: #a33532;
 
-  /* brand — indigo ramp */
-  --accent: #3b63fb;         /* accent button fill (Figma) */
-  --accent-hover: #1d3ecf;
-  --accent-text: #6338ee;    /* hero headline accent */
-  --indigo-100: #f7f8ff;
-  --indigo-300: #d8deff;
-  --indigo-900: #7155fa;
-  --indigo-1100: #5424db;
+  /* brand accents */
+  --accent: #1a5a5e; /* teal CTA */
+  --accent-hover: #133f42;
+  --accent-text: #eba439; /* amber */
   --gray-200: #e1e1e1;
-  --line-color: #d8deff;
-  --secondary-bg: #eaeaea;
+  --line-color: #e8d8c8;
+  --secondary-bg: #f4e9dc;
 
-  /* fonts */
-  --body-font-family: 'Adobe Clean', 'Adobe Clean Spectrum VF', adobe-clean, system-ui, -apple-system, sans-serif;
-  --heading-font-family: var(--body-font-family);
+  /* fonts — overridden by brand.css; kept here for editor visibility */
+  --body-font-family: "Roboto", sans-serif;
+  --heading-font-family: "Libre Baskerville", Baskerville, Georgia, serif;
 
   /* body sizes */
   --body-font-size-m: 18px;
@@ -50,34 +48,38 @@
   --heading-font-size-xs: 14px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 70px;
+
+  /* layout contract — sub-agents must not override these */
+  --content-max-width: 1360px;
+  --content-gutter: 40px;
 }
 
 /* fallback fonts */
 @font-face {
   font-family: roboto-condensed-fallback;
   size-adjust: 88.82%;
-  src: local('Arial');
+  src: local("Arial");
 }
 
 @font-face {
   font-family: roboto-fallback;
   size-adjust: 99.529%;
-  src: local('Arial');
+  src: local("Arial");
 }
 
 @media (width >= 900px) {
   :root {
     /* body sizes */
-    --body-font-size-m: 20px;   /* Body/XL — lead, faq question */
-    --body-font-size-s: 16px;   /* Body/M — body copy */
-    --body-font-size-xs: 14px;  /* Title/S — brand, footer */
+    --body-font-size-m: 20px; /* Body/XL — lead, faq question */
+    --body-font-size-s: 16px; /* Body/M — body copy */
+    --body-font-size-xs: 14px; /* Title/S — brand, footer */
 
     /* heading sizes */
-    --heading-font-size-xxl: 45px;  /* Heading/XXL — hero h1 */
-    --heading-font-size-xl: 36px;   /* Heading/XL — section headings */
+    --heading-font-size-xxl: 45px; /* Heading/XXL — hero h1 */
+    --heading-font-size-xl: 36px; /* Heading/XL — section headings */
     --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;    /* Heading/M — card titles */
+    --heading-font-size-m: 22px; /* Heading/M — card titles */
     --heading-font-size-s: 20px;
     --heading-font-size-xs: 16px;
   }
@@ -108,8 +110,8 @@ body.appear {
 }
 
 header {
-  /* reserve room for the floating nav bar (nav height + vertical gutters) */
-  height: calc(var(--nav-height) + 24px);
+  /* reserve room for the sticky nav bar */
+  height: var(--nav-height);
 }
 
 header .header,
@@ -137,12 +139,24 @@ h6 {
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+}
+h2 {
+  font-size: var(--heading-font-size-xl);
+}
+h3 {
+  font-size: var(--heading-font-size-l);
+}
+h4 {
+  font-size: var(--heading-font-size-m);
+}
+h5 {
+  font-size: var(--heading-font-size-s);
+}
+h6 {
+  font-size: var(--heading-font-size-xs);
+}
 
 p,
 dl,
@@ -215,7 +229,11 @@ button.button {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: transform 0.15s ease, box-shadow 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -343,9 +361,15 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1280px;
+  max-width: var(--content-max-width, 1360px);
   margin: auto;
-  padding: 0 24px;
+  padding: 0 var(--content-gutter, 24px);
+}
+
+/* full-bleed sections (hero, banners) */
+main > .section.full-width > div {
+  max-width: 100%;
+  padding: 0;
 }
 
 @media (width >= 900px) {
@@ -354,23 +378,8 @@ main > .section > div {
   }
 
   main > .section > div {
-    padding: 0 40px;
+    padding: 0 var(--content-gutter, 40px);
   }
-}
-
-/* section backgrounds (keyed off the block-container class EDS adds) */
-main .section.hero-container {
-  background: linear-gradient(180deg, #fff 0%, var(--indigo-100) 100%);
-  padding-top: 40px;
-}
-
-main .section.cards-container {
-  background-color: var(--indigo-100);
-}
-
-main .section.accordion-container,
-main .section.cta-container {
-  background-color: #fff;
 }
 
 /* centered section heading + lead, with spacing before the block below */

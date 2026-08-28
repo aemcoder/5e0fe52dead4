@@ -15,21 +15,24 @@ export default function decorate(block) {
     }
   });
 
-  const section = block.closest('.section');
+  const section = block.closest(".section");
   if (section) {
     // Apply style as CSS classes (e.g. "full-width" → class "full-width")
     if (meta.style) {
-      meta.style.split(',').map((s) => s.trim()).forEach((s) => {
-        section.classList.add(s);
-      });
+      meta.style
+        .split(",")
+        .map((s) => s.trim())
+        .forEach((s) => {
+          section.classList.add(s);
+        });
     }
 
     // Apply background color if provided
     if (meta.background) {
-      section.style.setProperty('--section-background-color', meta.background);
+      section.style.setProperty("--section-background-color", meta.background);
     }
   }
 
   // Hide the metadata block from view
-  block.closest('.section-metadata-wrapper')?.remove();
+  block.closest(".section-metadata-wrapper")?.remove();
 }

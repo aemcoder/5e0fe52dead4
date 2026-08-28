@@ -1,41 +1,205 @@
+/* ============================================================
+ * Footer block — Fréscopa multi-column layout
+ * DOM produced by footer.js (loadFragment):
+ *   footer > .footer.block > div > .section > .default-content-wrapper
+ *                                           > .columns-wrapper > .columns.block
+ *                          > .section (copyright bar)
+ * ============================================================ */
+
 footer {
-  background-color: #fff;
+  background-color: var(--color-beige, #f4e9dc);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
   font-size: var(--body-font-size-xs);
 }
 
+/* JS-created wrapper div containing the fragment sections */
 footer .footer > div {
-  max-width: 1280px;
+  max-width: var(--content-max-width, 1360px);
   margin: 0 auto;
-  padding: 24px 40px;
 }
 
-footer .footer .default-content-wrapper {
+/* ── Main section: logo+contact (left) + nav columns (right) ── */
+
+footer .footer > div > .section:first-child {
   display: flex;
-  align-items: center;
-  gap: 24px;
+  flex-direction: column;
+  gap: 40px;
+  padding: 48px 40px 32px;
 }
 
-footer .footer .icon,
-footer .footer .icon img {
-  width: 24px;
-  height: 24px;
+@media (width >= 900px) {
+  footer .footer > div > .section:first-child {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
+  }
+}
+
+/* ── Logo + contact info (default-content-wrapper) ── */
+
+footer .footer > div > .section:first-child > .default-content-wrapper {
+  min-width: 220px;
+  max-width: 260px;
   flex-shrink: 0;
 }
 
-footer .footer p {
-  margin: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+/* Suppress EDS generic .icon sizing inside footer — MUST come before logo rule */
+footer .footer .icon {
+  width: auto;
+  height: auto;
+}
+
+/* Logo icon — override the .icon reset above (later rule, same specificity) */
+footer .footer .icon-frescopa_logo,
+footer .footer .icon-frescopa-logo {
+  display: block;
+  width: 140px;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+footer .footer .icon-frescopa_logo img,
+footer .footer .icon-frescopa-logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* Headings */
+footer .footer h6 {
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-xs);
   font-weight: 700;
-  line-height: 1.3;
-  white-space: nowrap;
-}
-
-footer .footer p:first-of-type {
   color: var(--text-color);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-footer .footer p:last-of-type {
-  color: var(--dark-color);
+/* Paragraphs in default content */
+footer .footer .default-content-wrapper p {
+  margin: 4px 0;
+  line-height: 1.6;
+}
+
+/* Links */
+footer .footer a:any-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+footer .footer a:hover {
+  text-decoration: underline;
+  color: var(--link-hover-color);
+}
+
+/* EDS auto-decorates standalone <p><a> → .button — reset in footer */
+footer .footer a.button:any-link {
+  display: inline;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--text-color);
+  text-decoration: none;
+  white-space: normal;
+  text-overflow: unset;
+  overflow: visible;
+  line-height: inherit;
+}
+
+footer .footer a.button:any-link:hover {
+  text-decoration: underline;
+  color: var(--link-hover-color);
+}
+
+footer .footer .button-container {
+  display: inline;
+  margin: 0;
+}
+
+/* ── Columns block: 5 nav columns ── */
+
+footer .footer .columns-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Override columns.css defaults scoped inside footer */
+footer .footer .columns > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+@media (width >= 600px) {
+  footer .footer .columns > div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px 16px;
+  }
+
+  footer .footer .columns > div > div {
+    flex: 1 1 140px;
+  }
+}
+
+@media (width >= 900px) {
+  footer .footer .columns > div {
+    flex-wrap: nowrap;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  footer .footer .columns > div > div {
+    flex: 1;
+  }
+}
+
+footer .footer .columns ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer .footer .columns li {
+  margin: 6px 0;
+  font-size: var(--body-font-size-xs);
+  color: var(--body-text-color, var(--text-color));
+  line-height: 1.5;
+}
+
+footer .footer .columns li a:any-link {
+  color: var(--body-text-color, var(--text-color));
+}
+
+/* ── Copyright / legal bar (second section) ── */
+
+footer .footer > div > .section:last-child {
+  border-top: 1px solid rgb(88 24 29 / 15%);
+  padding: 18px 40px;
+}
+
+footer .footer > div > .section:last-child .default-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .footer > div > .section:last-child p {
+  margin: 0;
+  text-align: center;
+  font-size: var(--body-font-size-xs);
+  color: var(--dark-color, #5a4a42);
+}
+
+/* ── Section metadata (hidden structural block) ── */
+
+footer .footer .section-metadata-wrapper {
+  display: none;
 }

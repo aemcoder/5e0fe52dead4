@@ -20,25 +20,25 @@
  * @returns {HTMLFormElement}
  */
 function buildSearchForm(placeholder) {
-  const form = document.createElement('form');
-  form.className = 'lf-search-form';
-  form.setAttribute('action', '/locations');
-  form.setAttribute('method', 'get');
+ const form = document.createElement("form");
+ form.className = "lf-search-form";
+ form.setAttribute("action", "/locations");
+ form.setAttribute("method", "get");
 
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.name = 'postcode';
-  input.className = 'lf-search-input';
-  input.placeholder = placeholder;
-  input.setAttribute('aria-label', 'Post code');
+ const input = document.createElement("input");
+ input.type = "text";
+ input.name = "postcode";
+ input.className = "lf-search-input";
+ input.placeholder = placeholder;
+ input.setAttribute("aria-label", "Post code");
 
-  const btn = document.createElement('button');
-  btn.type = 'submit';
-  btn.className = 'lf-search-btn';
-  btn.textContent = 'Search';
+ const btn = document.createElement("button");
+ btn.type = "submit";
+ btn.className = "lf-search-btn";
+ btn.textContent = "Search";
 
-  form.append(input, btn);
-  return form;
+ form.append(input, btn);
+ return form;
 }
 
 /**
@@ -47,33 +47,33 @@ function buildSearchForm(placeholder) {
  * @param {HTMLElement} block - the block element
  */
 export default function decorate(block) {
-  const rows = [...block.children];
-  if (!rows.length) return;
+ const rows = [...block.children];
+ if (!rows.length) return;
 
-  // Only one row expected
-  const row = rows[0];
-  const cells = [...row.children];
+ // Only one row expected
+ const row = rows[0];
+ const cells = [...row.children];
 
-  // ── Cell 0: content panel ────────────────────────────────────────────
-  const contentCell = cells[0];
-  if (contentCell) {
-    contentCell.classList.add('lf-content');
+ // ── Cell 0: content panel ────────────────────────────────────────────
+ const contentCell = cells[0];
+ if (contentCell) {
+  contentCell.classList.add("lf-content");
 
-    // Find paragraphs — first is the label, second is the postcode placeholder
-    const paragraphs = [...contentCell.querySelectorAll('p')];
-    if (paragraphs[0]) {
-      paragraphs[0].classList.add('lf-label');
-    }
-    if (paragraphs[1]) {
-      const placeholder = paragraphs[1].textContent.trim() || 'Post Code';
-      const form = buildSearchForm(placeholder);
-      paragraphs[1].replaceWith(form);
-    }
+  // Find paragraphs — first is the label, second is the postcode placeholder
+  const paragraphs = [...contentCell.querySelectorAll("p")];
+  if (paragraphs[0]) {
+   paragraphs[0].classList.add("lf-label");
   }
-
-  // ── Cell 1: image panel ───────────────────────────────────────────────
-  const imageCell = cells[1];
-  if (imageCell) {
-    imageCell.classList.add('lf-image');
+  if (paragraphs[1]) {
+   const placeholder = paragraphs[1].textContent.trim() || "Post Code";
+   const form = buildSearchForm(placeholder);
+   paragraphs[1].replaceWith(form);
   }
+ }
+
+ // ── Cell 1: image panel ───────────────────────────────────────────────
+ const imageCell = cells[1];
+ if (imageCell) {
+  imageCell.classList.add("lf-image");
+ }
 }

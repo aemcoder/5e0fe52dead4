@@ -6,13 +6,6 @@ main > .section:has(.hero.block) {
   padding: 0;
 }
 
-/* Force full-bleed: override the section content wrapper for the hero.
-   Specificity must beat main > .section > div ([0,1,2]) in styles.css */
-main > .section > .hero-wrapper {
-  max-width: unset;
-  padding: 0;
-}
-
 .hero {
   background-color: var(--accent-text); /* #eba439 amber */
   min-height: 420px;
