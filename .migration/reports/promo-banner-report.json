@@ -1,0 +1,58 @@
+{
+  "blockName": "promo-banner",
+  "sourceUrl": "https://frescopa.coffee/",
+  "timestamp": "2025-09-15T00:00:00Z",
+  "status": "success",
+  "files": {
+    "css": "blocks/promo-banner/promo-banner.css",
+    "js": "blocks/promo-banner/promo-banner.js",
+    "plainHtml": "drafts/promo-banner.plain.html",
+    "previewHtml": "drafts/promo-banner-preview.html"
+  },
+  "images": [],
+  "edsVerification": {
+    "hlx": true,
+    "codeBasePath": "",
+    "bodyAppear": true,
+    "blockLoaded": true,
+    "blockStatus": "loaded"
+  },
+  "visualVerification": {
+    "iterationsUsed": 3,
+    "previewWorked": true,
+    "iterations": [
+      {
+        "iteration": 1,
+        "changes": "Initial 1-cell layout with stacked content",
+        "gaps": ["Content stacked vertically instead of heading+text | button side-by-side", "Section height too large"]
+      },
+      {
+        "iteration": 2,
+        "changes": "Added 2-cell layout (text | button), fixed section-metadata placement, added :has() section padding override",
+        "gaps": ["section-metadata not applying full-width class (missing section-metadata block)", "Box model: min-height + padding = oversized row"]
+      },
+      {
+        "iteration": 3,
+        "changes": "Created section-metadata block, fixed box-sizing: border-box, tuned text column width to 570px",
+        "gaps": ["Height 241px vs 236px (5px diff from fallback font metrics on localhost)"]
+      }
+    ],
+    "finalAssessment": "Very close visual match. Full-bleed width, correct beige background with SVG wave pattern, decorative left area, heading+body+CTA layout matches source. 5px height difference due to font fallback on localhost (Libre Baskerville not loaded from Google Fonts on localhost)."
+  },
+  "contentModel": {
+    "rows": 1,
+    "description": "Single row with 2 cells: [heading + body text] | [Shop Now CTA button]. Left decorative area created via CSS left padding (340px) allowing SVG background to show through."
+  },
+  "hasHiddenPanes": false,
+  "designTokens": {
+    "--promo-bg": "#f4e9dc",
+    "--promo-text": "#58181d",
+    "--promo-btn-bg": "#95351d",
+    "--promo-btn-color": "#fff",
+    "--promo-btn-border": "#95351d"
+  },
+  "issues": [
+    "Created blocks/section-metadata/section-metadata.js (was missing from project, needed for Style: full-width to work)",
+    "Height 241px vs 236px source — 5px diff from font fallback on localhost, will resolve with real Libre Baskerville"
+  ]
+}

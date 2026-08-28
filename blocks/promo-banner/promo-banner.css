@@ -1,0 +1,112 @@
+/*
+ * Promo Banner Block
+ * Full-bleed beige section with SVG wave background.
+ * Row has 2 cells: [text column] [CTA button column]
+ * Left ~25% is decorative (SVG shows through), content starts at ~25%.
+ */
+
+/* Strip section-level vertical padding so the banner is flush */
+main > .section:has(.promo-banner) {
+  padding: 0;
+}
+
+.promo-banner {
+  --promo-bg: #f4e9dc;
+  --promo-text: #58181d;
+  --promo-btn-bg: #95351d;
+  --promo-btn-color: #fff;
+  --promo-btn-border: #95351d;
+
+  position: relative;
+  background-color: var(--promo-bg);
+  background-image: url('https://frescopa.coffee/styles/backgrounds/small.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: var(--promo-text);
+  min-height: 236px;
+}
+
+/* Row: horizontal flex — left pad creates the decorative left area */
+.promo-banner > div {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 50px 204px 50px 340px;
+  min-height: 236px;
+}
+
+/* Text cell (heading + body) */
+.promo-banner > div > div:first-child {
+  flex: 0 1 570px;
+}
+
+/* CTA cell */
+.promo-banner > div > div:last-child {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.promo-banner h2 {
+  font-family: var(--heading-font-family, "Libre Baskerville", Georgia, serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--promo-text);
+  margin: 0 0 0.4em;
+  line-height: 1.25;
+}
+
+.promo-banner p {
+  font-family: var(--body-font-family, "Roboto", sans-serif);
+  font-size: var(--body-font-size-s, 15px);
+  color: var(--promo-text);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Button container */
+main .promo-banner .button-container {
+  margin: 0;
+}
+
+/* CTA button — dark red, pill-shaped */
+main .promo-banner a.button:any-link {
+  display: inline-block;
+  background-color: var(--promo-btn-bg);
+  color: var(--promo-btn-color);
+  border: 3px solid var(--promo-btn-border);
+  border-radius: 24px;
+  padding: 8px 24px;
+  font-family: var(--body-font-family, "Roboto", sans-serif);
+  font-size: var(--body-font-size-s, 16px);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+main .promo-banner a.button:hover,
+main .promo-banner a.button:focus-visible {
+  background-color: #7a2c18;
+  border-color: #7a2c18;
+}
+
+/* Responsive — tablet */
+@media (width >= 900px) {
+  .promo-banner h2 {
+    font-size: 24px;
+  }
+}
+
+/* Mobile — stack vertically, no left indent */
+@media (width < 600px) {
+  .promo-banner > div {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 24px;
+    gap: 24px;
+  }
+}
