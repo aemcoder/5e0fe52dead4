@@ -1,244 +1,211 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
-}
+/* Hero section — dark full-viewport design */
 
 .hero {
   position: relative;
-}
-
-/* fixed-size stage; clipped to the design frame (1440x1030) exactly like the
-   Figma artboard — screens that bleed past the bottom are cut at the edge */
-.hero > div {
-  position: relative;
-  height: 1030px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-ink);
   overflow: hidden;
-  background: linear-gradient(180deg, #fff 0%, var(--indigo-100) 100%);
 }
 
-/* layered illustration — fixed design size, centered (keeps original scale) */
-.hero .hero-stage {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1440px;
-  height: 1030px;
-  transform: translateX(-50%);
-  transform-style: preserve-3d;
-}
-
-.hero .hero-scene {
-  position: absolute;
-  inset: 0;
-  line-height: 0;
-}
-
-.hero .hero-scene img {
-  display: block;
+/* Wrap container — centered and constrained */
+.hero .hero-wrap {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* decorative background circles */
-.hero .hero-circles {
-  position: absolute;
-  z-index: 0;
-  line-height: 0;
-  will-change: transform;
-}
-
-.hero .hero-circles img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* separated mockup layers */
-.hero .hero-mockup {
-  position: absolute;
-  z-index: 1;
-  will-change: transform;
-}
-
-.hero .hero-mockup-in {
-  line-height: 0;
-  will-change: transform;
-  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero .hero-stage-hover .hero-mockup-in {
-  transition: none;
-}
-
-/* floating logos + avatars */
-.hero .hero-avatar,
-.hero .hero-float {
-  position: absolute;
-  z-index: 3;
-}
-
-.hero .hero-avatar {
-  will-change: transform;
-}
-
-.hero .hero-avatar-bob,
-.hero .hero-float-bob {
-  line-height: 0;
-}
-
-.hero .hero-mockup img,
-.hero .hero-avatar img,
-.hero .hero-float img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* text + buttons overlaid on the upper portion of the illustration */
-.hero .hero-content {
-  position: absolute;
-  top: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(960px, 92%);
+  max-width: 900px;
+  padding: var(--gutter);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  text-align: center;
-  z-index: 2;
+  gap: 32px;
+  z-index: 1;
 }
 
+/* Decorative circles — pure CSS pseudo-elements */
+.hero .hero-circles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero .hero-circles::before,
+.hero .hero-circles::after {
+  content: '';
+  position: absolute;
+  border: 1px solid rgba(196, 112, 63, 0.2);
+  border-radius: 50%;
+}
+
+/* First circle — top left, large */
+.hero .hero-circles::before {
+  top: -120px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+}
+
+/* Second circle — bottom right, medium */
+.hero .hero-circles::after {
+  bottom: -100px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+}
+
+/* Additional circle via wrapper styling */
+.hero .hero-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -150px;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(196, 112, 63, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+/* Content container */
+.hero .hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Eyebrow text */
+.hero .hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--size-eyebrow);
+  font-weight: var(--weight-medium);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+
+/* Heading with italic emphasis */
 .hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--size-h1);
+  font-weight: var(--weight-regular);
+  color: var(--color-parchment);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin: 0;
-  max-width: 820px;
-  font-size: var(--heading-font-size-xxl);
-  font-weight: 800;
-  line-height: 1.16;
-  letter-spacing: 0;
 }
 
 .hero h1 em {
-  font-style: normal;
-  color: var(--accent-text);
+  font-style: italic;
+  color: var(--color-copper);
+  font-weight: var(--weight-regular);
 }
 
-.hero .hero-content > p {
-  max-width: 620px;
+/* Decorative divider line */
+.hero .hero-divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-copper);
+  margin: 8px 0;
+}
+
+/* Lede/subtitle in italic */
+.hero .hero-lede {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  color: rgba(245, 240, 235, 0.6);
+  line-height: 1.6;
+  max-width: 700px;
   margin: 0;
-  color: var(--dark-color);
-  font-size: var(--body-font-size-m);
-  line-height: 1.5;
 }
 
-.hero .hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-}
-
-.hero .hero-actions .button-wrapper {
-  margin: 0;
-}
-
-/* phones: a 1440 crop is meaningless, so stack the text above and let the
-   illustration scale down to fit the screen */
-@media (width < 900px) {
-  .hero > div {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    overflow: visible;
+/* Responsive adjustments */
+@media (width < 600px) {
+  .hero {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 
-  .hero .hero-stage {
-    position: relative;
-    left: 0;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1440 / 1030;
-    transform: none;
+  .hero .hero-wrap {
+    padding: 20px;
+    gap: 24px;
   }
 
-  .hero .hero-content {
-    position: static;
-    transform: none;
-    width: auto;
-    padding: 24px 20px 16px;
+  .hero .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .hero .hero-circles::before {
+    width: 200px;
+    height: 200px;
+    top: -100px;
+    left: -60px;
+  }
+
+  .hero .hero-circles::after {
+    width: 180px;
+    height: 180px;
+    bottom: -90px;
+    right: -50px;
+  }
+
+  .hero .hero-wrap::before {
+    width: 200px;
+    height: 200px;
+    right: -100px;
   }
 }
 
-/* entrances + continuous float */
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-content > * {
+    animation: none !important;
+  }
+}
+
+/* Optional: entrance animation for content (respects prefers-reduced-motion) */
 @media (prefers-reduced-motion: no-preference) {
   .hero .hero-content > * {
+    animation: hero-fade-in 1.2s var(--ease-out) forwards;
     opacity: 0;
-    animation: hero-rise 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
-  .hero .hero-content > h1 { animation-delay: 0.2s; }
-  .hero .hero-content > p { animation-delay: 0.45s; }
-  .hero .hero-content > .hero-actions { animation-delay: 0.7s; }
-
-  .hero .hero-scene {
-    opacity: 0;
-    animation: hero-fade 2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+  .hero .hero-eyebrow {
+    animation-delay: 0.2s;
   }
 
-  /* mockups appear one after another, lifting in */
-  .hero .hero-mockup-in {
-    opacity: 0;
-    animation: mockup-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) var(--enter-delay, 0s) forwards;
+  .hero h1 {
+    animation-delay: 0.4s;
   }
 
-  /* logos bob gently; avatars roam with a lively 2D float */
-  .hero .hero-float-bob {
-    animation: logo-float 8s ease-in-out infinite;
+  .hero .hero-divider {
+    animation-delay: 0.5s;
   }
 
-  .hero .hero-avatar-bob {
-    animation: avatar-float 6.5s ease-in-out infinite;
+  .hero .hero-lede {
+    animation-delay: 0.6s;
   }
 
-  @keyframes hero-rise {
+  @keyframes hero-fade-in {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(12px);
     }
 
     to {
       opacity: 1;
-      transform: none;
+      transform: translateY(0);
     }
-  }
-
-  @keyframes hero-fade {
-    to { opacity: 1; }
-  }
-
-  @keyframes mockup-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px) scale(0.98);
-    }
-
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  @keyframes logo-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  @keyframes avatar-float {
-    0%, 100% { transform: translate(0, 0); }
-    20% { transform: translate(10px, -16px); }
-    45% { transform: translate(-8px, -24px); }
-    70% { transform: translate(12px, -10px); }
-    85% { transform: translate(-6px, -18px); }
   }
 }

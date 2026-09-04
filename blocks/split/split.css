@@ -1,0 +1,137 @@
+/* Split block — two-column text + image layout on warm background */
+
+.split {
+  background-color: var(--color-warm);
+  padding: 100px var(--gutter);
+}
+
+/* Wrap container — grid layout */
+.split .split-wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Text column */
+.split .split-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Eyebrow */
+.split .split-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--size-eyebrow);
+  font-weight: var(--weight-medium);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+
+/* Heading */
+.split h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: var(--weight-regular);
+  color: var(--color-heading);
+  line-height: 1.15;
+  margin: 0;
+}
+
+/* Body paragraphs */
+.split .split-text p {
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: 1.85;
+  color: var(--color-body);
+  margin: 0;
+}
+
+/* Strong emphasis in text — forest green */
+.split .split-text strong {
+  color: var(--color-forest);
+  font-weight: var(--weight-semibold);
+}
+
+/* Media column */
+.split .split-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image styling */
+.split .split-media picture {
+  display: block;
+  width: 100%;
+}
+
+.split .split-media img {
+  display: block;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: saturate(0.85);
+}
+
+/* Decorative accent box */
+.split .split-accent {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgba(45, 74, 62, 0.15);
+  border-radius: 4px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Responsive — stack on tablet and mobile */
+@media (width < 900px) {
+  .split .split-wrap {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (width < 600px) {
+  .split {
+    padding: 60px var(--gutter);
+  }
+
+  .split .split-wrap {
+    gap: 32px;
+  }
+
+  .split h2 {
+    font-size: clamp(24px, 3vw, 32px);
+  }
+
+  .split .split-eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .split .split-text p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .split .split-media img {
+    height: 320px;
+  }
+
+  .split .split-accent {
+    width: 120px;
+    height: 120px;
+    bottom: -15px;
+    right: -15px;
+  }
+}

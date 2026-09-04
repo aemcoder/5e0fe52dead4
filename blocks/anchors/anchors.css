@@ -1,0 +1,138 @@
+/* Anchors block — numbered principles list with roman numerals */
+
+.anchors {
+  background-color: #fff;
+  padding: 120px var(--gutter);
+}
+
+/* Wrap container — centered and constrained */
+.anchors .anchors-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* Section heading */
+.anchors .anchors-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Eyebrow */
+.anchors .anchors-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--size-eyebrow);
+  font-weight: var(--weight-medium);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin: 0;
+}
+
+/* Heading */
+.anchors .anchors-title {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: var(--weight-regular);
+  color: var(--color-heading);
+  line-height: 1.15;
+  margin: 0;
+}
+
+/* Items container */
+.anchors .anchors-items {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual item */
+.anchors .anchors-item {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  border-top: 1px solid var(--color-rule);
+  padding: 32px 0;
+}
+
+/* Last item also has bottom border */
+.anchors .anchors-item:last-child {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+/* Roman numeral */
+.anchors .anchors-numeral {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: var(--weight-medium);
+  color: var(--color-copper);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Content container */
+.anchors .anchors-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+/* Item title */
+.anchors .anchors-item-title {
+  font-family: var(--font-display);
+  font-size: var(--size-h4);
+  font-weight: var(--weight-semibold);
+  color: var(--color-heading);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Item body text */
+.anchors .anchors-item-body {
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: 1.8;
+  color: var(--color-body);
+  margin: 0;
+}
+
+/* Responsive — reduce padding on mobile */
+@media (width < 600px) {
+  .anchors {
+    padding: 60px var(--gutter);
+  }
+
+  .anchors .anchors-wrap {
+    gap: 32px;
+  }
+
+  .anchors .anchors-item {
+    gap: 20px;
+    padding: 24px 0;
+  }
+
+  .anchors .anchors-numeral {
+    font-size: 18px;
+  }
+
+  .anchors .anchors-item-title {
+    font-size: 20px;
+  }
+
+  .anchors .anchors-item-body {
+    font-size: 15px;
+  }
+
+  .anchors .anchors-eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .anchors .anchors-title {
+    font-size: clamp(24px, 3vw, 32px);
+  }
+}

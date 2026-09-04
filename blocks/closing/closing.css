@@ -1,0 +1,111 @@
+/* Closing block — dark closing/CTA section with decorative elements */
+
+.closing {
+  background-color: var(--color-ink);
+  padding: 120px 40px;
+  text-align: center;
+}
+
+/* Wrap container — centered and constrained */
+.closing .closing-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Decorative circle — 40x40px with 8px solid copper dot center */
+.closing .closing-circle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(196, 112, 63, 0.4);
+  border-radius: 50%;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+/* Copper dot in the center of circle */
+.closing .closing-circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-copper);
+  border-radius: 50%;
+}
+
+/* H2 heading styling */
+.closing h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: var(--weight-regular);
+  color: var(--color-parchment);
+  line-height: 1.35;
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+/* Emphasized text in h2 — copper italic */
+.closing h2 em {
+  font-style: italic;
+  color: var(--color-copper);
+  font-weight: var(--weight-regular);
+}
+
+/* Body paragraph styling */
+.closing p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.85;
+  color: rgba(245, 240, 235, 0.55);
+  max-width: 540px;
+  margin: 0 auto 48px;
+  padding: 0;
+}
+
+/* Last paragraph — no bottom margin before divider */
+.closing .closing-wrap > p:last-of-type {
+  margin-bottom: 48px;
+}
+
+/* Decorative divider line at bottom */
+.closing .closing-divider {
+  width: 60px;
+  height: 1px;
+  background-color: rgba(196, 112, 63, 0.4);
+  margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (width < 600px) {
+  .closing {
+    padding: 80px 24px;
+  }
+
+  .closing .closing-wrap {
+    max-width: 100%;
+  }
+
+  .closing .closing-circle {
+    margin-bottom: 40px;
+  }
+
+  .closing h2 {
+    font-size: clamp(24px, 3.5vw, 36px);
+    margin-bottom: 24px;
+  }
+
+  .closing p {
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .closing .closing-wrap > p:last-of-type {
+    margin-bottom: 32px;
+  }
+}
