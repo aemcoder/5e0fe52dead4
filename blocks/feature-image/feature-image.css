@@ -1,0 +1,49 @@
+.feature-image .feature-image-figure {
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 50vw, 520px);
+  overflow: hidden;
+}
+
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(0.9);
+}
+
+.feature-image .feature-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgb(245 240 235 / 15%), rgb(245 240 235 / 0%));
+}
+
+/* captioned variant — shorter band, dark bottom scrim, overlaid line */
+.feature-image.caption .feature-image-figure {
+  height: clamp(280px, 40vw, 440px);
+}
+
+.feature-image.caption img {
+  filter: brightness(0.8) saturate(0.85);
+}
+
+.feature-image.caption .feature-image-overlay {
+  background: linear-gradient(rgb(245 240 235 / 0%), rgb(26 26 26 / 60%));
+}
+
+.feature-image .feature-image-caption {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.feature-image .feature-image-caption p {
+  margin: 0;
+  font-family: var(--serif-font-family);
+  font-size: clamp(20px, 3vw, 30px);
+  font-style: italic;
+  color: var(--color-cream-70);
+}

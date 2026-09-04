@@ -1,0 +1,70 @@
+.anchors .anchors-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 120px 40px;
+}
+
+.anchors .anchors-eyebrow p {
+  margin: 0 0 16px;
+  font-family: var(--sans-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  letter-spacing: 0.31em;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+}
+
+.anchors .anchors-title :is(h1, h2, h3) {
+  margin: 0 0 64px;
+  font-family: var(--serif-font-family);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+
+.anchors .anchors-item {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid rgb(26 26 26 / 10%);
+}
+
+.anchors .anchors-item:last-child {
+  border-bottom: 1px solid rgb(26 26 26 / 10%);
+}
+
+.anchors .anchors-num {
+  flex-shrink: 0;
+  font-family: var(--serif-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-terracotta);
+}
+
+.anchors .anchors-body :is(h4, h3) {
+  margin: 0 0 8px;
+  font-family: var(--serif-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.anchors .anchors-body p {
+  margin: 0;
+  font-family: var(--sans-font-family);
+  font-size: var(--body-font-size-s);
+  line-height: 1.8;
+  color: var(--color-muted);
+}
+
+@media (width < 900px) {
+  .anchors .anchors-inner {
+    padding: 72px 24px;
+  }
+
+  .anchors .anchors-item {
+    gap: 20px;
+  }
+}

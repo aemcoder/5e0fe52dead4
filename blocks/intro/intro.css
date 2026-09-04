@@ -1,0 +1,32 @@
+.intro .intro-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px 40px;
+}
+
+.intro .intro-lead p {
+  margin: 0 0 32px;
+  font-family: var(--serif-font-family);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+
+.intro .intro-body p {
+  margin: 0 0 24px;
+  font-family: var(--sans-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.85;
+  color: var(--color-muted);
+}
+
+.intro .intro-body:last-child p {
+  margin-bottom: 0;
+}
+
+@media (width < 900px) {
+  .intro .intro-inner {
+    padding: 72px 24px;
+  }
+}
