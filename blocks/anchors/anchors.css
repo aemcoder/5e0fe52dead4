@@ -1,0 +1,86 @@
+/* section band (cream) with default-content head above the list */
+main .section.anchors-container {
+  background: var(--color-canvas);
+  padding: 90px 24px;
+}
+
+main .section.anchors-container > div {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.anchors-container .default-content-wrapper {
+  margin-bottom: 40px;
+}
+
+.anchors-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+}
+
+.anchors-container .default-content-wrapper h2 {
+  margin: 0;
+  font-family: var(--display-font-family);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+
+/* the list */
+.anchors .anchor-item {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid rgb(26 26 26 / 10%);
+}
+
+.anchors .anchor-item:last-child {
+  border-bottom: 1px solid rgb(26 26 26 / 10%);
+}
+
+.anchors .anchor-num {
+  flex-shrink: 0;
+  font-family: var(--display-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-terracotta);
+}
+
+.anchors .anchor-content :is(h3, h4, h5) {
+  margin: 0 0 8px;
+  font-family: var(--display-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.anchors .anchor-content p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-body);
+}
+
+@media (width >= 900px) {
+  main .section.anchors-container {
+    padding: 120px 40px;
+  }
+
+  .anchors-container .default-content-wrapper {
+    margin-bottom: 64px;
+  }
+}
+
+@media (width <= 600px) {
+  .anchors .anchor-item {
+    gap: 20px;
+  }
+}
