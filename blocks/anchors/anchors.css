@@ -1,0 +1,63 @@
+.anchors {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.anchors .anchors-list {
+  counter-reset: anchor;
+}
+
+.anchors .anchor {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid var(--line-color);
+  counter-increment: anchor;
+}
+
+.anchors .anchor:last-child {
+  border-bottom: 1px solid var(--line-color);
+}
+
+.anchors .anchor-num {
+  flex-shrink: 0;
+  color: var(--brand-clay);
+  font-family: var(--display-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  user-select: none;
+}
+
+.anchors .anchor-num::before {
+  content: counter(anchor, lower-roman) ".";
+}
+
+.anchors .anchor-title :is(h2, h3, h4) {
+  margin: 0 0 8px;
+  color: var(--text-color);
+  font-family: var(--display-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 600;
+  line-height: normal;
+}
+
+.anchors .anchor-body p {
+  margin: 0 0 12px;
+  color: var(--body-text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  line-height: 1.8;
+}
+
+.anchors .anchor-body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (width <= 700px) {
+  .anchors .anchor {
+    gap: 20px;
+    padding: 24px 0;
+  }
+}

@@ -1,0 +1,53 @@
+.quote {
+  padding: 100px var(--section-gutter);
+  background: var(--brand-forest);
+  text-align: center;
+}
+
+.quote .quote-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote .quote-mark {
+  margin-bottom: -20px;
+  color: rgb(245 240 235 / 15%);
+  font-family: var(--display-font-family);
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.6;
+  user-select: none;
+}
+
+.quote .quote-body {
+  margin: 0;
+}
+
+.quote .quote-body p {
+  margin: 0;
+  color: var(--brand-cream);
+  font-family: var(--display-font-family);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.quote .quote-attribution {
+  margin-top: 32px;
+}
+
+.quote .quote-attribution p {
+  margin: 0;
+  color: var(--brand-clay);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 3px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+@media (width <= 700px) {
+  .quote {
+    padding: 72px var(--section-gutter-mobile);
+  }
+}

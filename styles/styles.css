@@ -11,76 +11,101 @@
  */
 
 :root {
-  /* colors — from Figma (Experience Workspace) */
-  --background-color: #fff;
-  --light-color: #f7f8ff;        /* indigo/100 — section bg */
-  --dark-color: #505050;         /* neutral-subdued */
-  --text-color: #131313;         /* content/typography/title */
-  --body-text-color: #292929;    /* content/typography/body */
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* brand palette — lifted from the prototype */
+  --brand-ink: #1a1a1a;
+  --brand-cream: #f5f0eb;
+  --brand-sand: #e8dfd4;
+  --brand-forest: #2d4a3e;
+  --brand-clay: #c4703f;
+  --brand-clay-dark: #a75c31;
+  --brand-muted: #555;
 
-  /* brand — indigo ramp */
-  --accent: #3b63fb;         /* accent button fill (Figma) */
-  --accent-hover: #1d3ecf;
-  --accent-text: #6338ee;    /* hero headline accent */
+  /* semantic colors */
+  --background-color: var(--brand-cream);
+  --light-color: var(--brand-sand);
+  --dark-color: var(--brand-forest);
+  --text-color: var(--brand-ink);
+  --body-text-color: var(--brand-muted);
+  --link-color: var(--brand-clay);
+  --link-hover-color: var(--brand-clay-dark);
+  --accent: var(--brand-clay);
+  --accent-hover: var(--brand-clay-dark);
+  --line-color: rgb(26 26 26 / 10%);
+
+  /* legacy palette — still referenced by the pre-existing welcome/* blocks */
+  --accent-text: #6338ee;
   --indigo-100: #f7f8ff;
   --indigo-300: #d8deff;
   --indigo-900: #7155fa;
   --indigo-1100: #5424db;
   --gray-200: #e1e1e1;
-  --line-color: #d8deff;
   --secondary-bg: #eaeaea;
 
   /* fonts */
-  --body-font-family: 'Adobe Clean', 'Adobe Clean Spectrum VF', adobe-clean, system-ui, -apple-system, sans-serif;
-  --heading-font-family: var(--body-font-family);
+  --display-font-family: 'Cormorant Garamond', cormorant-garamond-fallback, 'Times New Roman', times, serif;
+  --body-font-family: 'DM Sans', dm-sans-fallback, arial, helvetica, sans-serif;
+  --heading-font-family: var(--display-font-family);
 
   /* body sizes */
-  --body-font-size-m: 18px;
+  --body-font-size-m: 17px;
   --body-font-size-s: 16px;
-  --body-font-size-xs: 14px;
+  --body-font-size-xs: 13px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 34px;
-  --heading-font-size-xl: 28px;
-  --heading-font-size-l: 24px;
-  --heading-font-size-m: 20px;
-  --heading-font-size-s: 16px;
-  --heading-font-size-xs: 14px;
+  --heading-font-size-xxl: clamp(48px, 8vw, 120px);
+  --heading-font-size-xl: clamp(36px, 5vw, 64px);
+  --heading-font-size-l: clamp(32px, 4.5vw, 52px);
+  --heading-font-size-m: 28px;
+  --heading-font-size-s: 24px;
+  --heading-font-size-xs: 20px;
 
-  /* nav height */
-  --nav-height: 64px;
+  /* layout */
+  --section-gutter: 40px;
+  --section-gutter-mobile: 24px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* the chrome floats over the hero (overlay chrome) — nothing is reserved in flow */
+  --nav-height: 0px;
 }
 
-/* fallback fonts */
+/* metric-matched fallback faces — available at first paint, before fonts.css lands */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+  font-family: cormorant-garamond-fallback;
+  font-style: normal;
+  src: local('Times New Roman');
+  size-adjust: 90.33%;
+  ascent-override: 102.3%;
+  descent-override: 31.77%;
+  line-gap-override: 0%;
 }
 
 @font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+  font-family: cormorant-garamond-fallback;
+  font-style: italic;
+  src: local('Times New Roman Italic'), local('Times New Roman');
+  size-adjust: 81.39%;
+  ascent-override: 113.53%;
+  descent-override: 35.26%;
+  line-gap-override: 0%;
 }
 
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 20px;   /* Body/XL — lead, faq question */
-    --body-font-size-s: 16px;   /* Body/M — body copy */
-    --body-font-size-xs: 14px;  /* Title/S — brand, footer */
+@font-face {
+  font-family: dm-sans-fallback;
+  font-style: normal;
+  src: local('Arial');
+  size-adjust: 107.06%;
+  ascent-override: 92.66%;
+  descent-override: 28.96%;
+  line-gap-override: 0%;
+}
 
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;  /* Heading/XXL — hero h1 */
-    --heading-font-size-xl: 36px;   /* Heading/XL — section headings */
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;    /* Heading/M — card titles */
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 16px;
-  }
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
@@ -100,16 +125,22 @@ body {
   color: var(--body-text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.5;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
 }
 
 body.appear {
   display: block;
 }
 
+::selection {
+  background: var(--brand-forest);
+  color: var(--brand-cream);
+}
+
+/* the chrome floats over the page — see blocks/header/header.css */
 header {
-  /* reserve room for the floating nav bar (nav height + vertical gutters) */
-  height: calc(var(--nav-height) + 24px);
+  height: var(--nav-height);
 }
 
 header .header,
@@ -128,21 +159,20 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin: 0;
   color: var(--text-color);
   font-family: var(--heading-font-family);
-  font-weight: 800;
-  line-height: 1.16;
+  font-weight: 400;
+  line-height: 1.15;
   scroll-margin: 40px;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
 h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h3 { font-size: var(--heading-font-size-m); }
+h4 { font-size: var(--heading-font-size-s); }
+h5 { font-size: var(--heading-font-size-xs); }
+h6 { font-size: var(--body-font-size-m); }
 
 p,
 dl,
@@ -150,8 +180,7 @@ ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin: 0;
 }
 
 code,
@@ -161,14 +190,10 @@ pre {
 
 pre {
   padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
+  border-radius: 4px;
+  background-color: var(--brand-sand);
   overflow-x: auto;
   white-space: pre;
-}
-
-main > div {
-  margin: 40px 16px;
 }
 
 input,
@@ -176,6 +201,12 @@ textarea,
 select,
 button {
   font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /* links */
@@ -190,84 +221,58 @@ a:hover {
   text-decoration: underline;
 }
 
-/* buttons */
+/* buttons — EDS convention: <strong><a> primary, <em><a> secondary, <em><strong><a> accent */
 p.button-wrapper {
-  margin: 12px 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
 }
 
 a.button:any-link,
 button.button {
-  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   max-width: 100%;
   margin: 0;
   border: 1px solid transparent;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font: inherit;
-  font-size: var(--body-font-size-s);
-  font-weight: 700;
-  line-height: 1.25;
+  border-radius: 2px;
+  padding: 16px 28px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  transition: transform 0.15s ease, box-shadow 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a.button.primary:hover,
-  button.button.primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 24px rgb(99 56 238 / 28%);
-  }
-
-  a.button.secondary:hover,
-  button.button.secondary:hover {
-    transform: translateY(-1px);
-  }
-}
-
-a.button[aria-disabled="true"],
-button.button:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
+  transition: background-color 0.25s var(--ease-out), color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
 }
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--accent);
-  background-color: var(--accent);
-  color: #fff;
+  border-color: var(--brand-clay);
+  background-color: var(--brand-clay);
+  color: var(--brand-cream);
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--accent-hover);
-  background-color: var(--accent-hover);
-  color: #fff;
-}
-
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+  border-color: var(--brand-clay-dark);
+  background-color: var(--brand-clay-dark);
+  color: var(--brand-cream);
+  text-decoration: none;
 }
 
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--secondary-bg);
-  background-color: var(--secondary-bg);
+  border-color: rgb(26 26 26 / 25%);
+  background-color: transparent;
   color: var(--text-color);
 }
 
@@ -275,122 +280,256 @@ a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: #dcdcdc;
-  background-color: #dcdcdc;
+  border-color: var(--text-color);
   color: var(--text-color);
+  text-decoration: none;
 }
 
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-/* high-impact call-to-action */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+  border-color: var(--brand-forest);
+  background-color: var(--brand-forest);
+  color: var(--brand-cream);
 }
 
 a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  border-color: var(--brand-ink);
+  background-color: var(--brand-ink);
+  color: var(--brand-cream);
+  text-decoration: none;
 }
 
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+/* secondary CTAs sitting on the dark/forest grounds */
+main .section.dark a.button.secondary,
+main .essay-hero a.button.secondary,
+main .closing a.button.secondary,
+main .quote a.button.secondary {
+  border-color: rgb(245 240 235 / 40%);
+  color: var(--brand-cream);
 }
 
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
+main .section.dark a.button.secondary:hover,
+main .essay-hero a.button.secondary:hover,
+main .closing a.button.secondary:hover,
+main .quote a.button.secondary:hover {
+  border-color: var(--brand-cream);
+  background-color: rgb(245 240 235 / 8%);
+}
+
+a.button[aria-disabled="true"],
+button.button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .icon {
   display: inline-block;
-  height: 24px;
   width: 24px;
+  height: 24px;
 }
 
 .icon img {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
-/* sections — flush colored bands, content centered */
+/*
+ * sections — every band is full bleed; each block owns its own padding and
+ * max-width wrap (the prototype paints edge-to-edge grounds).
+ */
 main > .section {
   margin: 0;
-  padding: 48px 0;
-  scroll-margin-top: 100px;
+  padding: 0;
 }
 
 main > .section > div {
-  max-width: 1280px;
-  margin: auto;
-  padding: 0 24px;
-}
-
-@media (width >= 900px) {
-  main > .section {
-    padding: 80px 0;
-  }
-
-  main > .section > div {
-    padding: 0 40px;
-  }
-}
-
-/* section backgrounds (keyed off the block-container class EDS adds) */
-main .section.hero-container {
-  background: linear-gradient(180deg, #fff 0%, var(--indigo-100) 100%);
-  padding-top: 40px;
-}
-
-main .section.cards-container {
-  background-color: var(--indigo-100);
-}
-
-main .section.accordion-container,
-main .section.cta-container {
-  background-color: #fff;
-}
-
-/* centered section heading + lead, with spacing before the block below */
-main > .section > .default-content-wrapper {
-  max-width: 960px;
-  margin-inline: auto;
-  text-align: center;
-}
-
-main > .section > .default-content-wrapper > h2 {
+  max-width: none;
   margin: 0;
+  padding: 0;
 }
 
-main > .section > .default-content-wrapper > p {
-  max-width: 620px;
-  margin: 16px auto 0;
-  color: var(--dark-color);
+/*
+ * The page-metadata section is consumed into <head> by the delivery pipeline
+ * and leaves an empty band; section metadata is consumed into the section's
+ * classes. Both are hidden defensively so an unprocessed document never shows
+ * its configuration as text.
+ */
+main .section:empty,
+main .section.metadata-container {
+  display: none;
+}
+
+main .section > .section-metadata-wrapper,
+main .section .section-metadata {
+  display: none;
+}
+
+/* ── default-content sections ─────────────────────────────────────────── */
+
+/*
+ * The opening prose band. It is authored as two sections so the display-serif
+ * lead and the body copy are each addressed by a section style value — no
+ * author-side classes and no positional selectors on prose (they drift in the
+ * Experience Workspace inline editor).
+ */
+main .section.intro-lead,
+main .section.intro {
+  background-color: var(--background-color);
+}
+
+main .section.intro-lead {
+  padding: 120px var(--section-gutter) 0;
+}
+
+main .section.intro {
+  padding: 32px var(--section-gutter) 120px;
+}
+
+main .section.intro-lead .default-content-wrapper,
+main .section.intro .default-content-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+main .section.intro .default-content-wrapper p {
+  margin: 0;
+  color: var(--body-text-color);
+  font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
+  line-height: 1.85;
 }
 
-main > .section > div + div {
-  margin-top: 40px;
+main .section.intro-lead .default-content-wrapper p {
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--display-font-family);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ── section heads authored as default content above a block ──────────── */
+main .section.numbered-cards-container,
+main .section.anchors-container {
+  padding: 120px var(--section-gutter);
+  background-color: var(--background-color);
+}
+
+main .section.numbered-cards-container .default-content-wrapper,
+main .section.anchors-container .default-content-wrapper {
+  margin: 0 auto;
+}
+
+main .section.numbered-cards-container .default-content-wrapper {
+  max-width: 1100px;
+}
+
+main .section.anchors-container .default-content-wrapper {
+  max-width: 860px;
+}
+
+/* every paragraph in these heads is the section eyebrow */
+main .section.numbered-cards-container .default-content-wrapper p,
+main .section.anchors-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  color: var(--brand-clay);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+main .section.numbered-cards-container .default-content-wrapper h2 {
+  margin: 0 0 72px;
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.1;
+}
+
+main .section.anchors-container .default-content-wrapper h2 {
+  margin: 0 0 64px;
+  font-size: var(--heading-font-size-l);
+  line-height: 1.15;
+}
+
+@media (width <= 700px) {
+  main .section.numbered-cards-container,
+  main .section.anchors-container {
+    padding: 80px var(--section-gutter-mobile);
+  }
+
+  main .section.intro-lead {
+    padding: 80px var(--section-gutter-mobile) 0;
+  }
+
+  main .section.intro {
+    padding: 28px var(--section-gutter-mobile) 80px;
+  }
+
+  main .section.numbered-cards-container .default-content-wrapper h2 {
+    margin-bottom: 48px;
+  }
+
+  main .section.anchors-container .default-content-wrapper h2 {
+    margin-bottom: 40px;
+  }
+}
+
+/* ── Experience Workspace edit mode ───────────────────────────────────────
+ * `.prosemirror-editor` only exists inside the da.live inline editor, so these
+ * rules cost nothing on a published page. The editor re-renders authored
+ * elements without their classes, so CTAs are repainted from their marks.
+ */
+.prosemirror-editor p > :is(strong, em) > a:any-link,
+.prosemirror-editor p > a:any-link:has(> :is(strong, em):only-child) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 16px 28px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.prosemirror-editor p > a:any-link > :is(strong, em) {
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+.prosemirror-editor p > strong > a:any-link,
+.prosemirror-editor p > a:any-link:has(> strong:only-child) {
+  border-color: var(--brand-clay);
+  background-color: var(--brand-clay);
+  color: var(--brand-cream);
+}
+
+.prosemirror-editor p > em > a:any-link,
+.prosemirror-editor p > a:any-link:has(> em:only-child) {
+  border-color: rgb(26 26 26 / 25%);
+  color: var(--text-color);
+}
+
+/* a CTA moved into a card-as-link keeps reading like the card text */
+a .prosemirror-editor a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* on-dark repaint — nothing may follow these rules */
+main :is(.essay-hero, .closing, .quote, .section.dark) .prosemirror-editor p > em > a:any-link,
+main :is(.essay-hero, .closing, .quote, .section.dark) .prosemirror-editor p > a:any-link:has(> em:only-child) {
+  border-color: rgb(245 240 235 / 40%);
+  color: var(--brand-cream);
 }
