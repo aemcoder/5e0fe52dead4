@@ -1,0 +1,69 @@
+.closing-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+.closing {
+  background: var(--color-dark);
+  padding: 120px 40px;
+  text-align: center;
+}
+
+.closing .closing-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.closing .closing-circle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(196, 112, 63, 0.4);
+  border-radius: 50%;
+  margin: 0 auto 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closing .closing-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-copper);
+  border-radius: 50%;
+}
+
+.closing .closing-headline :is(h2, h3) {
+  font-family: var(--heading-font-family);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--color-cream);
+  line-height: 1.35;
+  margin: 0 0 32px;
+}
+
+.closing .closing-headline em {
+  font-style: italic;
+  color: var(--color-copper);
+}
+
+.closing .closing-body p {
+  font-family: var(--body-font-family);
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--color-cream-dim);
+  margin: 0 auto 48px;
+  max-width: 540px;
+}
+
+.closing .closing-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(196, 112, 63, 0.4);
+  margin: 0 auto;
+}
+
+@media (max-width: 599px) {
+  .closing {
+    padding: 60px 24px;
+  }
+}
