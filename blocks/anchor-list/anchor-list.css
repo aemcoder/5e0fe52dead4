@@ -1,0 +1,107 @@
+/* the section head is authored as default content and styled in place (D1) */
+main .section.anchor-list-container .default-content-wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 80px var(--gutter) 0;
+}
+
+main .section.anchor-list-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+main .section.anchor-list-container .default-content-wrapper h2 {
+  margin: 0 0 48px;
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.anchor-list {
+  padding: 0 0 80px;
+}
+
+.anchor-list .wrap {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.anchor-list .anchor {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid rgb(26 26 26 / 10%);
+}
+
+.anchor-list .anchor:last-child {
+  border-bottom: 1px solid rgb(26 26 26 / 10%);
+}
+
+.anchor-list .anchor-numeral {
+  flex-shrink: 0;
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--copper);
+}
+
+.anchor-list .anchor-body :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 8px;
+  font-family: var(--heading-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.anchor-list .anchor-body p {
+  margin: 0 0 12px;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.anchor-list .anchor-body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (width >= 900px) {
+  main .section.anchor-list-container .default-content-wrapper {
+    padding-top: 120px;
+  }
+
+  main .section.anchor-list-container .default-content-wrapper h2 {
+    margin-bottom: 64px;
+  }
+
+  .anchor-list {
+    padding-bottom: 120px;
+  }
+}
+
+@media (width <= 600px) {
+  main .section.anchor-list-container .default-content-wrapper {
+    padding: 72px 24px 0;
+  }
+
+  .anchor-list .wrap {
+    padding: 0 24px;
+  }
+
+  .anchor-list {
+    padding-bottom: 72px;
+  }
+
+  .anchor-list .anchor {
+    gap: 20px;
+  }
+}

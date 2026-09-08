@@ -1,0 +1,105 @@
+/* the section head is authored as default content and styled in place (D1) */
+main .section.insight-cards-container .default-content-wrapper {
+  max-width: calc(var(--maxw) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 80px var(--gutter) 0;
+}
+
+main .section.insight-cards-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+main .section.insight-cards-container .default-content-wrapper h2 {
+  margin: 0 0 56px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.insight-cards {
+  padding: 0 0 80px;
+}
+
+.insight-cards .wrap {
+  max-width: calc(var(--maxw) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.insight-cards .insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+}
+
+.insight-cards .insight-num {
+  margin-bottom: 16px;
+  font-family: var(--heading-font-family);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+  color: rgb(45 74 62 / 15%);
+}
+
+.insight-cards .insight-title :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 16px;
+  font-family: var(--heading-font-family);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.insight-cards .insight-rule {
+  width: 32px;
+  height: 2px;
+  margin-bottom: 20px;
+  background: var(--copper);
+}
+
+.insight-cards .insight-copy p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.insight-cards .insight-copy p:last-child {
+  margin-bottom: 0;
+}
+
+@media (width >= 900px) {
+  main .section.insight-cards-container .default-content-wrapper {
+    padding-top: 120px;
+  }
+
+  main .section.insight-cards-container .default-content-wrapper h2 {
+    margin-bottom: 72px;
+  }
+
+  .insight-cards {
+    padding-bottom: 120px;
+  }
+}
+
+@media (width <= 600px) {
+  main .section.insight-cards-container .default-content-wrapper {
+    padding: 72px 24px 0;
+  }
+
+  .insight-cards .wrap {
+    padding: 0 24px;
+  }
+
+  .insight-cards {
+    padding-bottom: 72px;
+  }
+}
