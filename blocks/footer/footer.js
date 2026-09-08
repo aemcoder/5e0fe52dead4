@@ -16,5 +16,8 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
+  // a link-less footer document is a single closing line, not a link rail
+  if (!footer.querySelector('a')) block.classList.add('minimal');
+
   block.append(footer);
 }

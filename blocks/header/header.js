@@ -124,17 +124,44 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  const classes = ['brand', 'sections', 'tools'];
-  classes.forEach((c, i) => {
-    const section = nav.children[i];
-    if (section) section.classList.add(`nav-${c}`);
-  });
+  // A nav document with no link list is a minimal single-row bar: brand on the
+  // left, a tagline on the right — no menu, no hamburger.
+  const minimal = !nav.querySelector('ul');
+  if (minimal) {
+    const navParts = [...nav.children];
+    if (navParts[0]) navParts[0].classList.add('nav-brand');
+    if (navParts[1]) navParts[1].classList.add('nav-tools');
+    nav.classList.add('nav-minimal');
+  } else {
+    const classes = ['brand', 'sections', 'tools'];
+    classes.forEach((c, i) => {
+      const section = nav.children[i];
+      if (section) section.classList.add(`nav-${c}`);
+    });
+  }
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand && navBrand.querySelector('.button');
   if (brandLink) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
+  }
+
+  if (minimal) {
+    // fixed decorative brand mark — inlined with the chrome, never authored
+    const mark = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    mark.setAttribute('class', 'nav-brand-mark');
+    mark.setAttribute('width', '32');
+    mark.setAttribute('height', '32');
+    mark.setAttribute('viewBox', '0 0 32 32');
+    mark.setAttribute('fill', 'none');
+    mark.setAttribute('aria-hidden', 'true');
+    mark.innerHTML = `<circle cx="16" cy="16" r="15" stroke="#C4703F" stroke-width="1" fill="none" opacity="0.4"></circle>
+      <path d="M16 6 C10 12, 10 22, 16 26 C22 22, 22 12, 16 6Z" fill="#2D4A3E" opacity="0.9"></path>
+      <line x1="16" y1="10" x2="16" y2="23" stroke="#C4703F" stroke-width="1" opacity="0.6"></line>
+      <line x1="13" y1="15" x2="16" y2="13" stroke="#C4703F" stroke-width="0.75" opacity="0.5"></line>
+      <line x1="19" y1="17" x2="16" y2="15" stroke="#C4703F" stroke-width="0.75" opacity="0.5"></line>`;
+    nav.prepend(mark);
   }
 
   const navSections = nav.querySelector('.nav-sections');
@@ -151,21 +178,24 @@ export default async function decorate(block) {
     });
   }
 
-  // hamburger for mobile
-  const hamburger = document.createElement('div');
-  hamburger.classList.add('nav-hamburger');
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
+  if (!minimal) {
+    // hamburger for mobile
+    const hamburger = document.createElement('div');
+    hamburger.classList.add('nav-hamburger');
+    hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
-  nav.prepend(hamburger);
-  nav.setAttribute('aria-expanded', 'false');
-  // prevent mobile nav behavior on window resize
-  toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+    hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
+    nav.prepend(hamburger);
+    nav.setAttribute('aria-expanded', 'false');
+    // prevent mobile nav behavior on window resize
+    toggleMenu(nav, navSections, isDesktop.matches);
+    isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  }
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
+  if (minimal) navWrapper.classList.add('minimal');
   navWrapper.append(nav);
   block.append(navWrapper);
 

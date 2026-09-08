@@ -1,0 +1,83 @@
+/* closing — dark closing statement band */
+
+main .section.closing-container {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.closing-container > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.closing {
+  padding: 96px 24px;
+  background: var(--se-ink);
+  text-align: center;
+}
+
+.closing,
+.closing * {
+  box-sizing: border-box;
+}
+
+.closing .closing-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.closing .closing-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 48px;
+  border: 1px solid rgb(196 112 63 / 40%);
+  border-radius: 50%;
+}
+
+.closing .closing-ornament span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--se-terracotta);
+  border-radius: 50%;
+}
+
+.closing .closing-headline :is(h1, h2, h3) {
+  margin: 0 0 32px;
+  color: var(--se-paper);
+  font-family: var(--se-serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.closing .closing-headline em {
+  color: var(--se-terracotta);
+  font-style: italic;
+}
+
+.closing .closing-body p {
+  max-width: 540px;
+  margin: 0 auto 48px;
+  color: rgb(245 240 235 / 55%);
+  font-family: var(--se-sans);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.closing .closing-rule {
+  width: 60px;
+  height: 1px;
+  margin: 0 auto;
+  background: rgb(196 112 63 / 40%);
+}
+
+@media (width >= 900px) {
+  .closing {
+    padding: 120px 40px;
+  }
+}

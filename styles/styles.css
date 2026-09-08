@@ -51,6 +51,17 @@
 
   /* nav height */
   --nav-height: 64px;
+
+  /* ── "Simply Enough" essay brand tokens (lifted from the prototype) ── */
+  --se-ink: #1a1a1a;              /* near-black ground + headings */
+  --se-paper: #f5f0eb;            /* warm off-white on dark grounds */
+  --se-terracotta: #c4703f;       /* accent — eyebrows, rules, italics */
+  --se-forest: #2d4a3e;           /* quote band ground */
+  --se-sand: #e8dfd4;             /* tinted band ground */
+  --se-body: #555;                /* long-form body copy */
+  --se-rule: rgb(26 26 26 / 10%); /* hairline separators */
+  --se-serif: 'Cormorant Garamond', cormorant-garamond-fallback, garamond, 'Times New Roman', serif;
+  --se-sans: 'DM Sans', dm-sans-fallback, arial, sans-serif;
 }
 
 /* fallback fonts */
@@ -63,6 +74,30 @@
 @font-face {
   font-family: roboto-fallback;
   size-adjust: 99.529%;
+  src: local('Arial');
+}
+
+/*
+ * Metric-matched fallbacks for the essay brand faces. These render at first
+ * paint (styles.css is eager) until loadFonts() lands styles/fonts.css, so the
+ * brand woff2 swap costs no layout shift. Serif brand → Times New Roman,
+ * sans brand → Arial (same width class in both cases).
+ */
+@font-face {
+  font-family: cormorant-garamond-fallback;
+  size-adjust: 95.71%;
+  ascent-override: 96.54%;
+  descent-override: 29.99%;
+  line-gap-override: 0%;
+  src: local('Times New Roman');
+}
+
+@font-face {
+  font-family: dm-sans-fallback;
+  size-adjust: 103.03%;
+  ascent-override: 96.28%;
+  descent-override: 30.09%;
+  line-gap-override: 0%;
   src: local('Arial');
 }
 
@@ -393,4 +428,19 @@ main > .section > .default-content-wrapper > p {
 
 main > .section > div + div {
   margin-top: 40px;
+}
+
+/* the page-metadata section is emptied by the pipeline — never leave a band */
+main .section:empty {
+  display: none;
+}
+
+/*
+ * Overlay chrome: pages whose lead block paints its own full-viewport ground
+ * (the essay hero) let the fixed nav float over it, so no height is reserved.
+ * The class is set by the lead block during loadEager — before first paint —
+ * so there is no reserve-then-collapse shift.
+ */
+body.overlay-chrome header {
+  height: 0;
 }

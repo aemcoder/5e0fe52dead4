@@ -39,3 +39,35 @@ footer .footer p:first-of-type {
 footer .footer p:last-of-type {
   color: var(--dark-color);
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Minimal footer — a link-less footer document renders as a single centred
+ * closing line on the warm paper ground (the essay chrome).
+ * ────────────────────────────────────────────────────────────────────────── */
+
+footer .footer.minimal {
+  background-color: var(--se-paper);
+}
+
+footer .footer.minimal > div {
+  max-width: none;
+  padding: 40px 24px;
+}
+
+footer .footer.minimal .default-content-wrapper {
+  display: block;
+  text-align: center;
+}
+
+footer .footer.minimal p {
+  display: block;
+  margin: 0;
+  color: rgb(26 26 26 / 30%);
+  font-family: var(--se-sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  white-space: normal;
+}

@@ -1,0 +1,112 @@
+/* split-note — sand-tinted two-column prose and photograph */
+
+main .section.split-note-container {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.split-note-container > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.split-note {
+  padding: 80px 24px;
+  background: var(--se-sand);
+}
+
+.split-note,
+.split-note * {
+  box-sizing: border-box;
+}
+
+.split-note .split-note-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.split-note .split-note-eyebrow p {
+  margin: 0 0 16px;
+  color: var(--se-terracotta);
+  font-family: var(--se-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.split-note .split-note-headline :is(h2, h3) {
+  margin: 0 0 32px;
+  color: var(--se-ink);
+  font-family: var(--se-serif);
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.split-note .split-note-body p {
+  margin: 0 0 24px;
+  color: var(--se-body);
+  font-family: var(--se-sans);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.split-note .split-note-body p:last-child {
+  margin-bottom: 0;
+}
+
+.split-note .split-note-body strong {
+  color: var(--se-forest);
+  font-weight: 600;
+}
+
+.split-note .split-note-media {
+  position: relative;
+}
+
+.split-note .split-note-media::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgb(45 74 62 / 15%);
+  border-radius: 2px;
+}
+
+.split-note .split-note-media picture {
+  display: block;
+}
+
+.split-note .split-note-media img {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 45vw, 480px);
+  border-radius: 4px;
+  object-fit: cover;
+  filter: saturate(0.85);
+}
+
+@media (width >= 900px) {
+  .split-note {
+    padding: 100px 40px;
+  }
+
+  .split-note .split-note-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .split-note .split-note-media img {
+    height: 480px;
+  }
+}

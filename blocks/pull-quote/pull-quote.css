@@ -1,0 +1,62 @@
+/* pull-quote — forest-green quotation band */
+
+main .section.pull-quote-container {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.pull-quote-container > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pull-quote {
+  padding: 80px 24px;
+  background: var(--se-forest);
+  text-align: center;
+}
+
+.pull-quote,
+.pull-quote * {
+  box-sizing: border-box;
+}
+
+.pull-quote .pull-quote-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pull-quote .pull-quote-mark {
+  margin-bottom: -20px;
+  color: rgb(245 240 235 / 15%);
+  font-family: var(--se-serif);
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.6;
+}
+
+.pull-quote .pull-quote-text :is(blockquote, p) {
+  margin: 0;
+  color: var(--se-paper);
+  font-family: var(--se-serif);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.pull-quote .pull-quote-attribution p {
+  margin: 32px 0 0;
+  color: var(--se-terracotta);
+  font-family: var(--se-sans);
+  font-size: 13px;
+  letter-spacing: 3px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+@media (width >= 900px) {
+  .pull-quote {
+    padding: 100px 40px;
+  }
+}

@@ -1,0 +1,112 @@
+/* anchor-list — numbered practice list under a section head */
+
+main .section.anchor-list-container {
+  margin: 0;
+  padding: 0 0 80px;
+}
+
+main .section.anchor-list-container > div {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+main .section.anchor-list-container > div + div {
+  margin-top: 0;
+}
+
+/* section head (default content authored above the block) */
+main .section.anchor-list-container > .default-content-wrapper {
+  max-width: 860px;
+  padding-top: 80px;
+  text-align: left;
+}
+
+main .section.anchor-list-container .default-content-wrapper p {
+  max-width: none;
+  margin: 0 0 16px;
+  color: var(--se-terracotta);
+  font-family: var(--se-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+main .section.anchor-list-container .default-content-wrapper h2 {
+  margin: 0 0 48px;
+  color: var(--se-ink);
+  font-family: var(--se-serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.anchor-list,
+.anchor-list * {
+  box-sizing: border-box;
+}
+
+.anchor-list .anchor {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid var(--se-rule);
+}
+
+.anchor-list .anchor:last-child {
+  border-bottom: 1px solid var(--se-rule);
+}
+
+.anchor-list .anchor-index {
+  flex-shrink: 0;
+  color: var(--se-terracotta);
+  font-family: var(--se-serif);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.anchor-list .anchor-title :is(h2, h3, h4) {
+  margin: 0 0 8px;
+  color: var(--se-ink);
+  font-family: var(--se-serif);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.anchor-list .anchor-body p {
+  margin: 0 0 12px;
+  color: var(--se-body);
+  font-family: var(--se-sans);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.anchor-list .anchor-body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (width >= 900px) {
+  main .section.anchor-list-container {
+    padding: 0 0 120px;
+  }
+
+  main .section.anchor-list-container > div {
+    padding: 0 40px;
+  }
+
+  main .section.anchor-list-container > .default-content-wrapper {
+    padding-top: 120px;
+  }
+
+  main .section.anchor-list-container .default-content-wrapper h2 {
+    margin-bottom: 64px;
+  }
+
+  .anchor-list .anchor {
+    gap: 32px;
+  }
+}
