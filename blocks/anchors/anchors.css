@@ -1,0 +1,81 @@
+/* section band: eyebrow + h2 head (default content) above the list */
+main .section.anchors-container {
+  background: var(--canvas);
+  padding: 96px 0;
+}
+
+main .section.anchors-container > div {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+main .section.anchors-container .default-content-wrapper {
+  margin-bottom: 64px;
+  text-align: left;
+}
+
+main .section.anchors-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.31em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+
+main .section.anchors-container .default-content-wrapper h2 {
+  margin: 0;
+  font-family: var(--display-font-family);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+/* the numbered list */
+.anchors .anchors-list {
+  counter-reset: anchor;
+}
+
+.anchors .anchors-item {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid var(--line-ink);
+  counter-increment: anchor;
+}
+
+.anchors .anchors-item:last-child {
+  border-bottom: 1px solid var(--line-ink);
+}
+
+.anchors .anchors-num::before {
+  content: counter(anchor, lower-roman) ".";
+  font-family: var(--display-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--terracotta);
+}
+
+.anchors .anchors-num {
+  flex-shrink: 0;
+}
+
+.anchors .anchors-title :is(h3, h4) {
+  margin: 0 0 8px;
+  font-family: var(--display-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.anchors .anchors-content p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--body-text);
+}
