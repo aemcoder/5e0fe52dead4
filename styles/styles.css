@@ -36,6 +36,23 @@
   --body-font-family: 'Adobe Clean', 'Adobe Clean Spectrum VF', adobe-clean, system-ui, -apple-system, sans-serif;
   --heading-font-family: var(--body-font-family);
 
+  /* ---- essay palette (lifted from the prototype) ---- */
+  --essay-ink: #1a1a1a;          /* deepest ground / body ink */
+  --essay-canvas: #f5f0eb;       /* page paper */
+  --essay-sand: #e8dfd4;         /* tinted band */
+  --essay-forest: #2d4a3e;       /* quote ground / accent ink */
+  --essay-terracotta: #c4703f;   /* editorial accent */
+  --essay-body-ink: #555;        /* running copy */
+  --essay-rule: rgb(26 26 26 / 10%);
+  --essay-maxw-narrow: 720px;
+  --essay-maxw-list: 860px;
+  --essay-maxw-wide: 1100px;
+  --essay-gutter: 40px;
+
+  /* essay type stacks — brand face first, metric-matched fallback second */
+  --essay-serif: 'Cormorant Garamond', 'cormorant-garamond-fallback', 'Times New Roman', times, serif;
+  --essay-sans: 'DM Sans', 'dm-sans-fallback', arial, helvetica, sans-serif;
+
   /* body sizes */
   --body-font-size-m: 18px;
   --body-font-size-s: 16px;
@@ -64,6 +81,26 @@
   font-family: roboto-fallback;
   size-adjust: 99.529%;
   src: local('Arial');
+}
+
+/* metric-matched fallbacks for the essay brand faces (available at first paint,
+   so the swap when styles/fonts.css lands costs zero layout shift) */
+@font-face {
+  font-family: cormorant-garamond-fallback;
+  src: local('Times New Roman');
+  size-adjust: 105.42%;
+  ascent-override: 87.65%;
+  descent-override: 27.22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: dm-sans-fallback;
+  src: local('Arial');
+  size-adjust: 122.34%;
+  ascent-override: 81.09%;
+  descent-override: 25.34%;
+  line-gap-override: 0%;
 }
 
 @media (width >= 900px) {
@@ -393,4 +430,38 @@ main > .section > .default-content-wrapper > p {
 
 main > .section > div + div {
   margin-top: 40px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Essay scaffold
+ *
+ * Every essay block paints its own full-bleed band (ground, max-width wrap and
+ * vertical rhythm live in the owning block's CSS, exactly as the prototype
+ * encodes them per section). So the generic section shell is neutralised for
+ * `essay-*` sections only — the rest of the site keeps the boilerplate scaffold.
+ * ------------------------------------------------------------------------ */
+main .section[class*="essay-"] {
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: 0;
+}
+
+main .section[class*="essay-"] > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+}
+
+/* The delivery pipeline lifts the page-metadata block into <head>; collapse the
+   section it leaves behind (and any residue) so it never opens a blank band. */
+main .section.metadata-container,
+main .section:empty {
+  display: none;
+}
+
+/* The essay chrome is a fixed bar that overlays the full-height hero, so no
+   header height is reserved on that page (content-anchored, page-scoped). */
+body:has(main .section.essay-hero-container) header {
+  height: 0;
 }

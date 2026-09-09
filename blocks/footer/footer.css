@@ -39,3 +39,40 @@ footer .footer p:first-of-type {
 footer .footer p:last-of-type {
   color: var(--dark-color);
 }
+
+/* ---------------------------------------------------------------------------
+ * Essay chrome — a single quiet sign-off line on the essay's paper ground.
+ * Content-anchored to the page that opens with the essay hero, so every other
+ * page keeps the styles above.
+ * ------------------------------------------------------------------------ */
+body:has(.essay-hero-container) footer {
+  background: var(--essay-canvas);
+}
+
+body:has(.essay-hero-container) footer .footer > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+body:has(.essay-hero-container) footer .section {
+  padding: 40px;
+  text-align: center;
+}
+
+body:has(.essay-hero-container) footer .default-content-wrapper {
+  display: block;
+}
+
+body:has(.essay-hero-container) footer .footer p {
+  display: block;
+  margin: 0;
+  color: rgb(26 26 26 / 30%);
+  font-family: var(--essay-sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: normal;
+  text-transform: uppercase;
+  white-space: normal;
+}

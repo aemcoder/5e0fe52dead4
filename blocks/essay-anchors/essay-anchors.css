@@ -1,0 +1,99 @@
+main .section.essay-anchors-container {
+  background: var(--essay-canvas);
+  padding: 120px var(--essay-gutter);
+}
+
+main .section.essay-anchors-container > div {
+  max-width: var(--essay-maxw-list);
+  margin: 0 auto;
+}
+
+/* section head — authored as default content above the block (D1) */
+main .section.essay-anchors-container .default-content-wrapper p {
+  max-width: none;
+  margin: 0 0 16px;
+  color: var(--essay-terracotta);
+  font-family: var(--essay-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+main .section.essay-anchors-container .default-content-wrapper :is(h2, h3) {
+  margin: 0 0 64px;
+  color: var(--essay-ink);
+  font-family: var(--essay-serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.essay-anchors,
+.essay-anchors * {
+  box-sizing: border-box;
+}
+
+.essay-anchors-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.essay-anchors-item {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  margin: 0;
+  padding: 32px 0;
+  border-top: 1px solid var(--essay-rule);
+}
+
+.essay-anchors-item:last-child {
+  border-bottom: 1px solid var(--essay-rule);
+}
+
+.essay-anchors-marker {
+  flex-shrink: 0;
+  color: var(--essay-terracotta);
+  font-family: var(--essay-serif);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.essay-anchors-title :is(h3, h4, h5) {
+  margin: 0 0 8px;
+  color: var(--essay-ink);
+  font-family: var(--essay-serif);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.essay-anchors-copy :is(p, div) {
+  margin: 0;
+  color: var(--essay-body-ink);
+  font-family: var(--essay-sans);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.essay-anchors-copy :is(p, div) + :is(p, div) {
+  margin-top: 16px;
+}
+
+@media (width <= 600px) {
+  main .section.essay-anchors-container {
+    padding: 72px 24px;
+  }
+
+  main .section.essay-anchors-container .default-content-wrapper :is(h2, h3) {
+    margin-bottom: 40px;
+  }
+
+  .essay-anchors-item {
+    gap: 20px;
+  }
+}

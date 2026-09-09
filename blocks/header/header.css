@@ -309,3 +309,123 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+/* ---------------------------------------------------------------------------
+ * Essay chrome
+ *
+ * A fixed, translucent ink bar that overlays the full-height hero: brand mark
+ * on the left, the standing tagline on the right. Content-anchored to the page
+ * that opens with the essay hero, so every other page keeps the boilerplate
+ * chrome above.
+ * ------------------------------------------------------------------------ */
+body:has(.essay-hero-container) header .nav-wrapper {
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  padding: 0;
+  background: rgb(26 26 26 / 90%);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgb(196 112 63 / 15%);
+}
+
+body:has(.essay-hero-container) header nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  padding: 20px var(--essay-gutter);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  transition: none;
+}
+
+body:has(.essay-hero-container) header nav[aria-expanded='true'] {
+  min-height: 0;
+  overflow: visible;
+}
+
+body:has(.essay-hero-container) header .nav-hamburger {
+  display: none;
+}
+
+body:has(.essay-hero-container) header .nav-brand {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  font-size: initial;
+  font-weight: initial;
+  line-height: initial;
+}
+
+body:has(.essay-hero-container) header .nav-brand .default-content-wrapper,
+body:has(.essay-hero-container) header .nav-sections .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+body:has(.essay-hero-container) header .nav-brand p,
+body:has(.essay-hero-container) header .nav-sections p {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  font-weight: 400;
+}
+
+body:has(.essay-hero-container) header .nav-brand .icon,
+body:has(.essay-hero-container) header .nav-brand .icon img {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+body:has(.essay-hero-container) header .nav-brand a:any-link {
+  color: var(--essay-canvas);
+  font-family: var(--essay-serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+body:has(.essay-hero-container) header .nav-sections {
+  display: block;
+  visibility: visible;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 0;
+  background: transparent;
+}
+
+body:has(.essay-hero-container) header .nav-sections p {
+  color: rgb(245 240 235 / 35%);
+  font-family: var(--essay-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+@media (width <= 600px) {
+  body:has(.essay-hero-container) header nav {
+    gap: 10px;
+    padding: 14px 20px;
+  }
+
+  body:has(.essay-hero-container) header .nav-brand a:any-link {
+    font-size: 17px;
+  }
+
+  body:has(.essay-hero-container) header .nav-sections p {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+}

@@ -1,0 +1,44 @@
+main .section.essay-lede-container {
+  background: var(--essay-canvas);
+}
+
+.essay-lede,
+.essay-lede * {
+  box-sizing: border-box;
+}
+
+.essay-lede {
+  padding: 120px var(--essay-gutter);
+}
+
+.essay-lede-wrap {
+  max-width: var(--essay-maxw-narrow);
+  margin: 0 auto;
+}
+
+.essay-lede-lead :is(p, div) {
+  margin: 0 0 32px;
+  color: var(--essay-ink);
+  font-family: var(--essay-serif);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.essay-lede-body :is(p, div) {
+  margin: 0;
+  color: var(--essay-body-ink);
+  font-family: var(--essay-sans);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.essay-lede-body :is(p, div) + :is(p, div) {
+  margin-top: 24px;
+}
+
+@media (width <= 600px) {
+  .essay-lede {
+    padding: 72px 24px;
+  }
+}

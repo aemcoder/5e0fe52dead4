@@ -1,0 +1,77 @@
+main .section.essay-closing-container {
+  background: var(--essay-ink);
+}
+
+.essay-closing,
+.essay-closing * {
+  box-sizing: border-box;
+}
+
+.essay-closing {
+  padding: 120px var(--essay-gutter);
+  text-align: center;
+}
+
+.essay-closing-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.essay-closing-mark {
+  /* content-box, as in the source: the 1px ring sits outside the 40px dot well */
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 48px;
+  border: 1px solid rgb(196 112 63 / 40%);
+  border-radius: 50%;
+}
+
+.essay-closing-mark::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--essay-terracotta);
+}
+
+.essay-closing-statement :is(h2, h3) {
+  margin: 0 0 32px;
+  color: var(--essay-canvas);
+  font-family: var(--essay-serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.essay-closing-statement em {
+  color: var(--essay-terracotta);
+  font-style: italic;
+}
+
+.essay-closing-copy :is(p, div) {
+  max-width: 540px;
+  margin: 0 auto 48px;
+  color: rgb(245 240 235 / 55%);
+  font-family: var(--essay-sans);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.essay-closing-rule {
+  display: block;
+  width: 60px;
+  height: 1px;
+  margin: 0 auto;
+  background: rgb(196 112 63 / 40%);
+}
+
+@media (width <= 600px) {
+  .essay-closing {
+    padding: 88px 24px;
+  }
+}
