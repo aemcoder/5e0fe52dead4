@@ -1,0 +1,44 @@
+.quote {
+  padding: 100px 40px;
+  background: #2d4a3e;
+  text-align: center;
+}
+
+.quote .quote-inner {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.quote .quote-mark {
+  display: block;
+  margin-bottom: -20px;
+  color: rgb(245 240 235 / 15%);
+  font-family: var(--se-serif);
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.6;
+}
+
+.quote .quote-text,
+.quote .quote-text p {
+  margin: 0;
+  color: #f5f0eb;
+  font-family: var(--se-serif);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.quote .quote-attribution {
+  margin-top: 32px;
+}
+
+.quote .quote-attribution p {
+  margin: 0;
+  color: #c4703f;
+  font-family: var(--se-sans);
+  font-size: 13px;
+  letter-spacing: 3px;
+  line-height: normal;
+  text-transform: uppercase;
+}

@@ -8,6 +8,9 @@ helix-importer-ui
 *.bak
 .idea
 
+# local conversion QA harness (never shipped)
+qa/
+
 # Ensure these files are tracked
 !CLAUDE.md
 !AGENTS.md

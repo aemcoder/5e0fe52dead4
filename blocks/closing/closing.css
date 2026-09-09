@@ -1,0 +1,64 @@
+.closing {
+  padding: 120px 40px;
+  background: #1a1a1a;
+  text-align: center;
+}
+
+.closing .closing-inner {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.closing .closing-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 48px;
+  border: 1px solid rgb(196 112 63 / 40%);
+  border-radius: 50%;
+}
+
+.closing .closing-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c4703f;
+}
+
+.closing .closing-heading :is(h1, h2, h3) {
+  margin: 0 0 32px;
+  color: #f5f0eb;
+  font-family: var(--se-serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.closing .closing-heading :is(em, .em) {
+  color: #c4703f;
+  font-style: italic;
+}
+
+.closing .closing-body {
+  margin-bottom: 48px;
+}
+
+.closing .closing-body p {
+  margin: 0 auto;
+  max-width: 540px;
+  color: rgb(245 240 235 / 55%);
+  font-family: var(--se-sans);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.closing .closing-rule {
+  display: block;
+  width: 60px;
+  height: 1px;
+  margin: 0 auto;
+  background: rgb(196 112 63 / 40%);
+}

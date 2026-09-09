@@ -50,3 +50,56 @@
   font-display: swap;
   src: local('Adobe Clean Bold'), local('AdobeClean-Bold'), local('Helvetica Neue Bold'), local('Arial Bold');
 }
+
+/* ---------------------------------------------------------------------------
+ * Simply Enough — editorial brand faces (SIL OFL 1.1, self-hosted).
+ * Metric-matched `-fallback` faces live in styles/styles.css so first paint
+ * never shifts when these land.
+ * ------------------------------------------------------------------------ */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/dm-sans-variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-300.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-400-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-600.woff2') format('woff2');
+}

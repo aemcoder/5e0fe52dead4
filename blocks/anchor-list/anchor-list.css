@@ -1,0 +1,66 @@
+.anchor-list {
+  /* content-box: 860px is the content measure; the gutters sit outside it */
+  box-sizing: content-box;
+  margin: 0 auto;
+  max-width: 860px;
+  padding: 0 40px 120px;
+}
+
+.anchor-list .anchor-list-items {
+  margin-top: 64px;
+}
+
+.anchor-list .anchor-list-item {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid rgb(26 26 26 / 10%);
+}
+
+@media (width >= 600px) {
+  .anchor-list .anchor-list-item {
+    gap: 32px;
+  }
+}
+
+.anchor-list .anchor-list-item:last-child {
+  border-bottom: 1px solid rgb(26 26 26 / 10%);
+}
+
+.anchor-list .anchor-list-numeral {
+  flex-shrink: 0;
+  color: #c4703f;
+  font-family: var(--se-serif);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.anchor-list .anchor-list-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.anchor-list .anchor-list-title :is(h3, h4, h5) {
+  margin: 0 0 8px;
+  color: #1a1a1a;
+  font-family: var(--se-serif);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.anchor-list .anchor-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.anchor-list .anchor-list-body p {
+  margin: 0;
+  color: #555;
+  font-family: var(--se-sans);
+  font-size: 16px;
+  line-height: 1.8;
+}

@@ -394,3 +394,334 @@ main > .section > .default-content-wrapper > p {
 main > .section > div + div {
   margin-top: 40px;
 }
+
+/* ===========================================================================
+ * Simply Enough — editorial theme foundation
+ *
+ * Scoped to `body.simply-enough` (set via the page's `theme` metadata) so the
+ * essay template can own its own type scale, ground and section rhythm without
+ * touching the rest of the site. Brand `@font-face` rules live in
+ * styles/fonts.css; the metric-matched fallbacks below must be available at
+ * first paint, so they live here.
+ * ======================================================================== */
+
+@font-face {
+  font-family: dm-sans-fallback;
+  src: local('Arial');
+  size-adjust: 102.21%;
+  ascent-override: 97.06%;
+  descent-override: 30.33%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: cormorant-fallback;
+  src: local('Times New Roman');
+  size-adjust: 93%;
+  ascent-override: 99.35%;
+  descent-override: 30.86%;
+  line-gap-override: 0%;
+}
+
+body.simply-enough {
+  /* brand ground */
+  --se-ink: #1a1a1a;
+  --se-cream: #f5f0eb;
+  --se-copper: #c4703f;
+  --se-forest: #2d4a3e;
+  --se-sand: #e8dfd4;
+  --se-body: #555;
+
+  /* families */
+  --se-serif: 'Cormorant Garamond', cormorant-fallback, 'Times New Roman', times, serif;
+  --se-sans: 'DM Sans', dm-sans-fallback, arial, sans-serif;
+
+  /* measures */
+  --se-measure-narrow: 720px;
+  --se-measure-mid: 860px;
+  --se-measure-wide: 1100px;
+  --se-gutter: 40px;
+
+  /* the chrome floats over the hero — nothing is reserved in flow (#108) */
+  --nav-height: 0px;
+
+  background-color: var(--se-cream);
+  color: var(--se-body);
+  font-family: var(--se-sans);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+/* zero-specificity so any block rule can opt a box back into content-box */
+:where(body.simply-enough) *,
+:where(body.simply-enough) *::before,
+:where(body.simply-enough) *::after {
+  box-sizing: border-box;
+}
+
+body.simply-enough ::selection {
+  background: var(--se-forest);
+  color: var(--se-cream);
+}
+
+body.simply-enough h1,
+body.simply-enough h2,
+body.simply-enough h3,
+body.simply-enough h4,
+body.simply-enough h5,
+body.simply-enough h6 {
+  margin: 0;
+  color: var(--se-ink);
+  font-family: var(--se-serif);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+body.simply-enough p,
+body.simply-enough blockquote,
+body.simply-enough ul,
+body.simply-enough ol {
+  margin: 0;
+}
+
+body.simply-enough main img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body.simply-enough a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- sections: blocks paint their own full-bleed bands -------------------- */
+body.simply-enough main > div,
+body.simply-enough main > .section {
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: 80px;
+}
+
+body.simply-enough main > .section > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.simply-enough main > .section > div + div {
+  margin-top: 0;
+}
+
+/* the metadata block is consumed into <head>, leaving an empty band behind;
+ * `:not(:has(> div))` also catches the whitespace-only variant */
+body.simply-enough main .section:empty,
+body.simply-enough main .section:not(:has(> div)) {
+  display: none;
+}
+
+/* --- default-content sections ------------------------------------------- */
+
+/* the opening prose band: a large serif lead followed by body copy */
+body.simply-enough main .section.essay-intro .default-content-wrapper {
+  /* content-box: the measure is the text column, the gutters sit outside it.
+   * Flex gap (rather than paragraph margins) keeps the rhythm identical when
+   * the Experience Workspace editor nests a paragraph two divs deeper. */
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: var(--se-measure-narrow);
+  margin: 0 auto;
+  padding: 120px var(--se-gutter);
+  text-align: left;
+}
+
+body.simply-enough main .section.essay-intro .default-content-wrapper p {
+  max-width: none;
+  margin: 0;
+  color: var(--se-body);
+  font-family: var(--se-sans);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+/* The lead paragraph is the first authored paragraph of the band and is set in
+ * the display serif. `> p:first-child` (rather than `p:first-of-type`) keeps
+ * this from leaking onto the second paragraph in Experience Workspace edit
+ * mode, where the editor nests the edited paragraph two divs deeper; the
+ * companion rule repaints the lead while it is the one being edited. */
+body.simply-enough main .section.essay-intro .default-content-wrapper > p:first-child,
+body.simply-enough main .section.essay-intro .default-content-wrapper > .prosemirror-editor:first-child p {
+  color: var(--se-ink);
+  font-family: var(--se-serif);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* section heads that sit above a block, inside the block's own section */
+body.simply-enough main .section.section-head .default-content-wrapper {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+  padding: 120px var(--se-gutter) 0;
+  text-align: left;
+}
+
+body.simply-enough main .section.numbered-cards-container .default-content-wrapper {
+  max-width: var(--se-measure-wide);
+}
+
+body.simply-enough main .section.anchor-list-container .default-content-wrapper {
+  max-width: var(--se-measure-mid);
+}
+
+body.simply-enough main .section.section-head .default-content-wrapper p {
+  max-width: none;
+  margin: 0;
+  color: var(--se-copper);
+  font-family: var(--se-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+body.simply-enough main .section.section-head .default-content-wrapper h2 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+}
+
+body.simply-enough main .section.anchor-list-container .default-content-wrapper h2 {
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.15;
+}
+
+/* --- chrome: a fixed translucent bar floating over the hero --------------- */
+body.simply-enough header {
+  height: 0;
+  background: transparent;
+}
+
+body.simply-enough header .nav-wrapper {
+  padding: 0;
+}
+
+body.simply-enough header nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: none;
+  height: auto;
+  padding: 20px var(--se-gutter);
+  border-radius: 0;
+  border-bottom: 1px solid rgb(196 112 63 / 15%);
+  background: rgb(26 26 26 / 90%);
+  box-shadow: none;
+  backdrop-filter: blur(12px);
+  font-family: var(--se-sans);
+  transition: none;
+}
+
+body.simply-enough header.is-scrolled nav {
+  max-width: none;
+  background: rgb(26 26 26 / 90%);
+  box-shadow: none;
+}
+
+/* no nav links on this template — the hamburger has nothing to toggle */
+body.simply-enough header nav .nav-hamburger {
+  display: none;
+  visibility: hidden;
+}
+
+body.simply-enough header .nav-brand {
+  flex: 0 0 auto;
+  font-family: var(--se-serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+body.simply-enough header nav .nav-brand a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--se-cream);
+}
+
+body.simply-enough header nav .nav-brand a:any-link::before {
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="%23C4703F" stroke-width="1" fill="none" opacity="0.4"/><path d="M16 6 C10 12, 10 22, 16 26 C22 22, 22 12, 16 6Z" fill="%232D4A3E" opacity="0.9"/><line x1="16" y1="10" x2="16" y2="23" stroke="%23C4703F" stroke-width="1" opacity="0.6"/><line x1="13" y1="15" x2="16" y2="13" stroke="%23C4703F" stroke-width="0.75" opacity="0.5"/><line x1="19" y1="17" x2="16" y2="15" stroke="%23C4703F" stroke-width="0.75" opacity="0.5"/></svg>') no-repeat center / contain;
+}
+
+/* the tagline rides in the second authored nav section, pushed to the right */
+body.simply-enough header nav .nav-sections {
+  display: block;
+  visibility: visible;
+  flex: 1 1 auto;
+  text-align: right;
+  white-space: nowrap;
+}
+
+body.simply-enough header nav .nav-sections p {
+  color: rgb(245 240 235 / 35%);
+  font-family: var(--se-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+@media (width <= 599px) {
+  body.simply-enough header nav .nav-sections {
+    display: none;
+  }
+}
+
+/* --- chrome: footer ------------------------------------------------------ */
+body.simply-enough footer {
+  background-color: var(--se-cream);
+  font-family: var(--se-sans);
+}
+
+body.simply-enough footer .footer > div {
+  max-width: none;
+  margin: 0;
+  padding: 40px var(--se-gutter);
+  text-align: center;
+}
+
+body.simply-enough footer .footer .default-content-wrapper {
+  display: block;
+}
+
+body.simply-enough footer .footer p {
+  display: block;
+  margin: 0;
+  color: rgb(26 26 26 / 30%);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+/* Experience Workspace edit mode: the editor re-renders authored prose without
+ * classes inside `.prosemirror-editor`; keep those texts reading correctly. */
+body.simply-enough .prosemirror-editor a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
