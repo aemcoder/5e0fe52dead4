@@ -1,0 +1,79 @@
+.closing {
+  padding: 96px var(--gutter);
+  background: var(--ink);
+  text-align: center;
+}
+
+@media (width >= 900px) {
+  .closing {
+    padding: 120px var(--gutter);
+  }
+}
+
+.closing .closing-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.closing .closing-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 48px;
+  border: 1px solid rgb(196 112 63 / 40%);
+  border-radius: 50%;
+}
+
+.closing .closing-dot span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--copper);
+  border-radius: 50%;
+}
+
+.closing .closing-title :is(h1, h2, h3) {
+  margin: 0 0 32px;
+  font-family: var(--display-font-family);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--paper);
+}
+
+.closing .closing-title em {
+  font-style: italic;
+  color: var(--copper);
+}
+
+.closing .closing-body p {
+  margin: 0 auto 48px;
+  max-width: 540px;
+  font-family: var(--body-font-family);
+  font-size: 17px;
+  line-height: 1.85;
+  color: rgb(245 240 235 / 55%);
+}
+
+.closing .closing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.closing .closing-rule {
+  width: 60px;
+  height: 1px;
+  margin: 0 auto;
+  background: rgb(196 112 63 / 40%);
+}
+
+@media (width <= 600px) {
+  .closing {
+    padding: 72px 24px;
+  }
+}

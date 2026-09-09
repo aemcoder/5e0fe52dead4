@@ -1,0 +1,55 @@
+.quote {
+  padding: 80px var(--gutter);
+  background: var(--forest);
+  text-align: center;
+}
+
+@media (width >= 900px) {
+  .quote {
+    padding: 100px var(--gutter);
+  }
+}
+
+.quote .quote-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote .quote-mark {
+  margin-bottom: -20px;
+  font-family: var(--display-font-family);
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.6;
+  color: rgb(245 240 235 / 15%);
+}
+
+.quote .quote-body {
+  margin: 0;
+}
+
+.quote .quote-body p {
+  margin: 0;
+  font-family: var(--display-font-family);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--paper);
+}
+
+.quote .quote-attribution p {
+  margin: 32px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+@media (width <= 600px) {
+  .quote {
+    padding: 64px 24px;
+  }
+}

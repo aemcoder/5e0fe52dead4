@@ -1,0 +1,42 @@
+.essay-intro {
+  background: var(--paper);
+}
+
+.essay-intro .essay-intro-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 96px var(--gutter);
+}
+
+@media (width >= 900px) {
+  .essay-intro .essay-intro-wrap {
+    padding: 120px var(--gutter);
+  }
+}
+
+.essay-intro .essay-intro-lead p {
+  margin: 0 0 32px;
+  font-family: var(--display-font-family);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.essay-intro .essay-intro-body p {
+  margin: 0 0 24px;
+  font-family: var(--body-font-family);
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.essay-intro .essay-intro-body:last-child p {
+  margin-bottom: 0;
+}
+
+@media (width <= 600px) {
+  .essay-intro .essay-intro-wrap {
+    padding: 72px 24px;
+  }
+}

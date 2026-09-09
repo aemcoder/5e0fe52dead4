@@ -1,0 +1,96 @@
+.anchors {
+  background: var(--paper);
+}
+
+.anchors .anchors-wrap {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 96px var(--gutter);
+}
+
+@media (width >= 900px) {
+  .anchors .anchors-wrap {
+    padding: 120px var(--gutter);
+  }
+}
+
+.anchors .anchors-eyebrow p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+.anchors .anchors-title :is(h1, h2, h3) {
+  margin: 0 0 64px;
+  font-family: var(--display-font-family);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.anchors .anchors-list {
+  counter-reset: anchor;
+}
+
+.anchors .anchor {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid rgb(26 26 26 / 10%);
+  counter-increment: anchor;
+}
+
+.anchors .anchor:last-child {
+  border-bottom: 1px solid rgb(26 26 26 / 10%);
+}
+
+.anchors .anchor-num {
+  flex-shrink: 0;
+  line-height: normal;
+}
+
+.anchors .anchor-num::before {
+  content: counter(anchor, lower-roman) ".";
+  font-family: var(--display-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--copper);
+}
+
+.anchors .anchor-title :is(h2, h3, h4, h5) {
+  margin: 0 0 8px;
+  font-family: var(--display-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.anchors .anchor-body p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+@media (width <= 600px) {
+  .anchors .anchors-wrap {
+    padding: 72px 24px;
+  }
+
+  .anchors .anchors-title :is(h1, h2, h3) {
+    margin-bottom: 40px;
+  }
+
+  .anchors .anchor {
+    gap: 20px;
+  }
+}
