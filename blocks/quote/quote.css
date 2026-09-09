@@ -1,0 +1,38 @@
+.quote {
+  background: var(--color-forest);
+  padding: 100px 40px;
+  text-align: center;
+}
+
+.quote .quote-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote .quote-mark {
+  display: block;
+  font-family: var(--serif-font-family);
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.6;
+  margin-bottom: -20px;
+  color: rgb(245 240 235 / 15%);
+}
+
+.quote blockquote {
+  margin: 0;
+  font-family: var(--serif-font-family);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--color-cream);
+}
+
+.quote .quote-attribution p {
+  margin: 32px 0 0;
+  font-family: var(--sans-font-family);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+}
