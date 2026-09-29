@@ -1,0 +1,330 @@
+/* Used equipment — paper band, filter chips, machine cards */
+main > .section.used-equipment-container {
+  background: var(--paper);
+}
+
+/* section head (shared shape with offers) */
+.used-equipment .sec-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 38px;
+}
+
+.used-equipment .kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--yellow-deep);
+  font-family: var(--semicond-font-family);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.used-equipment .kicker::before {
+  content: "";
+  flex: none;
+  width: 34px;
+  height: 4px;
+  background: var(--yellow);
+}
+
+.used-equipment .sec-title {
+  margin: 10px 0 0;
+}
+
+.used-equipment .sec-title :is(h2, h3) {
+  font-size: clamp(34px, 4vw, 52px);
+}
+
+.used-equipment .sec-intro {
+  max-width: 52ch;
+  margin: 8px 0 0;
+  color: var(--steel);
+}
+
+.used-equipment .sec-head-link a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 3px solid var(--yellow);
+  font-family: var(--semicond-font-family);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: gap 0.15s;
+}
+
+.used-equipment .sec-head-link a:any-link::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.used-equipment .sec-head-link a:any-link:hover {
+  gap: 13px;
+}
+
+/* filter chips */
+.used-equipment .filters {
+  margin-bottom: 30px;
+}
+
+.used-equipment .filters ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.used-equipment .filters li {
+  padding: 9px 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 40px;
+  background: var(--white);
+  color: var(--ink-3);
+  font-family: var(--semicond-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.used-equipment .filters li:hover {
+  border-color: var(--ink);
+}
+
+.used-equipment .filters li.active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* cards */
+.used-equipment .cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.used-equipment .card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--white);
+  color: var(--ink);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.used-equipment a.card:hover {
+  border-color: #d6d3cb;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 12%);
+  transform: translateY(-4px);
+}
+
+.used-equipment .ph {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background:
+    repeating-linear-gradient(115deg, transparent 0 22px, rgb(255 255 255 / 3%) 22px 23px),
+    var(--ink-2);
+}
+
+.used-equipment .ph-media,
+.used-equipment .ph-media picture,
+.used-equipment .ph-media img {
+  width: 100%;
+  height: 100%;
+}
+
+.used-equipment .ph-media img {
+  object-fit: cover;
+}
+
+.used-equipment .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  padding: 5px 11px;
+  border-radius: 3px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--semicond-font-family);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.used-equipment .fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 92%);
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.used-equipment .fav:hover {
+  background: var(--white);
+  transform: scale(1.08);
+}
+
+.used-equipment .fav svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.9;
+}
+
+.used-equipment .fav.saved svg {
+  fill: var(--yellow);
+}
+
+.used-equipment .card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 20px 22px;
+}
+
+.used-equipment .card-title {
+  margin: 0 0 12px;
+}
+
+.used-equipment .card-title :is(h2, h3, h4) {
+  font-size: 23px;
+  line-height: 1;
+}
+
+.used-equipment .specs ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0 0 18px;
+  padding: 0;
+  color: var(--steel);
+  font-size: 14px;
+  list-style: none;
+}
+
+.used-equipment .specs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.used-equipment .specs li::before {
+  content: "";
+  flex: none;
+  width: 15px;
+  height: 15px;
+  background: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.used-equipment .specs li + li::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z'/%3E%3Ccircle cx='12' cy='10' r='2.4'/%3E%3C/svg%3E");
+}
+
+.used-equipment .foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.used-equipment .price-value {
+  font-family: var(--heading-font-family);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.used-equipment .price-note {
+  color: var(--steel);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.used-equipment .view {
+  font-family: var(--semicond-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.used-equipment .view p {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.used-equipment .view p::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.used-equipment a.card:hover .view {
+  color: var(--yellow-deep);
+}
+
+.used-equipment .used-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+}
+
+@media (width >= 681px) {
+  .used-equipment .sec-head {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .used-equipment .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1141px) {
+  .used-equipment .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

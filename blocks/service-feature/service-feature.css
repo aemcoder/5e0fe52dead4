@@ -1,0 +1,132 @@
+/* Service feature — copy + stacked gallery with experience badge */
+.service-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.service-feature .svc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--yellow-deep);
+  line-height: 1.5;
+}
+
+.service-feature .svc-title {
+  margin: 14px 0 18px;
+}
+
+.service-feature .svc-title :is(h2, h3) {
+  font-size: clamp(32px, 3.6vw, 48px);
+}
+
+.service-feature .svc-body {
+  max-width: 48ch;
+  margin: 0 0 28px;
+  color: var(--steel);
+  font-size: 17.5px;
+}
+
+.service-feature .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* gallery */
+.service-feature .svc-gallery {
+  position: relative;
+  min-height: 360px;
+  margin-top: 10px;
+}
+
+.service-feature .g {
+  position: absolute;
+  overflow: hidden;
+  border: 6px solid var(--white);
+  border-radius: 6px;
+  box-shadow: 0 24px 50px rgb(0 0 0 / 18%);
+  background: var(--paper-2);
+}
+
+.service-feature .g.empty {
+  background:
+    repeating-linear-gradient(135deg, transparent 0 18px, rgb(14 14 14 / 4%) 18px 19px),
+    var(--paper-2);
+}
+
+.service-feature .g picture,
+.service-feature .g img {
+  width: 100%;
+  height: 100%;
+}
+
+.service-feature .g img {
+  object-fit: cover;
+}
+
+.service-feature .g1 {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 74%;
+  height: 240px;
+}
+
+.service-feature .g2 {
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 60%;
+  height: 220px;
+}
+
+.service-feature .badge-yrs {
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  z-index: 3;
+  width: 150px;
+  padding: 16px 20px;
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.service-feature .badge-fig {
+  font-family: var(--heading-font-family);
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.service-feature .badge-cap {
+  font-family: var(--semicond-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+@media (width >= 681px) {
+  .service-feature .g1 {
+    height: 300px;
+  }
+
+  .service-feature .g2 {
+    height: 280px;
+  }
+}
+
+@media (width >= 961px) {
+  .service-feature {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .service-feature .svc-gallery {
+    min-height: 440px;
+    margin-top: 0;
+  }
+}

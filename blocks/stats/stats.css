@@ -1,0 +1,118 @@
+/* Stats — ink band, hazard stripe, big yellow figures */
+main > .section.stats-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--white);
+}
+
+main > .section.stats-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: repeating-linear-gradient(115deg, transparent 0 38px, rgb(255 255 255 / 2.2%) 38px 39px);
+  pointer-events: none;
+}
+
+.stats .stats-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  opacity: 0.9;
+  background: var(--hazard);
+}
+
+/* the stripe spans the whole section, not just the wrapper */
+main > .section.stats-container > .stats-wrapper,
+.stats {
+  position: static;
+}
+
+.stats .stats-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.stats .stats-item {
+  padding: 22px 24px;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  border-left: 1px solid rgb(255 255 255 / 10%);
+}
+
+.stats .stats-item:nth-child(even) {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.stats .stats-intro {
+  grid-column: 1 / -1;
+  max-width: 30ch;
+  margin-bottom: 10px;
+  padding: 18px 0;
+  border: 0;
+}
+
+.stats .stats-title {
+  margin: 0 0 12px;
+}
+
+.stats .stats-title :is(h2, h3) {
+  color: var(--white);
+  font-size: clamp(30px, 3.4vw, 44px);
+}
+
+.stats .stats-title em {
+  color: var(--yellow);
+  font-style: normal;
+}
+
+.stats .stats-text {
+  color: #b6b3ab;
+}
+
+.stats .num {
+  color: var(--yellow);
+  font-family: var(--heading-font-family);
+  font-size: clamp(54px, 6vw, 82px);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.stats .lab {
+  margin-top: 8px;
+  color: #d7d5ce;
+  font-family: var(--semicond-font-family);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+@media (width >= 1141px) {
+  .stats .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stats .stats-intro {
+    grid-column: auto;
+    margin: 0;
+  }
+
+  .stats .stats-item,
+  .stats .stats-item:nth-child(even) {
+    padding: 18px 26px;
+    border-top: 0;
+    border-left: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  .stats .stats-item.stats-intro {
+    padding-left: 0;
+    border-left: 0;
+  }
+}

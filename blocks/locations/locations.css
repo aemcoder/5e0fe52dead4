@@ -1,0 +1,96 @@
+/* Locations — yellow band with a ring motif, copy + city chips */
+main > .section.locations-container {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+main > .section.locations-container::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 340px;
+  height: 340px;
+  border: 36px solid rgb(14 14 14 / 6%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.locations {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 70px 0;
+}
+
+.locations .loc-eyebrow {
+  line-height: 1.5;
+}
+
+.locations .loc-title {
+  margin: 0 0 14px;
+}
+
+.locations .loc-title :is(h2, h3) {
+  color: var(--ink);
+  font-size: clamp(34px, 4.2vw, 58px);
+}
+
+.locations .loc-body {
+  max-width: 42ch;
+  margin: 0 0 26px;
+  font-size: 18px;
+}
+
+.locations .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* the branch-finder CTA carries a pin instead of the arrowhead */
+.locations .actions a.button::after {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z'/%3E%3Ccircle cx='12' cy='10' r='2.6'/%3E%3C/svg%3E");
+}
+
+.locations .city-grid ul,
+.locations .city-grid ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.locations .city-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.locations .city-grid li,
+.locations .city-grid p {
+  padding: 8px 15px;
+  border: 1.5px solid rgb(14 14 14 / 18%);
+  border-radius: 40px;
+  background: rgb(14 14 14 / 8%);
+  font-family: var(--semicond-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+@media (width >= 961px) {
+  .locations {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
