@@ -1,0 +1,117 @@
+main .section.service-container {
+  padding: var(--sec-pad) 0;
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.service .service-eyebrow p {
+  margin: 0;
+  color: var(--yellow-deep);
+  font-family: var(--label-font-family);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.service .service-title :is(h2, h3) {
+  margin: 14px 0 18px;
+  font-size: clamp(32px, 3.6vw, 48px);
+}
+
+.service .service-body p {
+  max-width: 48ch;
+  margin: 0 0 28px;
+  color: var(--steel);
+  font-size: 17.5px;
+}
+
+.service .service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.service .service-gallery {
+  position: relative;
+  min-height: 360px;
+  margin-top: 10px;
+}
+
+.service .service-photo {
+  position: absolute;
+  overflow: hidden;
+  border: 6px solid var(--white);
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: 0 24px 50px rgb(0 0 0 / 18%);
+}
+
+.service .service-photo picture,
+.service .service-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service .service-photo-1 {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 74%;
+  height: 300px;
+}
+
+.service .service-photo-2 {
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 60%;
+  height: 280px;
+}
+
+.service .service-badge {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  z-index: 3;
+  width: 150px;
+  padding: 16px 20px;
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.service .service-badge p {
+  margin: 0;
+  font-family: var(--label-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.service .service-badge strong {
+  display: block;
+  font-family: var(--heading-font-family);
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: normal;
+}
+
+@media (width >= 961px) {
+  .service {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .service .service-gallery {
+    min-height: 440px;
+    margin-top: 0;
+  }
+}

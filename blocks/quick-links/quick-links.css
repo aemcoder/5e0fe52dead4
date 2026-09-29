@@ -1,0 +1,105 @@
+main .section.quick-links-container > .quick-links-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 4px solid var(--yellow);
+  background: var(--ink-2);
+}
+
+.quick-links .quick-links-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  color: var(--white);
+  transition: background-color 0.18s, color 0.18s;
+}
+
+.quick-links a.quick-links-item:hover {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.quick-links .quick-links-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background: var(--yellow);
+  color: var(--ink);
+  transition: background-color 0.18s, color 0.18s;
+}
+
+.quick-links a.quick-links-item:hover .quick-links-icon {
+  background: var(--ink);
+  color: var(--yellow);
+}
+
+.quick-links .icon {
+  width: 26px;
+  height: 26px;
+  background-color: currentcolor;
+  mask: var(--icon-src) center / contain no-repeat;
+}
+
+.quick-links .quick-links-text p {
+  margin: 0;
+}
+
+.quick-links .quick-links-title :is(p, h2, h3, h4) {
+  margin: 0;
+  color: inherit;
+  font-family: var(--heading-font-family);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.quick-links .quick-links-sub p {
+  color: var(--on-dark-muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.quick-links a.quick-links-item:hover .quick-links-sub p {
+  color: var(--ink);
+}
+
+@media (width >= 681px) {
+  .quick-links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .quick-links .quick-links-item {
+    padding: 26px 24px;
+    border-right: 1px solid rgb(255 255 255 / 8%);
+    border-bottom: 0;
+  }
+}
+
+@media (width >= 1141px) {
+  .quick-links {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (width >= 681px) and (width <= 1140px) {
+  .quick-links .quick-links-item:nth-child(3n) {
+    border-right: 0;
+  }
+}
+
+@media (width >= 1141px) {
+  .quick-links .quick-links-item:last-child {
+    border-right: 0;
+  }
+}
