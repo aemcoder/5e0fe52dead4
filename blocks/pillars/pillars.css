@@ -1,0 +1,70 @@
+main .section.pillars-container {
+  padding: 80px 24px;
+}
+
+main .pillars-container .default-content-wrapper,
+main .pillars-container .pillars-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+main .pillars-container .default-content-wrapper h2 {
+  margin: 0 0 56px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+}
+
+.pillars .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 48px;
+}
+
+.pillars .num {
+  display: block;
+  margin-bottom: 16px;
+  color: rgb(45 74 62 / 15%);
+  font-family: var(--serif-font-family);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.pillars .title :is(h2, h3, h4) {
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-family: var(--serif-font-family);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.pillars .rule {
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin-bottom: 20px;
+  background: var(--terracotta);
+}
+
+.pillars .body p {
+  margin: 0 0 16px;
+  color: var(--stone);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.pillars .body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (width >= 600px) {
+  main .section.pillars-container {
+    padding: 120px 40px;
+  }
+
+  main .pillars-container .default-content-wrapper h2 {
+    margin-bottom: 72px;
+  }
+}

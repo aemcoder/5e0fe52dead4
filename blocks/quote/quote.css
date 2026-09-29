@@ -1,0 +1,49 @@
+.quote {
+  padding: 80px 24px;
+  background: var(--forest);
+  text-align: center;
+}
+
+.quote .inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote .mark {
+  display: block;
+  margin-bottom: -20px;
+  color: rgb(245 240 235 / 15%);
+  font-family: var(--serif-font-family);
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.6;
+}
+
+.quote blockquote {
+  margin: 0;
+}
+
+.quote blockquote p {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--serif-font-family);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.quote .attribution p {
+  margin: 32px 0 0;
+  color: var(--terracotta);
+  font-family: var(--body-font-family);
+  font-size: var(--eyebrow-size);
+  letter-spacing: 3px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+@media (width >= 600px) {
+  .quote {
+    padding: 100px 40px;
+  }
+}

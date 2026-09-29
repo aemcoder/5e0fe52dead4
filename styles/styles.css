@@ -10,77 +10,79 @@
  * governing permissions and limitations under the License.
  */
 
-:root {
-  /* colors — from Figma (Experience Workspace) */
-  --background-color: #fff;
-  --light-color: #f7f8ff;        /* indigo/100 — section bg */
-  --dark-color: #505050;         /* neutral-subdued */
-  --text-color: #131313;         /* content/typography/title */
-  --body-text-color: #292929;    /* content/typography/body */
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+/* Simply Enough — "The Quiet Power of Enough" essay site */
 
-  /* brand — indigo ramp */
-  --accent: #3b63fb;         /* accent button fill (Figma) */
-  --accent-hover: #1d3ecf;
-  --accent-text: #6338ee;    /* hero headline accent */
-  --indigo-100: #f7f8ff;
-  --indigo-300: #d8deff;
-  --indigo-900: #7155fa;
-  --indigo-1100: #5424db;
-  --gray-200: #e1e1e1;
-  --line-color: #d8deff;
-  --secondary-bg: #eaeaea;
+:root {
+  /* palette (lifted from the prototype) */
+  --ink: #1a1a1a;
+  --cream: #f5f0eb;
+  --sand: #e8dfd4;
+  --terracotta: #c4703f;
+  --forest: #2d4a3e;
+  --stone: #555;
+  --cream-60: rgb(245 240 235 / 60%);
+  --cream-55: rgb(245 240 235 / 55%);
+  --cream-35: rgb(245 240 235 / 35%);
+  --rule: rgb(26 26 26 / 10%);
+
+  /* boilerplate aliases */
+  --background-color: var(--cream);
+  --light-color: var(--sand);
+  --dark-color: var(--stone);
+  --text-color: var(--ink);
+  --body-text-color: var(--stone);
+  --link-color: var(--forest);
+  --link-hover-color: var(--terracotta);
 
   /* fonts */
-  --body-font-family: 'Adobe Clean', 'Adobe Clean Spectrum VF', adobe-clean, system-ui, -apple-system, sans-serif;
-  --heading-font-family: var(--body-font-family);
+  --serif-font-family: 'Cormorant Garamond', cormorant-garamond-fallback, 'Times New Roman', serif;
+  --body-font-family: 'DM Sans', dm-sans-fallback, arial, sans-serif;
+  --heading-font-family: var(--serif-font-family);
 
   /* body sizes */
-  --body-font-size-m: 18px;
+  --body-font-size-m: 17px;
   --body-font-size-s: 16px;
-  --body-font-size-xs: 14px;
+  --body-font-size-xs: 13px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 34px;
-  --heading-font-size-xl: 28px;
-  --heading-font-size-l: 24px;
-  --heading-font-size-m: 20px;
-  --heading-font-size-s: 16px;
-  --heading-font-size-xs: 14px;
+  --heading-font-size-xxl: clamp(48px, 8vw, 120px);
+  --heading-font-size-xl: clamp(36px, 5vw, 64px);
+  --heading-font-size-l: 28px;
+  --heading-font-size-m: 24px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 16px;
 
-  /* nav height */
-  --nav-height: 64px;
+  /* eyebrow */
+  --eyebrow-size: 13px;
+  --eyebrow-tracking: 4px;
+
+  /* overlay chrome: the fixed header floats over the hero, nothing reserved */
+  --nav-height: 0;
 }
 
-/* fallback fonts */
+/* metric-matched fallbacks (computed from the brand woff2 vs Times New Roman / Arial) */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+  font-family: cormorant-garamond-fallback;
+  src: local('Times New Roman');
+  size-adjust: 96.4%;
+  ascent-override: 95.85%;
+  descent-override: 29.77%;
+  line-gap-override: 0%;
 }
 
 @font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: dm-sans-fallback;
   src: local('Arial');
+  size-adjust: 104.57%;
+  ascent-override: 94.86%;
+  descent-override: 29.65%;
+  line-gap-override: 0%;
 }
 
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 20px;   /* Body/XL — lead, faq question */
-    --body-font-size-s: 16px;   /* Body/M — body copy */
-    --body-font-size-xs: 14px;  /* Title/S — brand, footer */
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;  /* Heading/XXL — hero h1 */
-    --heading-font-size-xl: 36px;   /* Heading/XL — section headings */
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;    /* Heading/M — card titles */
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 16px;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
@@ -100,16 +102,23 @@ body {
   color: var(--body-text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
 body.appear {
   display: block;
 }
 
+::selection {
+  background: var(--forest);
+  color: var(--cream);
+}
+
 header {
-  /* reserve room for the floating nav bar (nav height + vertical gutters) */
-  height: calc(var(--nav-height) + 24px);
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--nav-height);
 }
 
 header .header,
@@ -128,12 +137,12 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin-bottom: 16px;
   color: var(--text-color);
   font-family: var(--heading-font-family);
-  font-weight: 800;
-  line-height: 1.16;
+  font-weight: 400;
+  line-height: 1.15;
   scroll-margin: 40px;
 }
 
@@ -144,14 +153,25 @@ h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
+h1 em,
+h2 em {
+  color: var(--terracotta);
+  font-style: italic;
+}
+
 p,
 dl,
 ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+strong {
+  color: var(--forest);
+  font-weight: 600;
 }
 
 code,
@@ -159,16 +179,10 @@ pre {
   font-size: var(--body-font-size-s);
 }
 
-pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
-  overflow-x: auto;
-  white-space: pre;
-}
-
-main > div {
-  margin: 40px 16px;
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 input,
@@ -192,136 +206,111 @@ a:hover {
 
 /* buttons */
 p.button-wrapper {
-  margin: 12px 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin: 0 16px 0 0;
 }
 
 a.button:any-link,
 button.button {
-  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   max-width: 100%;
   margin: 0;
   border: 1px solid transparent;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font: inherit;
-  font-size: var(--body-font-size-s);
-  font-weight: 700;
+  border-radius: 2px;
+  padding: 14px 28px;
+  font-family: var(--body-font-family);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: 3px;
   line-height: 1.25;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  transition: transform 0.15s ease, box-shadow 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a.button.primary:hover,
-  button.button.primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 24px rgb(99 56 238 / 28%);
-  }
-
-  a.button.secondary:hover,
-  button.button.secondary:hover {
-    transform: translateY(-1px);
-  }
-}
-
-a.button[aria-disabled="true"],
-button.button:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--accent);
-  background-color: var(--accent);
-  color: #fff;
+  border-color: var(--terracotta);
+  background-color: var(--terracotta);
+  color: var(--cream);
 }
 
 a.button.primary:hover,
-a.button.primary:focus-visible,
-button.button.primary:hover,
-button.button.primary:focus-visible {
-  border-color: var(--accent-hover);
-  background-color: var(--accent-hover);
-  color: #fff;
-}
-
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+button.button.primary:hover {
+  border-color: var(--forest);
+  background-color: var(--forest);
+  color: var(--cream);
 }
 
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--secondary-bg);
-  background-color: var(--secondary-bg);
-  color: var(--text-color);
+  border-color: currentcolor;
+  background-color: transparent;
+  color: var(--ink);
 }
 
 a.button.secondary:hover,
-a.button.secondary:focus-visible,
-button.button.secondary:hover,
-button.button.secondary:focus-visible {
-  border-color: #dcdcdc;
-  background-color: #dcdcdc;
-  color: var(--text-color);
+button.button.secondary:hover {
+  color: var(--terracotta);
 }
 
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-/* high-impact call-to-action */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+  border-color: var(--forest);
+  background-color: var(--forest);
+  color: var(--cream);
 }
 
 a.button.accent:hover,
-a.button.accent:focus-visible,
-button.button.accent:hover,
-button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+button.button.accent:hover {
+  border-color: var(--terracotta);
+  background-color: var(--terracotta);
 }
 
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+/* Experience Workspace edit mode: repaint CTAs from their authored marks */
+.prosemirror-editor p > :is(strong, em) > a:any-link,
+.prosemirror-editor p > a:any-link:has(> :is(strong, em):only-child) {
+  display: inline-flex;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 14px 28px;
+  font-family: var(--body-font-family);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
+.prosemirror-editor p > a:any-link > :is(strong, em) {
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+}
+
+.prosemirror-editor p > strong > a:any-link,
+.prosemirror-editor p > a:any-link:has(> strong:only-child) {
+  border-color: var(--terracotta);
+  background-color: var(--terracotta);
+  color: var(--cream);
+}
+
+.prosemirror-editor p > em > a:any-link,
+.prosemirror-editor p > a:any-link:has(> em:only-child) {
+  border-color: currentcolor;
+  background-color: transparent;
+  color: var(--ink);
+}
+
+a .prosemirror-editor a:any-link {
+  color: inherit;
+  text-decoration: none;
 }
 
 .icon {
@@ -335,62 +324,188 @@ main img {
   width: 100%;
 }
 
-/* sections — flush colored bands, content centered */
+/* sections — each band paints its own ground; blocks own their inner layout */
 main > .section {
   margin: 0;
-  padding: 48px 0;
-  scroll-margin-top: 100px;
+  padding: 0;
 }
 
-main > .section > div {
-  max-width: 1280px;
-  margin: auto;
+main .section:empty {
+  display: none;
+}
+
+/* shared editorial eyebrow (section heads above blocks) */
+main .section .default-content-wrapper .eyebrow,
+main .pillars-container .default-content-wrapper p,
+main .anchors-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  color: var(--terracotta);
+  font-family: var(--body-font-family);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* ---------- default-content section styles (closed set) ---------- */
+
+/* intro: opening essay paragraphs */
+main .section.intro .default-content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+main .section.intro .default-content-wrapper p {
+  margin: 0 0 32px;
+  color: var(--stone);
+  font-family: var(--body-font-family);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+main .section.intro .default-content-wrapper p:first-of-type {
+  color: var(--ink);
+  font-family: var(--serif-font-family);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+main .section.intro .default-content-wrapper p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* photo: full-bleed image band with a soft cream wash from the top */
+main .section.photo,
+main .section.photo-caption {
+  position: relative;
+  overflow: hidden;
+  height: clamp(300px, 50vw, 520px);
+  background: var(--ink);
+}
+
+main .section.photo-caption {
+  height: clamp(280px, 40vw, 440px);
+}
+
+main .section.photo .default-content-wrapper,
+main .section.photo-caption .default-content-wrapper {
+  height: 100%;
+}
+
+main .section.photo .default-content-wrapper p,
+main .section.photo-caption .default-content-wrapper p {
+  margin: 0;
+  line-height: 0;
+}
+
+main .section.photo picture,
+main .section.photo-caption picture {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+main .section.photo img,
+main .section.photo-caption img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+main .section.photo img {
+  filter: brightness(0.85) saturate(0.9);
+}
+
+main .section.photo-caption img {
+  filter: brightness(0.8) saturate(0.85);
+}
+
+main .section.photo::after,
+main .section.photo-caption::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(rgb(245 240 235 / 15%), rgb(245 240 235 / 0%));
+}
+
+main .section.photo-caption::after {
+  background: linear-gradient(rgb(245 240 235 / 0%), rgb(26 26 26 / 60%));
+}
+
+main .section.photo-caption .default-content-wrapper p:not(:has(picture)) {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 40px;
   padding: 0 24px;
-}
-
-@media (width >= 900px) {
-  main > .section {
-    padding: 80px 0;
-  }
-
-  main > .section > div {
-    padding: 0 40px;
-  }
-}
-
-/* section backgrounds (keyed off the block-container class EDS adds) */
-main .section.hero-container {
-  background: linear-gradient(180deg, #fff 0%, var(--indigo-100) 100%);
-  padding-top: 40px;
-}
-
-main .section.cards-container {
-  background-color: var(--indigo-100);
-}
-
-main .section.accordion-container,
-main .section.cta-container {
-  background-color: #fff;
-}
-
-/* centered section heading + lead, with spacing before the block below */
-main > .section > .default-content-wrapper {
-  max-width: 960px;
-  margin-inline: auto;
+  color: rgb(245 240 235 / 80%);
+  font-family: var(--serif-font-family);
+  font-size: clamp(20px, 3vw, 30px);
+  font-style: italic;
+  line-height: 1.4;
   text-align: center;
 }
 
-main > .section > .default-content-wrapper > h2 {
-  margin: 0;
+/* closing: dark centred coda with a terracotta seed ornament */
+main .section.closing {
+  padding: 96px 24px;
+  background: var(--ink);
+  text-align: center;
 }
 
-main > .section > .default-content-wrapper > p {
-  max-width: 620px;
-  margin: 16px auto 0;
-  color: var(--dark-color);
-  font-size: var(--body-font-size-m);
+main .section.closing .default-content-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-main > .section > div + div {
-  margin-top: 40px;
+main .section.closing .default-content-wrapper::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 48px;
+  border: 1px solid rgb(196 112 63 / 40%);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--terracotta) 0 4px, transparent 4.5px);
+}
+
+main .section.closing .default-content-wrapper::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  margin: 0 auto;
+  background: rgb(196 112 63 / 40%);
+}
+
+main .section.closing h2 {
+  margin: 0 0 32px;
+  color: var(--cream);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.35;
+}
+
+main .section.closing p {
+  max-width: 540px;
+  margin: 0 auto 48px;
+  color: var(--cream-55);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+@media (width >= 600px) {
+  main .section.intro .default-content-wrapper {
+    padding: 120px 40px;
+  }
+
+  main .section.photo-caption .default-content-wrapper p:not(:has(picture)) {
+    padding: 0 40px;
+  }
+
+  main .section.closing {
+    padding: 120px 40px;
+  }
 }
