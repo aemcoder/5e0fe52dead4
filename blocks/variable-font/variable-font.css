@@ -1,0 +1,78 @@
+.variable-font {
+  margin-top: 112px;
+}
+
+.variable-font .wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+  overflow: hidden;
+}
+
+.variable-font .intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 600px) {
+  .variable-font .intro {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 28px 72px;
+  }
+}
+
+.variable-font .eyebrow {
+  display: block;
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  margin: 0 0 16px;
+}
+
+.variable-font .headline :is(h3, h2) {
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.variable-font .body :is(p) {
+  font-size: 17px;
+  line-height: 28px;
+  margin: 0;
+  max-width: 56ch;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+
+.variable-font .specimen {
+  font-family: 'Archivo', var(--heading-font-family);
+  font-size: clamp(64px, 14vw, 210px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  padding: 28px 0;
+  border-top: 2px solid var(--color-text);
+  border-bottom: 2px solid var(--color-divider);
+  cursor: ew-resize;
+  font-variation-settings: 'wght' 400, 'wdth' 100;
+  transition: font-variation-settings 0.15s ease;
+}
+
+.variable-font .axes {
+  display: flex;
+  gap: 32px;
+  padding-top: 14px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-feature-settings: 'tnum';
+}
+
+.variable-font .axis-value {
+  color: var(--color-accent-700);
+}

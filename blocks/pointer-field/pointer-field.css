@@ -1,0 +1,29 @@
+.pointer-field {
+  margin-top: 84px;
+}
+
+.pointer-field .field-box {
+  position: relative;
+  height: clamp(360px, 62vh, 640px);
+  border-top: 2px solid var(--color-divider);
+  border-bottom: 2px solid var(--color-divider);
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+
+.pointer-field canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pointer-field .field-label {
+  position: absolute;
+  left: clamp(20px, 5vw, 72px);
+  top: 16px;
+  background: var(--color-bg);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}

@@ -1,0 +1,19 @@
+.highlight-text {
+  margin-top: 140px;
+}
+
+.highlight-text .wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+.highlight-text .wrap :is(p) {
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-size: clamp(28px, 3.4vw, 48px);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 24ch;
+}

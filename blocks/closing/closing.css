@@ -1,0 +1,88 @@
+.closing {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  margin-top: 140px;
+  overflow: hidden;
+}
+
+.closing .wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 112px clamp(20px, 5vw, 72px) 56px;
+}
+
+.closing .headline :is(h2, h3) {
+  font-size: clamp(40px, 6.4vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0 0 0 -0.058em;
+  max-width: 15ch;
+  color: var(--color-bg);
+}
+
+.closing .actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 42px;
+}
+
+.closing .actions a.button:any-link,
+.closing .actions a {
+  color: var(--color-bg);
+  border: 1px solid var(--color-bg);
+  background: transparent;
+  padding: 12px 18px;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.closing .actions a:hover {
+  background: rgba(255 255 255 / 15%);
+  text-decoration: none;
+}
+
+.closing .closing-marquee {
+  border-top: 2px solid var(--color-bg);
+  padding: 24px 0;
+  overflow: hidden;
+}
+
+.closing .marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: closing-marquee-scroll 60s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closing .marquee-track {
+    animation: none;
+  }
+}
+
+@keyframes closing-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.closing .marquee-set {
+  display: flex;
+  gap: 48px;
+  padding-right: 48px;
+  align-items: center;
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.closing .marquee-dot {
+  width: 0.3em;
+  height: 0.3em;
+  background: var(--color-bg);
+  flex: 0 0 auto;
+}

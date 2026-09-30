@@ -1,0 +1,60 @@
+.chapter-intro {
+  padding: 112px 0 0;
+}
+
+.chapter-intro .wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: end;
+}
+
+@media (min-width: 600px) {
+  .chapter-intro .wrap {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 28px 72px;
+  }
+}
+
+.chapter-intro .head {
+  /* left column */
+}
+
+.chapter-intro .chapter-number {
+  font-family: var(--heading-font-family);
+  font-weight: 800;
+  font-size: clamp(72px, 11vw, 168px);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--color-accent);
+  margin: 0 0 28px -0.05em;
+}
+
+.chapter-intro .eyebrow {
+  display: block;
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  margin: 0 0 16px;
+}
+
+.chapter-intro .headline :is(h2, h3) {
+  font-size: clamp(34px, 4.6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  max-width: 16ch;
+}
+
+.chapter-intro .body :is(p) {
+  font-size: 17px;
+  line-height: 28px;
+  margin: 0;
+  max-width: 56ch;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}

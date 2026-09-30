@@ -115,7 +115,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : 'https://adobe--sendto--aemcoder.aem.page/adobe/onboarding/nav';
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
@@ -131,10 +131,13 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
-  if (brandLink) {
-    brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+  if (navBrand) {
+    const brandLink = navBrand.querySelector('.button');
+    if (brandLink) {
+      brandLink.className = '';
+      const wrapper = brandLink.closest('.button-wrapper, .button-container');
+      if (wrapper) wrapper.className = '';
+    }
   }
 
   const navSections = nav.querySelector('.nav-sections');
@@ -169,11 +172,17 @@ export default async function decorate(block) {
   navWrapper.append(nav);
   block.append(navWrapper);
 
-  // narrow + elevate the nav once the page is scrolled
-  const headerEl = block.closest('header') || document.querySelector('header');
-  const updateScrolled = () => {
-    headerEl.classList.toggle('is-scrolled', window.scrollY > 8);
+  // scroll progress bar
+  const progressBar = document.createElement('div');
+  progressBar.className = 'nav-progress';
+  navWrapper.append(progressBar);
+
+  const updateScrollProgress = () => {
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? window.scrollY / scrollHeight : 0;
+    progressBar.style.transform = `scaleX(${Math.min(progress, 1)})`;
   };
-  updateScrolled();
-  window.addEventListener('scroll', updateScrolled, { passive: true });
+
+  updateScrollProgress();
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
 }

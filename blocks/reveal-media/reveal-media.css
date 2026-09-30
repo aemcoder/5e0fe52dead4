@@ -1,0 +1,47 @@
+.reveal-media {
+  margin-top: 140px;
+}
+
+.reveal-media .wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+.reveal-media .media-frame {
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  background: var(--color-neutral-900);
+}
+
+.reveal-media .media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+}
+
+.reveal-media .caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 2px solid var(--color-text);
+}
+
+.reveal-media .caption-title {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal-media .caption-detail {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 72%, transparent);
+}

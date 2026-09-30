@@ -1,0 +1,47 @@
+.inventory {
+  margin-top: 56px;
+}
+
+.inventory .wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+  overflow-x: auto;
+}
+
+.inventory table {
+  min-width: 640px;
+  width: 100%;
+  font-size: 15px;
+  border-collapse: collapse;
+}
+
+.inventory th {
+  text-align: left;
+  font-weight: 800;
+  font-family: var(--heading-font-family);
+  padding: 16px 16px 16px 0;
+  border-bottom: 2px solid var(--color-text);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.inventory th:first-child {
+  width: 56px;
+}
+
+.inventory td {
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid var(--color-divider);
+  vertical-align: top;
+}
+
+.inventory td:first-child {
+  color: var(--color-accent-700);
+  font-feature-settings: 'tnum';
+}
+
+.inventory tr:hover td {
+  background-color: var(--color-surface);
+}

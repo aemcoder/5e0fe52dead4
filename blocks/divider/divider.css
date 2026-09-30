@@ -1,0 +1,4 @@
+.divider .line {
+  height: 2px;
+  background: var(--color-divider);
+}

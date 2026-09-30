@@ -1,0 +1,44 @@
+.field-hero {
+  padding: 112px 0 56px;
+}
+
+.field-hero .wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+.field-hero .headline :is(h1, h2) {
+  font-size: clamp(52px, 9vw, 140px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 0 0 0 -0.058em;
+}
+
+.field-hero .content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: end;
+  margin-top: 56px;
+}
+
+@media (min-width: 600px) {
+  .field-hero .content {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 28px 72px;
+  }
+}
+
+.field-hero .lede :is(p) {
+  font-size: 19px;
+  line-height: 30px;
+  margin: 0;
+  max-width: 52ch;
+}
+
+.field-hero .actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}

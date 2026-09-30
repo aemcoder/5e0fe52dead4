@@ -1,0 +1,108 @@
+.photo-gallery {
+  margin-top: 56px;
+}
+
+.photo-gallery .wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+.photo-gallery .toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.photo-gallery .seg {
+  display: flex;
+  gap: 0;
+}
+
+.photo-gallery .seg-opt {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid var(--color-divider);
+  border-right: 0;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.photo-gallery .seg-opt:last-child {
+  border-right: 1px solid var(--color-divider);
+}
+
+.photo-gallery .seg-opt:has(input:checked) {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+.photo-gallery .seg-opt input {
+  display: none;
+}
+
+.photo-gallery .frame-count {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 72%, transparent);
+}
+
+.photo-gallery .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 600px) {
+  .photo-gallery .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .photo-gallery .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.photo-gallery .frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--color-neutral-900);
+  cursor: pointer;
+}
+
+.photo-gallery .frame.hidden {
+  display: none;
+}
+
+.photo-gallery .frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.1, 1);
+}
+
+.photo-gallery .frame:hover img {
+  transform: scale(1.05);
+}
+
+.photo-gallery .frame-label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}
