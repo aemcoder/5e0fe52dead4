@@ -1,0 +1,119 @@
+/* ===== stats — dark figures band ===== */
+main > .section.stats-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--white);
+}
+
+main > .section.stats-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(115deg, transparent 0 38px, rgb(255 255 255 / 2.2%) 38px 39px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+main > .section.stats-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 6px;
+  background: var(--hazard);
+  opacity: 0.9;
+}
+
+main > .section.stats-container > div {
+  position: relative;
+  z-index: 2;
+}
+
+.stats .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stats .item {
+  border-left: 1px solid rgb(255 255 255 / 10%);
+  padding: 18px 26px;
+}
+
+.stats .item:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.stats .item p {
+  margin: 0;
+}
+
+.stats .num p {
+  color: var(--yellow);
+  font-family: var(--heading-font-family);
+  font-size: clamp(54px, 6vw, 82px);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.stats .lab p {
+  margin-top: 8px;
+  color: #d7d5ce;
+  font-family: var(--semicond-font-family);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stats .intro {
+  max-width: 30ch;
+}
+
+.stats .intro :is(h2, h3) {
+  margin: 0 0 12px;
+  color: var(--white);
+  font-size: clamp(30px, 3.4vw, 44px);
+}
+
+.stats .intro p {
+  margin: 0;
+  color: var(--muted-on-dark);
+}
+
+@media (width <= 1140px) {
+  .stats .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats .item {
+    border-top: 1px solid rgb(255 255 255 / 10%);
+    padding: 22px 24px;
+  }
+
+  .stats .item:nth-child(odd) {
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
+@media (width <= 960px) {
+  .stats .intro {
+    grid-column: 1 / -1;
+    max-width: none;
+    margin-bottom: 10px;
+    border-top: none;
+  }
+
+  .stats .item:nth-child(even) {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .stats .item:nth-child(odd):not(.intro) {
+    border-left: 1px solid rgb(255 255 255 / 10%);
+    padding-left: 24px;
+  }
+}

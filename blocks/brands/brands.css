@@ -1,0 +1,69 @@
+/* ===== brands — partner tiles ===== */
+main > .section.brands-container {
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--white);
+  text-align: center;
+}
+
+main .brands-container > .default-content-wrapper h2 {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+main .brands-container > .default-content-wrapper p {
+  margin: 0 0 38px;
+  color: var(--steel);
+}
+
+.brands .brand-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  gap: 18px;
+}
+
+.brands .brand-tile {
+  display: grid;
+  place-items: center;
+  height: 74px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 10px;
+  background: var(--paper);
+  color: #a8a59d;
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: 0.15s;
+}
+
+.brands .brand-tile:hover {
+  border-color: #cfccc4;
+  color: var(--ink);
+}
+
+.brands .brand-tile p {
+  margin: 0;
+  line-height: 1;
+}
+
+.brands .brand-tile img {
+  max-height: 44px;
+  width: auto;
+}
+
+@media (width <= 1140px) {
+  .brands .brand-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width <= 680px) {
+  .brands .brand-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

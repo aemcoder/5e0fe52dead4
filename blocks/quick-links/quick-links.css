@@ -1,0 +1,108 @@
+/* ===== quick-links — dark shortcut band ===== */
+main > .section.quick-links-container {
+  padding: 0;
+  border-top: 4px solid var(--yellow);
+  background: var(--ink-2);
+}
+
+main > .section.quick-links-container > .quick-links-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.quick-links .grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.quick-links .item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-right: 1px solid rgb(255 255 255 / 8%);
+  padding: 26px 24px;
+  color: var(--white);
+  transition: 0.18s;
+}
+
+.quick-links .item:last-child {
+  border-right: none;
+}
+
+.quick-links a.item:hover {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.quick-links .ico {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background: var(--yellow);
+  color: var(--ink);
+  transition: 0.18s;
+}
+
+.quick-links a.item:hover .ico {
+  background: var(--ink);
+  color: var(--yellow);
+}
+
+.quick-links .ico p {
+  margin: 0;
+  line-height: 0;
+}
+
+.quick-links .ico .icon {
+  width: 26px;
+  height: 26px;
+}
+
+.quick-links .txt p {
+  margin: 0;
+}
+
+.quick-links .txt .title p {
+  font-family: var(--heading-font-family);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.quick-links .txt .desc p {
+  margin-top: 4px;
+  color: var(--muted-on-dark);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+.quick-links a.item:hover .desc p {
+  color: var(--ink);
+}
+
+@media (width <= 1140px) {
+  .quick-links .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .quick-links .item:nth-child(3) {
+    border-right: none;
+  }
+}
+
+@media (width <= 680px) {
+  .quick-links .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quick-links .item {
+    border-right: none;
+    border-bottom: 1px solid rgb(255 255 255 / 8%);
+    padding: 20px 16px;
+  }
+}
