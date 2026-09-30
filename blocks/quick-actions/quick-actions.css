@@ -1,0 +1,107 @@
+.quick-actions-container {
+  border-top: 4px solid var(--yellow);
+  background: var(--ink-2);
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.quick-actions a.quick-actions-item:any-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  color: #fff;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.quick-actions a.quick-actions-item:hover {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.quick-actions .quick-actions-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background: var(--yellow);
+  color: var(--ink);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.quick-actions a.quick-actions-item:hover .quick-actions-icon {
+  background: var(--ink);
+  color: var(--yellow);
+}
+
+.quick-actions .quick-actions-icon .icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+}
+
+.quick-actions .quick-actions-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.quick-actions .quick-actions-title {
+  font-family: var(--font-cond);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.quick-actions .quick-actions-hint {
+  color: #b6b3ab;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.quick-actions a.quick-actions-item:hover .quick-actions-hint {
+  color: var(--ink);
+}
+
+@media (width >= 680px) {
+  .quick-actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .quick-actions a.quick-actions-item:any-link {
+    padding: 26px 24px;
+    border-right: 1px solid rgb(255 255 255 / 8%);
+    border-bottom: 0;
+  }
+
+  .quick-actions a.quick-actions-item:nth-child(3n) {
+    border-right: 0;
+  }
+}
+
+@media (width > 1140px) {
+  .quick-actions {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .quick-actions a.quick-actions-item:nth-child(3n) {
+    border-right: 1px solid rgb(255 255 255 / 8%);
+  }
+
+  .quick-actions a.quick-actions-item:last-child {
+    border-right: 0;
+  }
+}

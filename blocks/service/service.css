@@ -1,0 +1,132 @@
+.section.service-container {
+  padding: 60px 0;
+  background: #fff;
+}
+
+.service-wrapper {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.service .service-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 56px;
+}
+
+.service .service-eyebrow {
+  color: var(--yellow-deep);
+  font-family: var(--font-semi);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.service .service-copy h2 {
+  margin: 14px 0 18px;
+  font-size: clamp(32px, 3.6vw, 48px);
+}
+
+.service .service-copy > p:not(.service-eyebrow) {
+  max-width: 48ch;
+  margin: 0 0 28px;
+  color: var(--steel);
+  font-size: 17.5px;
+}
+
+.service .service-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* gallery: two overlapping framed shots + figure badge */
+.service .service-gallery {
+  position: relative;
+  min-height: 360px;
+  margin-top: 10px;
+}
+
+.service .service-shot {
+  position: absolute;
+  overflow: hidden;
+  border: 6px solid #fff;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 24px 50px rgb(0 0 0 / 18%);
+}
+
+.service .service-shot-1 {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 74%;
+  height: 300px;
+}
+
+.service .service-shot-2 {
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 60%;
+  height: 280px;
+}
+
+.service .service-shot picture,
+.service .service-shot img {
+  width: 100%;
+  height: 100%;
+}
+
+.service .service-shot img {
+  object-fit: cover;
+}
+
+.service .service-badge {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  z-index: 3;
+  width: 150px;
+  padding: 16px 20px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--font-semi);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.service .service-badge .service-badge-figure {
+  display: block;
+  font-family: var(--font-cond);
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+}
+
+.service .service-badge strong {
+  font-weight: inherit;
+}
+
+@media (width >= 680px) {
+  .section.service-container {
+    padding: 84px 0;
+  }
+}
+
+@media (width > 960px) {
+  .service .service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .service .service-gallery {
+    min-height: 440px;
+    margin-top: 0;
+  }
+}
