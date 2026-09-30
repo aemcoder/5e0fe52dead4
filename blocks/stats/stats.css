@@ -1,0 +1,141 @@
+/* Stats — ink band, hazard stripe, diagonal texture, yellow figures */
+main .stats {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0;
+  background: var(--ink);
+  color: #fff;
+}
+
+main .stats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: repeating-linear-gradient(115deg, transparent 0 38px, rgb(255 255 255 / 2.2%) 38px 39px);
+}
+
+main .stats .stripe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 6px;
+  opacity: 0.9;
+  background: var(--hazard);
+}
+
+main .stats .wrap {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+main .stats .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+main .stats .item {
+  padding: 22px 24px;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  border-left: 1px solid rgb(255 255 255 / 10%);
+}
+
+/* intro spans the row; the figures then alternate left/right */
+main .stats .intro {
+  grid-column: 1 / -1;
+  max-width: 30ch;
+  margin-bottom: 10px;
+  padding-left: 0;
+  border-top: 0;
+  border-left: 0;
+}
+
+main .stats .item:not(.intro):nth-child(even) {
+  padding-left: 0;
+  border-left: 0;
+}
+
+main .stats .intro .headline :is(h2, h3) {
+  margin: 0 0 12px;
+  font-size: clamp(30px, 3.4vw, 44px);
+}
+
+main .stats .intro .headline em {
+  font-style: normal;
+  color: var(--yellow);
+}
+
+main .stats .intro .copy p {
+  margin: 0;
+  color: #b6b3ab;
+}
+
+main .stats .num {
+  color: var(--yellow);
+  font-family: var(--heading-font-family);
+  font-size: clamp(54px, 6vw, 82px);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+main .stats .lab {
+  margin-top: 8px;
+  color: #d7d5ce;
+  font-family: var(--semicond-font-family);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+main .stats :is(.num, .lab) p {
+  margin: 0;
+}
+
+@media (width >= 681px) {
+  main .stats {
+    padding: 84px 0;
+  }
+}
+
+/* 961–1140: intro no longer spans; 2-up grid with the intro as item one */
+@media (width >= 961px) {
+  main .stats .intro {
+    grid-column: auto;
+    margin-bottom: 0;
+  }
+
+  main .stats .item:not(.intro):nth-child(even) {
+    padding-left: 24px;
+    border-left: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  main .stats .item:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (width >= 1141px) {
+  main .stats .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  main .stats .item,
+  main .stats .item:nth-child(odd),
+  main .stats .item:not(.intro):nth-child(even) {
+    padding: 18px 26px;
+    border-top: 0;
+    border-left: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  main .stats .item:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+}

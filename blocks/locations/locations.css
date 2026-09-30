@@ -1,0 +1,88 @@
+/* Locations — yellow band with a decorative ring, copy | city chips */
+main .locations {
+  position: relative;
+  overflow: hidden;
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+main .locations::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 340px;
+  height: 340px;
+  border: 36px solid rgb(14 14 14 / 6%);
+  border-radius: 50%;
+}
+
+main .locations .wrap {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 70px var(--gutter);
+}
+
+main .locations .eyebrow p {
+  font-family: var(--semicond-font-family);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+main .locations .headline :is(h2, h3) {
+  margin: 0 0 14px;
+  font-size: clamp(34px, 4.2vw, 58px);
+}
+
+main .locations .text p {
+  max-width: 42ch;
+  margin: 0 0 26px;
+  font-size: 18px;
+}
+
+main .locations .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* the branch finder CTA carries a pin instead of the arrow */
+main .locations a.button::after {
+  mask-image: var(--icon-pin);
+}
+
+main .locations .city-grid ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main .locations .city-grid li {
+  padding: 8px 15px;
+  border: 1.5px solid rgb(14 14 14 / 18%);
+  border-radius: 40px;
+  background: rgb(14 14 14 / 8%);
+  font-family: var(--semicond-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+@media (width >= 961px) {
+  main .locations .wrap {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}

@@ -1,0 +1,110 @@
+/* Quick actions — full-bleed ink-2 strip of link tiles */
+main .quick {
+  border-top: 4px solid var(--yellow);
+  background: var(--ink-2);
+}
+
+main .quick .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+main .quick .tile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  color: #fff;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+main .quick .tile:hover {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+main .quick .ico {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background: var(--yellow);
+  color: var(--ink);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+main .quick .tile:hover .ico {
+  background: var(--ink);
+  color: var(--yellow);
+}
+
+main .quick .ico svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+main .quick .title {
+  font-family: var(--heading-font-family);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+main .quick .title p {
+  margin: 0;
+}
+
+main .quick .sub {
+  color: #b6b3ab;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+main .quick .sub p {
+  margin: 0;
+}
+
+main .quick .tile:hover .sub {
+  color: var(--ink);
+}
+
+@media (width >= 681px) {
+  main .quick .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  main .quick .tile {
+    padding: 26px 24px;
+    border-right: 1px solid rgb(255 255 255 / 8%);
+    border-bottom: 0;
+  }
+
+  main .quick .tile:nth-child(3n),
+  main .quick .tile:last-child {
+    border-right: 0;
+  }
+}
+
+@media (width >= 1141px) {
+  main .quick .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  main .quick .tile:nth-child(3n) {
+    border-right: 1px solid rgb(255 255 255 / 8%);
+  }
+
+  main .quick .tile:last-child {
+    border-right: 0;
+  }
+}

@@ -1,0 +1,74 @@
+/* Brands — white band, centered head (default content), wordmark tiles */
+main .section.brands-container {
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  text-align: center;
+}
+
+main .section.brands-container .default-content-wrapper h2 {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+main .section.brands-container .default-content-wrapper p {
+  margin: 0 0 38px;
+  color: var(--steel);
+}
+
+main .brands {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+main .brands .brand-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  align-items: center;
+}
+
+main .brands .brand-tile {
+  display: grid;
+  place-items: center;
+  height: 74px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--paper);
+  color: #a8a59d;
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+main .brands .brand-tile:hover {
+  border-color: #cfccc4;
+  color: var(--ink);
+}
+
+main .brands .brand-tile p {
+  margin: 0;
+}
+
+main .brands .brand-tile img {
+  max-height: 40px;
+  width: auto;
+}
+
+@media (width >= 681px) {
+  main .brands .brand-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 1141px) {
+  main .brands .brand-row {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

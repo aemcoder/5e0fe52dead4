@@ -1,27 +1,420 @@
-.cards > ul {
-  list-style: none;
+/* Cards — shared head + grid; `used` inventory cards and `offers` overlay tiles */
+main .cards {
+  padding: 60px 0;
+  background: var(--paper);
+}
+
+main .cards .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ── section head ── */
+main .cards .sec-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 38px;
+}
+
+main .cards .kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--yellow-deep);
+  font-family: var(--semicond-font-family);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+main .cards .kicker::before {
+  content: "";
+  flex-shrink: 0;
+  width: 34px;
+  height: 4px;
+  background: var(--yellow);
+}
+
+main .cards .headline :is(h2, h3) {
+  margin: 10px 0 0;
+  font-size: clamp(34px, 4vw, 52px);
+}
+
+main .cards .lede p {
+  max-width: 52ch;
+  margin: 8px 0 0;
+  color: var(--steel);
+}
+
+main .cards .sec-link a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 3px solid var(--yellow);
+  font-family: var(--semicond-font-family);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: gap 0.15s ease;
+}
+
+main .cards .sec-link a:any-link::after,
+main .cards .more p::after {
+  content: "";
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background: currentcolor;
+  mask: var(--icon-arrow) center / contain no-repeat;
+}
+
+main .cards .sec-link a:any-link:hover {
+  gap: 13px;
+}
+
+/* ── filter chips ── */
+main .cards .filters {
+  margin-bottom: 30px;
+}
+
+main .cards .filters ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+main .cards .filters li {
+  padding: 9px 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 40px;
+  background: #fff;
+  color: var(--ink-3);
+  font-family: var(--semicond-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+main .cards .filters li:hover {
+  border-color: var(--ink);
+}
+
+main .cards .filters li.is-active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ── grid ── */
+main .cards .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
-.cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+/* ── inventory card (default / used) ── */
+main .cards .card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #fff;
+  color: var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+main .cards .card:hover {
+  border-color: #d6d3cb;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 12%);
+  transform: translateY(-4px);
 }
 
-.cards .cards-card-image {
+main .cards .ph {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--ink-2);
+}
+
+main .cards .ph-media {
+  position: absolute;
+  inset: 0;
   line-height: 0;
 }
 
-.cards > ul > li img {
+main .cards .ph-media :is(p, picture) {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  margin: 0;
+}
+
+main .cards .ph-media img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+
+main .cards .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  padding: 5px 11px;
+  border-radius: 3px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--semicond-font-family);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+main .cards .badge strong,
+main .cards .tag strong,
+main .cards .amount strong {
+  font-weight: inherit;
+}
+
+main .cards .fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 92%);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+main .cards .fav svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.9;
+}
+
+main .cards .card:hover .fav {
+  background: #fff;
+}
+
+main .cards .body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 20px 22px;
+}
+
+main .cards .body .title :is(h2, h3, h4) {
+  margin: 0 0 12px;
+  font-size: 23px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+main .cards .specs ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 0 0 18px;
+  padding: 0;
+  color: var(--steel);
+  font-size: 14px;
+  list-style: none;
+}
+
+main .cards .specs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+main .cards .specs li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  background: var(--steel);
+  mask: var(--icon-pin) center / contain no-repeat;
+}
+
+main .cards .specs li:first-child::before {
+  mask-image: var(--icon-clock);
+}
+
+main .cards .desc p {
+  margin: 0 0 18px;
+  color: var(--steel);
+  font-size: 15px;
+}
+
+main .cards .foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+main .cards .amount {
+  font-family: var(--heading-font-family);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+main .cards .note {
+  color: var(--steel);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+main .cards .more p {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--semicond-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: gap 0.15s ease, color 0.15s ease;
+}
+
+main .cards .more p::after {
+  width: 14px;
+  height: 14px;
+}
+
+main .cards .card:hover .more p {
+  color: var(--yellow-deep);
+}
+
+main .cards .cards-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+}
+
+/* ── offers variant: photo-overlay tiles ── */
+main .cards.offers .card {
+  position: relative;
+  justify-content: flex-end;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  background: var(--ink-2);
+  color: #fff;
+}
+
+main .cards.offers .card:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+main .cards.offers .ph {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  aspect-ratio: auto;
+}
+
+main .cards.offers .ov {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgb(14 14 14 / 15%) 0%, rgb(14 14 14 / 55%) 55%, rgb(14 14 14 / 90%) 100%);
+}
+
+main .cards.offers .c {
+  position: relative;
+  z-index: 2;
+  padding: 26px;
+}
+
+main .cards.offers .tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 2px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--semicond-font-family);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+main .cards.offers .title :is(h2, h3, h4) {
+  margin: 0 0 10px;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+main .cards.offers .desc p {
+  color: #d9d7d0;
+}
+
+main .cards.offers .more p {
+  gap: 7px;
+  color: var(--yellow);
+  font-size: 13.5px;
+  letter-spacing: 0.05em;
+}
+
+main .cards.offers .card:hover .more p {
+  gap: 12px;
+  color: var(--yellow);
+}
+
+@media (width >= 681px) {
+  main .cards {
+    padding: 84px 0;
+  }
+
+  main .cards .sec-head {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  main .cards .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1141px) {
+  main .cards .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
