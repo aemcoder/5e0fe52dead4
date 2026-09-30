@@ -1,0 +1,138 @@
+/* section head before reabsorption — keep it quiet to avoid a flash */
+main .section.accordion-container > .default-content-wrapper p {
+  margin: 112px 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.accordion {
+  max-width: var(--maxw);
+  margin: 112px auto 0;
+  padding: 0 var(--gutter);
+}
+
+.accordion .accordion-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 28px 72px;
+  align-items: start;
+}
+
+.accordion .eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.accordion .headline :is(h2, h3, h4) {
+  max-width: 14ch;
+  margin: 0;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.accordion .accordion-list {
+  border-top: 2px solid var(--color-text);
+}
+
+.accordion .item {
+  border-bottom: 2px solid var(--color-divider);
+}
+
+.accordion .item-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  cursor: pointer;
+}
+
+.accordion .num {
+  flex: 0 0 auto;
+  width: 28px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+}
+
+.accordion .question {
+  flex: 1 1 0%;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 800;
+}
+
+.accordion .question p {
+  margin: 0;
+}
+
+.accordion .toggle {
+  position: relative;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.accordion .toggle .bar {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: currentcolor;
+}
+
+.accordion .toggle .bar.vertical {
+  top: 0;
+  bottom: 0;
+  left: 8px;
+  width: 2px;
+  height: auto;
+  transform: rotate(0deg);
+  transition: transform 0.4s;
+}
+
+.accordion .item.is-open .toggle .bar.vertical {
+  transform: rotate(90deg);
+}
+
+.accordion .panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease-out);
+}
+
+.accordion .item.is-open .panel {
+  grid-template-rows: 1fr;
+}
+
+.accordion .panel-inner {
+  overflow: hidden;
+}
+
+.accordion .panel-inner p {
+  max-width: 60ch;
+  margin: 0;
+  padding: 0 0 24px 48px;
+  color: var(--color-text-soft);
+  font-size: 16px;
+  line-height: 26px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion .panel,
+  .accordion .toggle .bar.vertical {
+    transition: none;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "runtime": "vanilla-eds",
+  "blockWrapperClass": "block",
+  "buttonClasses": ".button / .button.primary / .button.secondary / .button.accent, in p.button-wrapper",
+  "buttonization": "formatted-only",
+  "fragmentScriptPolicy": "inert-innerHTML",
+  "emptySectionCollapse": true,
+  "sectionMetadataClientSide": false,
+  "notes": "aem.js decorateSections does not process section-metadata client-side; blocks paint their own sections (closing band keyed on .closing-container)."
+}

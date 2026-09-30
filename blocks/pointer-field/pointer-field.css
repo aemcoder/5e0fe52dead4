@@ -1,0 +1,31 @@
+.pointer-field {
+  position: relative;
+  height: clamp(360px, 62vh, 640px);
+  margin-top: 84px;
+  border-top: 2px solid var(--color-divider);
+  border-bottom: 2px solid var(--color-divider);
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+
+.pointer-field canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pointer-field .label {
+  position: absolute;
+  top: 16px;
+  left: var(--gutter);
+  padding: 6px 10px;
+  background: var(--color-bg);
+}
+
+.pointer-field .label p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,71 @@
+.specimen {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 112px var(--gutter) 0;
+  overflow: hidden;
+}
+
+.specimen .specimen-head {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 28px 72px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.specimen .eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.specimen .headline :is(h2, h3, h4) {
+  margin: 0;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.specimen .lede p {
+  max-width: 56ch;
+  margin: 0;
+  color: var(--color-text-soft);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.specimen .word {
+  padding: 28px 0;
+  border-top: 2px solid var(--color-text);
+  border-bottom: 2px solid var(--color-divider);
+  font-family: Archivo, var(--font-heading);
+  font-size: clamp(64px, 14vw, 210px);
+  font-variation-settings: "wght" 400, "wdth" 100;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  cursor: ew-resize;
+}
+
+.specimen .word p {
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.specimen .axes {
+  display: flex;
+  gap: 32px;
+  padding-top: 14px;
+  font-size: 13px;
+  font-feature-settings: "tnum";
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.specimen .axes .value {
+  color: var(--color-accent-700);
+}

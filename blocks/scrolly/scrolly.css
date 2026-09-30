@@ -1,0 +1,121 @@
+.scrolly {
+  max-width: var(--maxw);
+  margin: 84px auto 0;
+  padding: 0 var(--gutter) 56px;
+}
+
+.scrolly .scrolly-layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 56px 72px;
+}
+
+.scrolly .scrolly-figure {
+  position: sticky;
+  top: 96px;
+  flex: 1 1 360px;
+}
+
+.scrolly .cells {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+}
+
+.scrolly .cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-text);
+  transition: transform 0.9s var(--ease-out), background-color 0.9s, opacity 0.9s;
+}
+
+.scrolly .status {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  max-width: 520px;
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 2px solid var(--color-text);
+}
+
+.scrolly .step-num {
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.scrolly .step-label {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.scrolly .step-of {
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scrolly .scrolly-steps {
+  flex: 1 1 320px;
+}
+
+.scrolly .step {
+  min-height: 70vh;
+  padding: 8vh 0;
+  opacity: 0.3;
+  transition: opacity 0.5s;
+}
+
+.scrolly .step.is-active {
+  opacity: 1;
+}
+
+.scrolly .step .eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scrolly .step .body p {
+  max-width: 30ch;
+  margin: 0;
+  font-size: 22px;
+  line-height: 34px;
+}
+
+/* narrow screens: a smaller pinned figure on the page ground, so the state
+   text scrolls cleanly beneath it instead of through it */
+@media (width < 600px) {
+  .scrolly .scrolly-figure {
+    top: var(--nav-height);
+    z-index: 1;
+    padding: 16px 0 12px;
+    background: var(--color-bg);
+  }
+
+  .scrolly .cells,
+  .scrolly .status {
+    max-width: 200px;
+  }
+
+  .scrolly .status {
+    margin-top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrolly .cell {
+    transition: none;
+  }
+}

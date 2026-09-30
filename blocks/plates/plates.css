@@ -1,0 +1,91 @@
+.plates {
+  max-width: var(--maxw);
+  margin: 84px auto 0;
+  padding: 0 var(--gutter);
+}
+
+.plates .plates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 56px 24px;
+  align-items: start;
+}
+
+.plates .plate:nth-child(even) {
+  margin-top: 112px;
+}
+
+.plates .media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-neutral-900);
+}
+
+.plates .media picture {
+  display: contents;
+}
+
+.plates .media :is(img, video) {
+  position: absolute;
+  top: -12%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 124%;
+  max-width: none;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.plates .caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid var(--color-text);
+}
+
+.plates .caption p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plates .caption .note p {
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* wide — one 21:9 frame that opens from the centre */
+.plates.wide {
+  margin-top: 140px;
+}
+
+.plates.wide .plates-grid {
+  grid-template-columns: 1fr;
+}
+
+.plates.wide .plate:nth-child(even) {
+  margin-top: 0;
+}
+
+.plates.wide .media {
+  aspect-ratio: 21 / 9;
+  clip-path: inset(14% 28%);
+}
+
+.plates.wide .media :is(img, video) {
+  position: static;
+  height: 100%;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plates.wide .media {
+    clip-path: none;
+  }
+}

@@ -1,0 +1,60 @@
+.opening {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 112px var(--gutter) 56px;
+}
+
+.opening .headline :is(h1, h2) {
+  margin: 0 0 0 -0.058em;
+  font-size: clamp(52px, 9vw, 140px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.opening .headline .line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.opening .headline .line-inner {
+  display: block;
+}
+
+.opening .opening-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 28px 72px;
+  align-items: end;
+  margin-top: 56px;
+}
+
+.opening .lede p {
+  max-width: 52ch;
+  margin: 0;
+  font-size: 19px;
+  line-height: 30px;
+}
+
+.opening .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.opening .actions a.button:any-link {
+  padding: 12px 18px;
+  font-size: 15px;
+}
+
+/* Experience Workspace edit mode: the editor re-renders the headline without
+   its line masks — restore the masks' bottom padding (2 × 0.06em) */
+.opening .headline .prosemirror-editor :is(h1, h2) {
+  padding-bottom: 0.12em;
+}
+
+/* Experience Workspace edit mode: keep the larger CTA size */
+.opening .actions .prosemirror-editor a:any-link {
+  padding: 12px 18px;
+  font-size: 15px;
+}

@@ -1,0 +1,120 @@
+.hscroll {
+  position: relative;
+  height: 340vh;
+  margin-top: 28px;
+}
+
+.hscroll .hscroll-pin {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hscroll .hscroll-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  padding: 0 var(--gutter);
+  will-change: transform;
+}
+
+.hscroll .hscroll-item {
+  flex: 0 0 auto;
+  width: min(72vw, 620px, 95vh);
+  margin: 0;
+}
+
+.hscroll .media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-neutral-900);
+}
+
+.hscroll .media picture {
+  display: contents;
+}
+
+.hscroll .media :is(img, video) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hscroll .caption {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid var(--color-text);
+}
+
+.hscroll .caption p {
+  margin: 0;
+}
+
+.hscroll .num p {
+  color: var(--color-accent-700);
+  font-size: 13px;
+}
+
+.hscroll .title :is(p, h2, h3, h4) {
+  margin: 0;
+  font-size: 20px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.55;
+  letter-spacing: normal;
+}
+
+.hscroll .kind {
+  margin-left: auto;
+}
+
+.hscroll .kind p,
+.hscroll .hscroll-progress p {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hscroll .hscroll-progress {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.hscroll .hscroll-progress p {
+  margin: 0;
+}
+
+.hscroll .hscroll-progress .start p {
+  color: var(--color-text);
+}
+
+.hscroll .hscroll-progress .bar {
+  position: relative;
+  flex: 1 1 0%;
+  height: 2px;
+  background: var(--color-divider);
+}
+
+.hscroll .hscroll-progress .fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}

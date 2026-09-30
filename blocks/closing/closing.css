@@ -1,0 +1,60 @@
+main .section.closing-container {
+  margin-top: 140px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  overflow: hidden;
+}
+
+.closing .closing-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 112px var(--gutter) 56px;
+}
+
+.closing .headline :is(h1, h2, h3) {
+  max-width: 15ch;
+  margin: 0 0 0 -0.058em;
+  color: inherit;
+  font-size: clamp(40px, 6.4vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.closing .body p {
+  max-width: 52ch;
+  margin: 24px 0 0;
+  font-size: 19px;
+  line-height: 30px;
+}
+
+.closing .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 42px;
+}
+
+.closing .actions a.button:any-link {
+  padding: 12px 18px;
+  border-color: var(--color-bg);
+  background: transparent;
+  color: var(--color-bg);
+  font-size: 15px;
+}
+
+.closing .actions a.button:any-link:hover {
+  background: var(--color-bg);
+  color: var(--color-accent);
+}
+
+.closing .actions a:any-link:not(.button) {
+  color: inherit;
+}
+
+/* Experience Workspace edit mode: keep the on-accent outline CTA */
+.closing .actions .prosemirror-editor a:any-link {
+  padding: 12px 18px;
+  border-color: var(--color-bg);
+  color: var(--color-bg);
+  font-size: 15px;
+}
