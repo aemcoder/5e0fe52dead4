@@ -1,0 +1,87 @@
+/* The section background must extend full-width */
+main .section.closing-container {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: 0;
+  margin-top: 140px;
+}
+
+.closing {
+  color: var(--color-bg);
+}
+
+.closing .closing-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 112px clamp(20px, 5vw, 72px) 56px;
+}
+
+.closing .closing-headline {
+  margin: 0;
+}
+
+.closing .closing-headline h2,
+.closing .closing-headline h3 {
+  margin: 0;
+  font-size: clamp(40px, 6.4vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  max-width: 15ch;
+  color: var(--color-bg);
+}
+
+.closing .closing-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 42px;
+  flex-wrap: wrap;
+}
+
+.closing .closing-actions p {
+  margin: 0;
+}
+
+.closing .closing-actions a {
+  color: var(--color-bg);
+  border: 1px solid var(--color-bg);
+  background: transparent;
+}
+
+.closing .closing-marquee {
+  border-top: 2px solid var(--color-bg);
+  padding: 24px 0;
+  overflow: hidden;
+  margin-top: 42px;
+  margin-left: calc(-1 * clamp(20px, 5vw, 72px));
+  margin-right: calc(-1 * clamp(20px, 5vw, 72px));
+  padding-left: clamp(20px, 5vw, 72px);
+  padding-right: clamp(20px, 5vw, 72px);
+}
+
+.closing .closing-marquee-track {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  display: inline-block;
+  animation: closing-scroll 60s linear infinite;
+  padding-right: 2em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closing .closing-marquee-track {
+    animation: none;
+  }
+}
+
+@keyframes closing-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

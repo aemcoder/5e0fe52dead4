@@ -1,0 +1,86 @@
+.field-hero {
+  padding: clamp(48px, 8vw, 112px) var(--spacing-content-padding) 56px;
+}
+
+.field-hero-wrap {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+.field-hero-headline h1 {
+  margin: 0;
+  font-size: clamp(52px, 9vw, 140px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.field-hero-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 28px 72px;
+  align-items: end;
+  margin-top: 28px;
+}
+
+.field-hero-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-hero-lede {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field-hero-lede p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 30px;
+  max-width: 52ch;
+  color: var(--color-text);
+}
+
+.field-hero-actions-col {
+  display: flex;
+  align-items: flex-end;
+}
+
+.field-hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.field-hero-actions p {
+  margin: 0;
+}
+
+.field-hero-actions a.button {
+  white-space: normal;
+  text-align: center;
+}
+
+.field-hero-actions em > a,
+.field-hero-actions strong > a {
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .field-hero-layout {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .field-hero-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .field-hero-actions a.button {
+    width: 100%;
+  }
+}

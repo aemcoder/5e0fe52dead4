@@ -1,0 +1,109 @@
+main .faq-accordion .faq-accordion-container {
+  border-top: 2px solid var(--color-text);
+}
+
+main .faq-accordion .accordion-item {
+  border-bottom: 2px solid var(--color-divider);
+}
+
+main .faq-accordion .accordion-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+main .faq-accordion .accordion-button:hover {
+  color: var(--color-accent);
+}
+
+main .faq-accordion .acc-num {
+  font-size: 13px;
+  color: var(--color-accent-700);
+  width: 28px;
+  flex: 0 0 auto;
+  font-weight: 600;
+}
+
+main .faq-accordion .acc-title {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.2;
+}
+
+main .faq-accordion .acc-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Plus icon: horizontal + vertical bars */
+main .faq-accordion .acc-icon::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  background-color: currentColor;
+  transition: background-color 0.3s ease;
+}
+
+main .faq-accordion .acc-icon::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  background-color: currentColor;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* When open: hide vertical bar (rotate) */
+main .faq-accordion .accordion-button[aria-expanded="true"] .acc-icon::after {
+  transform: rotate(90deg);
+}
+
+main .faq-accordion .acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+}
+
+main .faq-accordion .acc-panel.acc-open {
+  grid-template-rows: 1fr;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main .faq-accordion .acc-panel {
+    transition: grid-template-rows 0.5s cubic-bezier(0.2, 0.8, 0.1, 1);
+  }
+}
+
+main .faq-accordion .acc-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+main .faq-accordion .acc-inner p {
+  font-size: 16px;
+  line-height: 26px;
+  padding: 0 0 24px 48px;
+  max-width: 60ch;
+  color: rgba(32, 30, 29, 0.82);
+  margin: 0;
+}
+
+main .faq-accordion .acc-inner p:last-child {
+  padding-bottom: 0;
+}
