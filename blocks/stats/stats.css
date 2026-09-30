@@ -1,0 +1,139 @@
+.stats {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.stats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: repeating-linear-gradient(115deg, transparent 0 38px, rgb(255 255 255 / 2.2%) 38px 39px);
+}
+
+.stats .stripe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 6px;
+  background: var(--hazard);
+  opacity: 0.9;
+}
+
+.stats .wrap {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.stats .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.stats .item {
+  padding: 22px 24px;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  border-left: 1px solid rgb(255 255 255 / 10%);
+}
+
+/* ≤960: intro spans the row, stats pair up below it */
+.stats .item:nth-child(even) {
+  padding-left: 0;
+  border-left: none;
+}
+
+.stats .item.intro {
+  grid-column: 1 / -1;
+  margin-bottom: 10px;
+  padding: 18px 26px 18px 0;
+  border: none;
+}
+
+.stats .intro .headline :is(h1, h2, h3) {
+  max-width: 30ch;
+  margin: 0 0 12px;
+  color: var(--white);
+  font-size: clamp(30px, 3.4vw, 44px);
+}
+
+.stats .intro .headline em {
+  color: var(--yellow);
+  font-style: normal;
+}
+
+.stats .intro-text p {
+  max-width: 30ch;
+  margin: 0;
+  color: #b6b3ab;
+}
+
+.stats .num p {
+  margin: 0;
+  color: var(--yellow);
+  font-family: var(--cond-font-family);
+  font-size: clamp(54px, 6vw, 82px);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.stats .lab p {
+  margin: 8px 0 0;
+  color: #d7d5ce;
+  font-family: var(--semi-font-family);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (width > 680px) {
+  .stats {
+    padding: 84px 0;
+  }
+}
+
+@media (width > 960px) {
+  .stats .item:nth-child(even) {
+    padding-left: 24px;
+    border-left: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  .stats .item:nth-child(odd) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .stats .item.intro {
+    grid-column: auto;
+    margin-bottom: 0;
+    padding: 22px 24px 22px 0;
+    border-top: 1px solid rgb(255 255 255 / 10%);
+  }
+}
+
+@media (width > 1140px) {
+  .stats .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stats .item,
+  .stats .item:nth-child(odd),
+  .stats .item:nth-child(even) {
+    padding: 18px 26px;
+    border-top: none;
+    border-left: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  .stats .item.intro {
+    padding-left: 0;
+    border: none;
+  }
+}

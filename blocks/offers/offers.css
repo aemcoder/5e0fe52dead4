@@ -1,0 +1,205 @@
+.offers {
+  padding: 60px 0;
+  background: var(--paper);
+}
+
+.offers .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ===== section head (shared look with equipment-cards) ===== */
+.offers .sec-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 38px;
+}
+
+.offers .kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--yellow-deep);
+}
+
+.offers .kicker::before {
+  content: "";
+  flex-shrink: 0;
+  width: 34px;
+  height: 4px;
+  background: var(--yellow);
+}
+
+.offers .kicker p {
+  margin: 0;
+  font-family: var(--semi-font-family);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.offers .headline :is(h1, h2, h3) {
+  margin: 10px 0 0;
+  font-size: clamp(34px, 4vw, 52px);
+}
+
+.offers .lede p {
+  max-width: 52ch;
+  margin: 8px 0 0;
+  color: var(--steel);
+}
+
+.offers .head-link p {
+  margin: 0;
+}
+
+.offers .head-link a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 3px solid var(--yellow);
+  font-family: var(--semi-font-family);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: gap 0.15s ease;
+}
+
+.offers .head-link a::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.offers .head-link a:hover {
+  gap: 13px;
+}
+
+/* ===== offer tiles ===== */
+.offers .offer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.offers .offer:any-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 5px;
+  background: var(--ink-2);
+  color: var(--white);
+}
+
+.offers .offer .media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.offers .offer .media :is(picture, img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.offers .offer .media img {
+  object-fit: cover;
+}
+
+.offers .offer .ov {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgb(14 14 14 / 15%) 0%, rgb(14 14 14 / 55%) 55%, rgb(14 14 14 / 90%) 100%);
+}
+
+.offers .offer .c {
+  position: relative;
+  z-index: 2;
+  padding: 26px;
+}
+
+.offers .tag p {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 10px;
+  border-radius: 2px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--semi-font-family);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.offers .title :is(h2, h3, h4) {
+  margin: 0 0 10px;
+  color: var(--white);
+  font-size: 26px;
+  line-height: 1;
+}
+
+.offers .more p {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: var(--yellow);
+  font-family: var(--semi-font-family);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: gap 0.15s ease;
+}
+
+.offers .more p::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.offers .offer:hover .more p {
+  gap: 12px;
+}
+
+@media (width > 680px) {
+  .offers {
+    padding: 84px 0;
+  }
+
+  .offers .sec-head {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .offers .offer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width > 1140px) {
+  .offers .offer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
