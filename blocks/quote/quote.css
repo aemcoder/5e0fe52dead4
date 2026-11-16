@@ -1,0 +1,44 @@
+main > .section.quote-container {
+  padding: 100px 0;
+  background: var(--forest);
+  text-align: center;
+}
+
+.quote .quote-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote .quote-quotation {
+  margin: 0;
+}
+
+.quote .quote-quotation::before {
+  content: '\201C';
+  display: block;
+  margin-bottom: -20px;
+  color: rgb(245 240 235 / 15%);
+  font-family: var(--serif-font-family);
+  font-size: clamp(60px, 10vw, 140px);
+  line-height: 0.6;
+}
+
+.quote .quote-quotation p {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--serif-font-family);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.quote .quote-attribution p {
+  margin: 32px 0 0;
+  color: var(--terracotta);
+  font-family: var(--body-font-family);
+  font-size: var(--eyebrow-size);
+  letter-spacing: 3px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}

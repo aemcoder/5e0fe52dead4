@@ -25,3 +25,124 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/* variant: numbered — three-up essay points with 01/02/03 counters */
+main > .section.cards-container:has(.cards.numbered) {
+  padding: 120px 0;
+}
+
+main .section.cards-container:has(.cards.numbered) h2 {
+  margin: 0 0 72px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+}
+
+.cards.numbered > ul {
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 48px;
+  counter-reset: card;
+}
+
+.cards.numbered > ul > li {
+  border: 0;
+  background: none;
+  counter-increment: card;
+}
+
+.cards.numbered > ul > li::before {
+  content: counter(card, decimal-leading-zero);
+  display: block;
+  margin-bottom: 16px;
+  color: rgb(45 74 62 / 15%);
+  font-family: var(--serif-font-family);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.cards.numbered .cards-card-body {
+  margin: 0;
+}
+
+.cards.numbered .cards-card-body h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.cards.numbered .cards-card-body h3::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin-top: 16px;
+  background: var(--terracotta);
+}
+
+.cards.numbered .cards-card-body p {
+  margin-top: 20px;
+  color: var(--stone);
+  font-size: var(--body-font-size-s);
+  line-height: 1.8;
+}
+
+/* variant: roman — ruled list of anchors with i./ii./iii. markers */
+main > .section.cards-container:has(.cards.roman) {
+  padding: 120px 0;
+}
+
+main > .section.cards-container:has(.cards.roman) > div {
+  max-width: calc(860px + 2 * var(--gutter));
+}
+
+main .section.cards-container:has(.cards.roman) h2 {
+  margin: 0 0 64px;
+  font-size: clamp(32px, 4.5vw, 52px);
+}
+
+.cards.roman > ul {
+  display: block;
+  counter-reset: anchor;
+}
+
+.cards.roman > ul > li {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border: 0;
+  border-top: 1px solid var(--rule-color);
+  background: none;
+  counter-increment: anchor;
+}
+
+.cards.roman > ul > li:last-child {
+  border-bottom: 1px solid var(--rule-color);
+}
+
+.cards.roman > ul > li::before {
+  content: counter(anchor, lower-roman) '.';
+  flex-shrink: 0;
+  color: var(--terracotta);
+  font-family: var(--serif-font-family);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.cards.roman .cards-card-body {
+  margin: 0;
+}
+
+.cards.roman .cards-card-body h3 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.cards.roman .cards-card-body p {
+  color: var(--stone);
+  font-size: var(--body-font-size-s);
+  line-height: 1.8;
+}
