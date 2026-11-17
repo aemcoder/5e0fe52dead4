@@ -1,27 +1,123 @@
-.cards > ul {
-  list-style: none;
+/* cards — shared base */
+.cards .cards-list {
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  list-style: none;
+  counter-reset: card;
 }
 
-.cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+.cards .cards-card {
+  position: relative;
+  counter-increment: card;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
-}
-
-.cards .cards-card-image {
-  line-height: 0;
-}
-
-.cards > ul > li img {
+.cards .cards-card-image img {
   width: 100%;
-  aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.cards .cards-card-body p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* section that hosts a cards block: centered content column + section head */
+main .section:has(.cards) {
+  padding: var(--band-padding) var(--gutter);
+}
+
+main .section:has(.cards.steps) > div {
+  max-width: var(--content-wide);
+}
+
+main .section:has(.cards.anchors) > div {
+  max-width: 860px;
+}
+
+main .section:has(.cards.steps) .default-content-wrapper h2 {
+  margin-bottom: 72px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+}
+
+main .section:has(.cards.anchors) .default-content-wrapper h2 {
+  margin-bottom: 64px;
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.15;
+}
+
+/* ---------- variant: steps (01 / 02 / 03 grid) ---------- */
+.cards.steps .cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 48px;
+}
+
+.cards.steps .cards-card::before {
+  content: counter(card, decimal-leading-zero);
+  display: block;
+  margin-bottom: 16px;
+  color: rgb(45 74 62 / 15%);
+  font-family: var(--serif-font-family);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.cards.steps .cards-card-body h3 {
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-family: var(--serif-font-family);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cards.steps .cards-card-body h3::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  background: var(--clay);
+}
+
+/* ---------- variant: anchors (i. / ii. / iii. stacked list) ---------- */
+.cards.anchors .cards-card {
+  display: flex;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.cards.anchors .cards-card:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.cards.anchors .cards-card::before {
+  content: counter(card, lower-roman) '.';
+  flex-shrink: 0;
+  min-width: 1.5em;
+  color: var(--clay);
+  font-family: var(--serif-font-family);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.cards.anchors .cards-card-body h3 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-family: var(--serif-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@media (width < 600px) {
+  .cards.anchors .cards-card {
+    gap: 20px;
+  }
 }

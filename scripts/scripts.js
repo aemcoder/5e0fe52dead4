@@ -11,6 +11,8 @@ import {
   loadSections,
   loadCSS,
   isWelcome,
+  toClassName,
+  toCamelCase,
 } from './aem.js';
 import { getBranchRedirectUrl } from './branch-redirect.js';
 
@@ -129,6 +131,31 @@ function decorateButtons(main) {
 }
 
 /**
+ * Fallback for section metadata: newer delivery renders the section-metadata
+ * `style` as classes on the section server-side; when a section-metadata block
+ * is still present (older rendering, local previews), apply it here.
+ * @param {Element} main The main element
+ */
+function applySectionMetadata(main) {
+  main.querySelectorAll(':scope > div > div.section-metadata').forEach((meta) => {
+    const section = meta.parentElement;
+    [...meta.children].forEach((row) => {
+      const [keyCell, valueCell] = row.children;
+      if (!keyCell || !valueCell) return;
+      const key = keyCell.textContent.trim().toLowerCase();
+      const value = valueCell.textContent.trim();
+      if (key === 'style') {
+        value.split(',').map((v) => toClassName(v.trim())).filter(Boolean)
+          .forEach((cls) => section.classList.add(cls));
+      } else if (key) {
+        section.dataset[toCamelCase(key)] = value;
+      }
+    });
+    meta.remove();
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -136,6 +163,7 @@ function decorateButtons(main) {
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
+  applySectionMetadata(main);
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);

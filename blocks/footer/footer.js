@@ -2,19 +2,17 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 /**
- * loads and decorates the footer
+ * Footer — a quiet centered sign-off line on the paper ground.
+ * Footer document: one or more sections of default content, rendered in order.
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // load footer as fragment
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : 'https://adobe--sendto--aemcoder.aem.page/adobe/onboarding/footer';
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
   const fragment = await loadFragment(footerPath);
 
-  // decorate footer DOM
-  block.textContent = '';
   const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
-
-  block.append(footer);
+  footer.className = 'footer-inner';
+  if (fragment) while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
+  block.replaceChildren(footer);
 }

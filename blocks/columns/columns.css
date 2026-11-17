@@ -1,33 +1,101 @@
+/* columns — two-column feature band (text beside an image) on a sand ground */
+.columns {
+  padding: 80px var(--gutter);
+  background: var(--sand);
+}
+
 .columns > div {
   display: flex;
   flex-direction: column;
-}
-
-.columns img {
-  width: 100%;
+  gap: 48px;
+  max-width: var(--content-wide);
+  margin: 0 auto;
 }
 
 .columns > div > div {
-  order: 1;
+  min-width: 0;
 }
 
-.columns > div > .columns-img-col {
-  order: 0;
+.columns p:has(+ h2) {
+  margin-bottom: 16px;
+  color: var(--clay);
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: 1.6;
+  text-transform: uppercase;
 }
 
-.columns > div > .columns-img-col img {
+.columns h2 {
+  margin: 0 0 32px;
+  color: var(--ink);
+  font-family: var(--serif-font-family);
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.columns h2 + p,
+.columns h2 ~ p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.columns h2 ~ p:last-child {
+  margin-bottom: 0;
+}
+
+.columns strong {
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.columns .columns-img-col {
+  position: relative;
+  isolation: isolate;
+  line-height: 0;
+}
+
+.columns .columns-img-col::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: -20px;
+  bottom: -20px;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgb(45 74 62 / 15%);
+  border-radius: 2px;
+}
+
+.columns .columns-img-col :is(picture, img) {
   display: block;
+  width: 100%;
+}
+
+.columns .columns-img-col img {
+  height: 320px;
+  border-radius: 4px;
+  object-fit: cover;
+  filter: saturate(0.85);
 }
 
 @media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+  .columns {
+    padding: 100px var(--gutter);
   }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+  .columns > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .columns .columns-img-col img {
+    height: 480px;
   }
 }
