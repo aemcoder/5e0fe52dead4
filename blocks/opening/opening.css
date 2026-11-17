@@ -1,0 +1,112 @@
+main > .section > .opening-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.opening .opening-intro {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 112px var(--gutter) 56px;
+}
+
+.opening .headline :is(h1, h2) {
+  margin: 0 0 0 -0.058em;
+  font-size: clamp(52px, 9vw, 140px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.opening .headline .line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.opening .headline .line-inner {
+  display: block;
+}
+
+/* Experience Workspace edit mode: the editor re-renders the h1 with <br>, no line masks */
+.opening .headline .prosemirror-editor :is(h1, h2) {
+  padding-bottom: 0.12em;
+}
+
+.opening .opening-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: end;
+  gap: 28px 72px;
+  margin-top: 56px;
+}
+
+.opening .lede p {
+  max-width: 52ch;
+  margin: 0;
+  font-size: 19px;
+  line-height: 30px;
+}
+
+.opening .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.opening .actions a:any-link {
+  padding: 12px 18px;
+  font-size: 15px;
+}
+
+.opening .opening-media {
+  position: relative;
+  height: clamp(320px, 72vh, 780px);
+  overflow: hidden;
+  clip-path: inset(0 64px);
+}
+
+.opening .opening-frame {
+  position: absolute;
+  inset: 0;
+  background: var(--color-neutral-900);
+}
+
+.opening .opening-frame :is(video, img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.12);
+}
+
+.opening .opening-frame picture {
+  display: contents;
+}
+
+.opening .opening-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 14px var(--gutter) 0;
+}
+
+.opening .opening-caption p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opening .opening-media {
+    clip-path: none;
+  }
+
+  .opening .opening-frame :is(video, img) {
+    transform: none;
+  }
+}

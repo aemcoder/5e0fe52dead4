@@ -1,0 +1,90 @@
+main > .section > .closing-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.closing {
+  margin-top: 140px;
+  overflow: hidden;
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.closing .closing-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 112px var(--gutter) 56px;
+}
+
+.closing .headline :is(h1, h2, h3) {
+  max-width: 15ch;
+  margin: 0 0 0 -0.058em;
+  color: var(--color-bg);
+  font-size: clamp(40px, 6.4vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.closing .headline .line {
+  display: block;
+}
+
+.closing .actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 42px;
+}
+
+.closing .actions a:any-link {
+  padding: 12px 18px;
+  border: 1px solid var(--color-bg);
+  background: transparent;
+  color: var(--color-bg);
+  font-size: 15px;
+}
+
+.closing .actions a:hover {
+  background: color-mix(in srgb, var(--color-bg) 12%, transparent);
+  color: var(--color-bg);
+}
+
+.closing .closing-ticker {
+  padding: 24px 0;
+  overflow: hidden;
+  border-top: 2px solid var(--color-bg);
+}
+
+.closing .closing-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.closing .closing-group ul {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin: 0;
+  padding: 0 48px 0 0;
+  list-style: none;
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: var(--font-heading-weight);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.closing .closing-group li {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.closing .closing-group li::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.3em;
+  height: 0.3em;
+  background: var(--color-bg);
+}

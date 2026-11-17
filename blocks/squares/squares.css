@@ -1,0 +1,82 @@
+.squares .squares-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: start;
+  gap: 28px 72px;
+  margin-top: 140px;
+}
+
+.squares .eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.squares .headline :is(h2, h3, h4) {
+  margin: 0 0 16px;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.squares .body p {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--color-body-soft);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.squares .body code {
+  font-size: 15px;
+}
+
+.squares .squares-figure {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.squares .sq {
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: var(--color-text);
+}
+
+.squares .sq.accent {
+  background: var(--color-accent);
+}
+
+@keyframes squares-spin-a {
+  from {
+    transform: rotate(-90deg) scale(0.3);
+    background-color: var(--color-text);
+  }
+
+  to {
+    transform: rotate(0deg) scale(1);
+    background-color: var(--color-accent);
+  }
+}
+
+@keyframes squares-spin-b {
+  from { transform: rotate(-90deg) scale(0.3); }
+  to { transform: rotate(0deg) scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .squares .sq {
+      animation: squares-spin-b linear both;
+      animation-timeline: view();
+      animation-range: entry cover var(--range-end, 30%);
+    }
+
+    .squares .sq.accent {
+      animation-name: squares-spin-a;
+    }
+  }
+}

@@ -2,19 +2,20 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 /**
- * loads and decorates the footer
+ * Field Guide footer — one authored section: a credits paragraph and a year line.
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // load footer as fragment
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : 'https://adobe--sendto--aemcoder.aem.page/adobe/onboarding/footer';
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
   const fragment = await loadFragment(footerPath);
 
-  // decorate footer DOM
   block.textContent = '';
-  const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
-
-  block.append(footer);
+  if (!fragment) return;
+  const inner = document.createElement('div');
+  inner.className = 'footer-inner';
+  fragment.querySelectorAll('.default-content-wrapper').forEach((wrapper) => {
+    inner.append(...wrapper.children);
+  });
+  block.append(inner);
 }

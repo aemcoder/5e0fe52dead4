@@ -1,0 +1,72 @@
+/* the divider rule above each chapter */
+main > .section > .chapter-head-wrapper {
+  margin-top: 112px;
+}
+
+main > .section > .chapter-head-wrapper::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--color-divider);
+}
+
+/* rhythm after blocks that carry their own bottom spacing */
+main > .section:has(.stats) + .section > .chapter-head-wrapper,
+main > .section:has(.gallery-track) + .section > .chapter-head-wrapper {
+  margin-top: 0;
+}
+
+main > .section:has(.scrolly) + .section > .chapter-head-wrapper {
+  margin-top: 56px;
+}
+
+.chapter-head {
+  padding-top: 112px;
+  scroll-margin-top: 64px;
+}
+
+.chapter-head .chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: end;
+  gap: 28px 72px;
+}
+
+.chapter-head .chapter-num p {
+  margin: 0 0 28px -0.05em;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: clamp(72px, 11vw, 168px);
+  font-weight: var(--font-heading-weight);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+}
+
+.chapter-head .chapter-eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chapter-head .chapter-heading :is(h1, h2, h3) {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(34px, 4.6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.chapter-head .chapter-lede p {
+  max-width: 56ch;
+  margin: 0;
+  color: var(--color-body-soft);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.chapter-head .chapter-lede code {
+  font-size: 15px;
+}
