@@ -1,0 +1,95 @@
+main .section.numbered-cards-container {
+  max-width: calc(1100px + 2 * var(--page-gutter));
+  margin: 0 auto;
+  padding: 120px var(--page-gutter);
+}
+
+main .section.numbered-cards-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* section head (default content above the block) */
+main .section.numbered-cards-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  color: var(--terracotta);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+main .section.numbered-cards-container .default-content-wrapper h2 {
+  margin: 0 0 72px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+}
+
+.numbered-cards .numbered-cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: numbered-card;
+}
+
+.numbered-cards .numbered-card {
+  counter-increment: numbered-card;
+}
+
+.numbered-cards .numbered-card-number::before {
+  content: counter(numbered-card, decimal-leading-zero);
+}
+
+.numbered-cards .numbered-card-number {
+  margin-bottom: 16px;
+  color: var(--forest-15);
+  font-family: var(--serif-font-family);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.numbered-cards .numbered-card-title :is(h2, h3, h4) {
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-family: var(--serif-font-family);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.numbered-cards .numbered-card-rule {
+  width: 32px;
+  height: 2px;
+  margin-bottom: 20px;
+  background: var(--terracotta);
+}
+
+.numbered-cards .numbered-card-body p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.numbered-cards .numbered-card-body p + p {
+  margin-top: 16px;
+}
+
+@media (width < 600px) {
+  main .section.numbered-cards-container {
+    padding: 80px var(--page-gutter);
+  }
+
+  main .section.numbered-cards-container .default-content-wrapper h2 {
+    margin-bottom: 48px;
+  }
+
+  .numbered-cards .numbered-cards-list {
+    grid-template-columns: 1fr;
+  }
+}

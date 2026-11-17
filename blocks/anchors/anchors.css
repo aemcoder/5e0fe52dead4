@@ -1,0 +1,87 @@
+main .section.anchors-container {
+  max-width: calc(860px + 2 * var(--page-gutter));
+  margin: 0 auto;
+  padding: 120px var(--page-gutter);
+}
+
+main .section.anchors-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* section head (default content above the block) */
+main .section.anchors-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  color: var(--terracotta);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+main .section.anchors-container .default-content-wrapper h2 {
+  margin: 0 0 64px;
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.15;
+}
+
+.anchors .anchors-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: anchor;
+  border-bottom: 1px solid var(--ink-10);
+}
+
+.anchors .anchor-item {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding: 32px 0;
+  border-top: 1px solid var(--ink-10);
+  counter-increment: anchor;
+}
+
+.anchors .anchor-numeral {
+  flex-shrink: 0;
+  color: var(--terracotta);
+  font-family: var(--serif-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.anchors .anchor-numeral::before {
+  content: counter(anchor, lower-roman) ".";
+}
+
+.anchors .anchor-title :is(h2, h3, h4) {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-family: var(--serif-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.anchors .anchor-text p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.anchors .anchor-text p + p {
+  margin-top: 16px;
+}
+
+@media (width < 600px) {
+  main .section.anchors-container {
+    padding: 80px var(--page-gutter);
+  }
+
+  .anchors .anchor-item {
+    gap: 20px;
+  }
+}

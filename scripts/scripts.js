@@ -11,6 +11,8 @@ import {
   loadSections,
   loadCSS,
   isWelcome,
+  toClassName,
+  toCamelCase,
 } from './aem.js';
 import { getBranchRedirectUrl } from './branch-redirect.js';
 
@@ -46,11 +48,38 @@ async function loadFonts() {
 }
 
 /**
+ * Applies authored section-metadata (`style` → section classes, other keys →
+ * data attributes) when the delivery pipeline has not already consumed it.
+ * @param {Element} main The container element
+ */
+function applySectionMetadata(main) {
+  main.querySelectorAll(':scope > div > div.section-metadata').forEach((meta) => {
+    const section = meta.parentElement;
+    [...meta.children].forEach((row) => {
+      const [keyCell, valueCell] = row.children;
+      if (!keyCell || !valueCell) return;
+      const key = toClassName(keyCell.textContent);
+      const value = valueCell.textContent.trim();
+      if (!key || !value) return;
+      if (key === 'style') {
+        value.split(',').map((v) => toClassName(v)).filter(Boolean)
+          .forEach((cls) => section.classList.add(cls));
+      } else {
+        section.dataset[toCamelCase(key)] = value;
+      }
+    });
+    meta.remove();
+  });
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    applySectionMetadata(main);
+
     // auto load `*/fragments/*` references
     const fragments = [...main.querySelectorAll('a[href*="/fragments/"]')].filter((f) => !f.closest('.fragment'));
     if (fragments.length > 0) {

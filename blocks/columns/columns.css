@@ -31,3 +31,124 @@
     order: unset;
   }
 }
+
+/* ── variant: feature (sand band, text + tall photograph) ── */
+main .section.columns-container:has(.columns.feature) {
+  padding: 100px var(--page-gutter);
+  background: var(--sand);
+}
+
+main .section.columns-container:has(.columns.feature) > div {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.columns.feature > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.columns.feature > div > div,
+.columns.feature > div > .columns-img-col {
+  order: unset;
+}
+
+.columns.feature .eyebrow {
+  margin: 0 0 16px;
+}
+
+.columns.feature .eyebrow p {
+  margin: 0;
+}
+
+.columns.feature :is(h2, h3) {
+  margin: 0 0 32px;
+  color: var(--ink);
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.columns.feature > div > div:not(.columns-img-col) p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* cancel the trailing paragraph margin without positional selectors (edit-mode safe) */
+.columns.feature > div > div:not(.columns-img-col) {
+  margin-bottom: -24px;
+}
+
+.columns.feature .eyebrow p,
+.columns.feature > div > div:not(.columns-img-col) .eyebrow p {
+  margin: 0;
+  color: var(--terracotta);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.columns.feature strong {
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.columns.feature .columns-img-col {
+  position: relative;
+  isolation: isolate;
+}
+
+.columns.feature .columns-img-col p {
+  margin: 0;
+  line-height: 0;
+}
+
+.columns.feature .columns-img-col img {
+  width: 100%;
+  height: 480px;
+  border-radius: 4px;
+  object-fit: cover;
+  filter: saturate(0.85);
+}
+
+/* offset outline square peeking out behind the photo */
+.columns.feature .columns-img-col::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -20px;
+  bottom: -20px;
+  width: 160px;
+  height: 160px;
+  border: 1px solid var(--forest-15);
+  border-radius: 2px;
+}
+
+@media (width >= 900px) {
+  .columns.feature > div {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+@media (width < 600px) {
+  main .section.columns-container:has(.columns.feature) {
+    padding: 80px var(--page-gutter);
+  }
+
+  .columns.feature .columns-img-col img {
+    height: 360px;
+  }
+
+  .columns.feature .columns-img-col::after {
+    right: -12px;
+    bottom: -12px;
+  }
+}
