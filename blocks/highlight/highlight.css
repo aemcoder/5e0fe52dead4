@@ -1,0 +1,18 @@
+/* highlight — word-by-word reading highlight */
+.highlight {
+  margin-top: 140px;
+}
+
+.highlight .highlight-text p {
+  max-width: 24ch;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.4vw, 48px);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.highlight .highlight-word {
+  transition: opacity 0.2s linear;
+}

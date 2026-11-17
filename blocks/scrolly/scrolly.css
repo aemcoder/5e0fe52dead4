@@ -1,0 +1,153 @@
+/* scrolly — pinned figure + scrolling steps */
+.scrolly {
+  margin-bottom: 56px;
+}
+
+.scrolly .scrolly-layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 56px 72px;
+  margin-top: 84px;
+}
+
+.scrolly .scrolly-figure {
+  position: sticky;
+  top: 96px;
+  flex: 1 1 360px;
+}
+
+.scrolly .scrolly-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+}
+
+.scrolly .scrolly-cell {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-text);
+  transition: transform 0.9s var(--ease-out), background-color 0.9s, opacity 0.9s;
+}
+
+.scrolly .scrolly-cell.is-accent {
+  background-color: var(--color-accent);
+}
+
+.scrolly .scrolly-caption {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  max-width: 520px;
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 2px solid var(--color-text);
+}
+
+.scrolly .scrolly-state-num {
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: var(--font-heading-weight);
+  line-height: 1;
+}
+
+.scrolly .scrolly-state-label {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: var(--font-heading-weight);
+}
+
+.scrolly .scrolly-state-of {
+  margin-left: auto;
+  color: var(--color-muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scrolly .scrolly-steps {
+  flex: 1 1 320px;
+}
+
+.scrolly .scrolly-step {
+  min-height: 70vh;
+  padding: 8vh 0;
+  opacity: 0.3;
+  transition: opacity 0.5s;
+}
+
+.scrolly .scrolly-step.is-active {
+  opacity: 1;
+}
+
+.scrolly .scrolly-eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scrolly .scrolly-body p {
+  max-width: 30ch;
+  margin: 0;
+  font-size: 22px;
+  line-height: 34px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrolly .scrolly-cell,
+  .scrolly .scrolly-step {
+    transition: none;
+  }
+}
+
+/* narrow: the figure pins under the nav on its own row; steps scroll beneath it */
+@media (width < 900px) {
+  .scrolly .scrolly-layout {
+    gap: 0;
+  }
+
+  .scrolly .scrolly-figure {
+    top: var(--nav-height);
+    z-index: 1;
+    flex-basis: 100%;
+    padding: 16px 0 12px;
+    background: var(--color-bg);
+  }
+
+  .scrolly .scrolly-grid,
+  .scrolly .scrolly-caption {
+    max-width: min(100%, 34vh);
+  }
+
+  .scrolly .scrolly-grid {
+    gap: 8px;
+  }
+
+  .scrolly .scrolly-caption {
+    margin-top: 12px;
+    padding-top: 8px;
+  }
+
+  .scrolly .scrolly-state-num {
+    font-size: 28px;
+  }
+
+  .scrolly .scrolly-state-label {
+    font-size: 16px;
+  }
+
+  .scrolly .scrolly-step {
+    min-height: 60vh;
+  }
+
+  .scrolly .scrolly-body p {
+    font-size: 19px;
+    line-height: 30px;
+  }
+}

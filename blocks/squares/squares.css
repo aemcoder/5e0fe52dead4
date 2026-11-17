@@ -1,0 +1,85 @@
+/* squares — CSS-only scroll-driven squares */
+.squares .squares-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: start;
+  gap: 28px 72px;
+  margin-top: 140px;
+}
+
+.squares .squares-eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.squares .squares-title :is(h2, h3, h4) {
+  margin: 0 0 16px;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.12;
+}
+
+.squares .squares-body p {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--color-soft);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.squares .squares-body code {
+  font-size: 15px;
+}
+
+.squares .squares-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.squares .squares-cell {
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+
+.squares .squares-cell.is-accent {
+  background: var(--color-accent);
+}
+
+.squares .squares-cell.is-ink {
+  background: var(--color-text);
+}
+
+@keyframes squares-spin-a {
+  from {
+    transform: rotate(-90deg) scale(0.3);
+    background-color: var(--color-text);
+  }
+
+  to {
+    transform: rotate(0deg) scale(1);
+    background-color: var(--color-accent);
+  }
+}
+
+@keyframes squares-spin-b {
+  from { transform: rotate(-90deg) scale(0.3); }
+  to { transform: rotate(0deg) scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .squares .squares-cell {
+      animation: squares-spin-b linear both;
+      animation-timeline: view();
+      animation-range: entry cover var(--range-end);
+    }
+
+    .squares .squares-cell.is-accent {
+      animation-name: squares-spin-a;
+    }
+  }
+}

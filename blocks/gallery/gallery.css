@@ -1,0 +1,126 @@
+/* gallery — pinned horizontal track (full-bleed) */
+main > .section > .gallery-wrapper {
+  max-width: none;
+  margin-top: 28px;
+  padding: 0;
+}
+
+.gallery {
+  position: relative;
+  height: 340vh;
+}
+
+.gallery .gallery-stage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.gallery .gallery-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  padding: 0 var(--gutter);
+  will-change: transform;
+}
+
+.gallery .gallery-item {
+  flex: 0 0 auto;
+  width: min(72vw, 620px, 95vh);
+  margin: 0;
+}
+
+.gallery .gallery-frame {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-neutral-900);
+}
+
+.gallery .gallery-frame picture,
+.gallery .gallery-frame img,
+.gallery .gallery-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery .gallery-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid var(--color-text);
+}
+
+.gallery .gallery-caption p,
+.gallery .gallery-caption :is(h2, h3, h4) {
+  margin: 0;
+}
+
+.gallery .gallery-num p {
+  color: var(--color-accent-700);
+  font-size: 13px;
+}
+
+.gallery .gallery-title :is(h2, h3, h4) {
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.gallery .gallery-meta {
+  margin-left: auto;
+}
+
+.gallery .gallery-meta p {
+  color: var(--color-muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.gallery .gallery-footer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.gallery .gallery-footer p {
+  margin: 0;
+}
+
+.gallery .gallery-footer-hint {
+  color: var(--color-muted);
+}
+
+.gallery .gallery-progress {
+  position: relative;
+  flex: 1 1 0%;
+  height: 2px;
+  background: var(--color-divider);
+}
+
+.gallery .gallery-progress-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}

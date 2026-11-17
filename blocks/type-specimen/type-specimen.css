@@ -1,0 +1,72 @@
+/* type-specimen — variable type specimen (chapter 05) */
+.type-specimen {
+  padding-top: 112px;
+  margin-bottom: 112px;
+  overflow: hidden;
+}
+
+.type-specimen .type-specimen-head {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: end;
+  gap: 28px 72px;
+  margin-bottom: 40px;
+}
+
+.type-specimen .type-specimen-eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.type-specimen .type-specimen-title :is(h2, h3, h4) {
+  margin: 0;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.type-specimen .type-specimen-lede p {
+  max-width: 56ch;
+  margin: 0;
+  color: var(--color-soft);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.type-specimen .type-specimen-word {
+  padding: 28px 0;
+  border-top: 2px solid var(--color-text);
+  border-bottom: 2px solid var(--color-divider);
+  font-family: Archivo, var(--font-heading);
+  font-size: clamp(64px, 14vw, 210px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  cursor: ew-resize;
+  font-variation-settings: "wght" 400, "wdth" 100;
+}
+
+.type-specimen .type-specimen-word p {
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.type-specimen .type-specimen-readout {
+  display: flex;
+  gap: 32px;
+  padding-top: 14px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-feature-settings: "tnum";
+}
+
+.type-specimen .type-specimen-value {
+  color: var(--color-accent-700);
+}

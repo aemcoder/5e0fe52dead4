@@ -1,0 +1,49 @@
+/* marquee — full-bleed ticker band */
+main > .section > .marquee-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.marquee {
+  margin-top: 56px;
+  padding: 20px 0;
+  overflow: hidden;
+  border-top: 2px solid var(--color-divider);
+  border-bottom: 2px solid var(--color-divider);
+}
+
+.marquee .marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee .marquee-track ul,
+.marquee .marquee-track ol {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0 40px 0 0;
+  list-style: none;
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.marquee .marquee-track li {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.marquee .marquee-track li::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent);
+}

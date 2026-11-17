@@ -1,0 +1,55 @@
+/* chapter-intro — rule, numeral, eyebrow, title + lede */
+main .section:has(> .chapter-intro-wrapper) {
+  scroll-margin-top: var(--nav-height);
+}
+
+.chapter-intro {
+  padding-top: 112px;
+  border-top: 2px solid var(--color-divider);
+}
+
+.chapter-intro .chapter-intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: end;
+  gap: 28px 72px;
+}
+
+.chapter-intro .chapter-intro-num p {
+  margin: 0 0 28px -0.05em;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: clamp(72px, 11vw, 168px);
+  font-weight: var(--font-heading-weight);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+}
+
+.chapter-intro .chapter-intro-eyebrow p {
+  margin: 0 0 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chapter-intro .chapter-intro-title :is(h1, h2, h3, h4) {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(34px, 4.6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.chapter-intro .chapter-intro-lede p {
+  max-width: 56ch;
+  margin: 0;
+  color: var(--color-soft);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.chapter-intro .chapter-intro-lede code {
+  font-size: 15px;
+}
