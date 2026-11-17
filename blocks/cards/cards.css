@@ -25,3 +25,78 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/* numbered — "Frugality heals in three ways": counter numeral, serif title, clay rule */
+main .section.cards-container:has(.cards.numbered) {
+  padding: 80px 0;
+}
+
+main .section.cards-container:has(.cards.numbered) > div {
+  max-width: 1100px;
+  padding: 0 var(--gutter);
+}
+
+main .section.cards-container:has(.cards.numbered) .default-content-wrapper h2 {
+  margin: 0 0 48px;
+  line-height: 1.1;
+}
+
+.cards.numbered > ul {
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 48px;
+  counter-reset: cards;
+}
+
+.cards.numbered > ul > li {
+  border: 0;
+  background: none;
+  counter-increment: cards;
+}
+
+.cards.numbered .cards-card-body {
+  margin: 0;
+}
+
+.cards.numbered .cards-card-body::before {
+  content: counter(cards, decimal-leading-zero);
+  display: block;
+  margin-bottom: 16px;
+  color: rgb(45 74 62 / 15%);
+  font-family: var(--serif-font-family);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.cards.numbered .cards-card-body h3 {
+  margin: 0 0 16px;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.cards.numbered .cards-card-body h3::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin-top: 16px;
+  background: var(--clay);
+}
+
+.cards.numbered .cards-card-body p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+@media (width >= 900px) {
+  main .section.cards-container:has(.cards.numbered) {
+    padding: 120px 0;
+  }
+
+  main .section.cards-container:has(.cards.numbered) .default-content-wrapper h2 {
+    margin-bottom: 72px;
+  }
+}

@@ -31,3 +31,105 @@
     order: unset;
   }
 }
+
+/* split — "Frugality is not deprivation": prose beside a framed photograph on sand */
+main .section.columns-container > .columns-wrapper:has(.columns.split) {
+  max-width: none;
+}
+
+.columns.split {
+  padding: 80px var(--gutter);
+  background: var(--sand);
+}
+
+.columns.split > div {
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 48px;
+}
+
+.columns.split p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.columns.split p:has(+ h2) {
+  margin: 0 0 16px;
+  color: var(--clay);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.columns.split h2 {
+  margin: 0 0 32px;
+  font-size: clamp(32px, 3.5vw, 48px);
+  line-height: 1.15;
+}
+
+.columns.split strong {
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.columns.split > div > div:has(img) {
+  order: 2;
+}
+
+.columns.split > div > div:has(img) {
+  position: relative;
+  z-index: 0;
+}
+
+.columns.split > div > div:has(img) p,
+.columns.split > div > div:has(img) picture {
+  margin: 0;
+  line-height: 0;
+}
+
+.columns.split > div > div:has(img) img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: saturate(0.85);
+}
+
+.columns.split > div > div:has(img)::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  bottom: -12px;
+  z-index: -1;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgb(45 74 62 / 15%);
+  border-radius: 2px;
+}
+
+@media (width >= 900px) {
+  .columns.split {
+    padding: 100px var(--gutter);
+  }
+
+  .columns.split > div {
+    gap: 64px;
+  }
+
+  .columns.split > div > div {
+    flex: 1 1 0;
+  }
+
+  .columns.split > div > div:has(img) img {
+    height: 480px;
+  }
+
+  .columns.split > div > div:has(img)::after {
+    right: -20px;
+    bottom: -20px;
+  }
+}
