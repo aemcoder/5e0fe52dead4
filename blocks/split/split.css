@@ -1,0 +1,92 @@
+.split {
+  position: relative;
+  z-index: 0;
+  padding: 80px var(--gutter);
+  background: var(--sand);
+}
+
+.split .split-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.split .split-text p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.split .split-text p:last-child {
+  margin-bottom: 0;
+}
+
+.split .split-text .eyebrow,
+.split .split-text p:first-child:has(+ h2) {
+  margin: 0 0 16px;
+  color: var(--clay);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.split .split-text h2 {
+  margin: 0 0 32px;
+  font-size: clamp(32px, 3.5vw, 48px);
+  line-height: 1.15;
+}
+
+.split .split-text strong {
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.split .split-media {
+  position: relative;
+}
+
+.split .split-media::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgb(45 74 62 / 15%);
+  border-radius: 2px;
+}
+
+.split .split-media p {
+  margin: 0;
+  line-height: 0;
+}
+
+.split .split-media img {
+  width: 100%;
+  height: 360px;
+  border-radius: 4px;
+  object-fit: cover;
+  filter: saturate(0.85);
+}
+
+@media (width >= 900px) {
+  .split {
+    padding-block: 100px;
+  }
+
+  .split .split-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .split .split-media img {
+    height: 480px;
+  }
+}

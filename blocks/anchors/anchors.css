@@ -1,0 +1,79 @@
+main .anchors-container > div {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+main .anchors-container .default-content-wrapper {
+  padding-top: 96px;
+}
+
+main .anchors-container .default-content-wrapper h2 {
+  margin: 0 0 48px;
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.15;
+}
+
+.anchors {
+  padding-bottom: 96px;
+}
+
+.anchors ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: anchor;
+  border-bottom: 1px solid var(--rule);
+}
+
+.anchors .anchors-item {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  counter-increment: anchor;
+}
+
+.anchors .anchors-item::before {
+  content: counter(anchor, lower-roman) '.';
+  flex-shrink: 0;
+  min-width: 1.6em;
+  color: var(--clay);
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.anchors h3 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.anchors p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+@media (width >= 900px) {
+  main .anchors-container .default-content-wrapper {
+    padding-top: 120px;
+  }
+
+  main .anchors-container .default-content-wrapper h2 {
+    margin-bottom: 64px;
+  }
+
+  .anchors {
+    padding-bottom: 120px;
+  }
+
+  .anchors .anchors-item {
+    gap: 32px;
+  }
+}
