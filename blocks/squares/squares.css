@@ -1,0 +1,98 @@
+.squares {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 28px 72px;
+  align-items: start;
+  margin-top: 140px;
+}
+
+.squares p {
+  margin: 0;
+}
+
+.squares .squares-eyebrow p {
+  margin-bottom: 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.squares .squares-heading h3 {
+  margin: 0 0 16px;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.squares .squares-body p {
+  max-width: 52ch;
+  color: var(--color-body-soft);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.squares code {
+  font-size: 15px;
+}
+
+.squares .squares-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.squares .sq {
+  aspect-ratio: 1 / 1;
+}
+
+.squares .sq-a {
+  background: var(--color-accent);
+}
+
+.squares .sq-b {
+  background: var(--color-text);
+}
+
+@keyframes squares-spin-a {
+  from {
+    transform: rotate(-90deg) scale(0.3);
+    background-color: var(--color-text);
+  }
+
+  to {
+    transform: rotate(0deg) scale(1);
+    background-color: var(--color-accent);
+  }
+}
+
+@keyframes squares-spin-b {
+  from { transform: rotate(-90deg) scale(0.3); }
+  to { transform: rotate(0deg) scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .squares .sq {
+      animation: linear both;
+      animation-timeline: view();
+    }
+
+    .squares .sq-a { animation-name: squares-spin-a; }
+    .squares .sq-b { animation-name: squares-spin-b; }
+
+    .squares .sq:nth-child(1) { animation-range: entry cover 30%; }
+    .squares .sq:nth-child(2) { animation-range: entry cover 33%; }
+    .squares .sq:nth-child(3) { animation-range: entry cover 36%; }
+    .squares .sq:nth-child(4) { animation-range: entry cover 39%; }
+    .squares .sq:nth-child(5) { animation-range: entry cover 42%; }
+    .squares .sq:nth-child(6) { animation-range: entry cover 45%; }
+    .squares .sq:nth-child(7) { animation-range: entry cover 48%; }
+    .squares .sq:nth-child(8) { animation-range: entry cover 51%; }
+    .squares .sq:nth-child(9) { animation-range: entry cover 54%; }
+    .squares .sq:nth-child(10) { animation-range: entry cover 57%; }
+    .squares .sq:nth-child(11) { animation-range: entry cover 60%; }
+    .squares .sq:nth-child(12) { animation-range: entry cover 63%; }
+  }
+}

@@ -1,0 +1,74 @@
+/* chapter — opener with rule; spacing tuned per preceding block */
+main > .section.chapter-container {
+  margin-top: 112px;
+}
+
+main > .section.stats-container + .chapter-container,
+main > .section.chapter-container:has(.plates.track) + .chapter-container,
+main > .section.chapter-container:has(.story) + .chapter-container {
+  margin-top: 0;
+}
+
+main > .section > .chapter-wrapper {
+  position: relative;
+  padding-top: 112px;
+}
+
+main > .section > .chapter-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 2px;
+  background: var(--color-divider);
+}
+
+.chapter .chapter-head {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 28px 72px;
+  align-items: end;
+}
+
+.chapter p {
+  margin: 0;
+}
+
+.chapter .chapter-num p {
+  margin: 0 0 28px -0.05em;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: clamp(72px, 11vw, 168px);
+  font-weight: var(--font-heading-weight);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+}
+
+.chapter .chapter-eyebrow p {
+  margin-bottom: 16px;
+  color: var(--color-accent-700);
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chapter .chapter-heading h2 {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(34px, 4.6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.chapter .chapter-lede p {
+  max-width: 56ch;
+  color: var(--color-body-soft);
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.chapter code {
+  font-size: 15px;
+}

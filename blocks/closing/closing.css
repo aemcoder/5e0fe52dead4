@@ -1,0 +1,97 @@
+main > .section.closing-container {
+  margin-top: 140px;
+}
+
+main > .section > .closing-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.closing {
+  overflow: hidden;
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.closing .closing-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 112px var(--gutter) 56px;
+}
+
+.closing .closing-heading h2 {
+  max-width: 15ch;
+  margin: 0 0 0 -0.058em;
+  color: var(--color-bg);
+  font-size: clamp(40px, 6.4vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.closing .closing-heading .line {
+  display: block;
+}
+
+.closing .closing-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 42px;
+}
+
+.closing .closing-actions p {
+  margin: 0;
+}
+
+.closing a.button:any-link {
+  padding: 12px 18px;
+  border-color: var(--color-bg);
+  background: transparent;
+  color: var(--color-bg);
+  font-size: 15px;
+}
+
+.closing a.button:hover {
+  background: color-mix(in srgb, var(--color-bg) 12%, transparent);
+  color: var(--color-bg);
+}
+
+.closing .closing-marquee {
+  overflow: hidden;
+  padding: 24px 0;
+  border-top: 2px solid var(--color-bg);
+}
+
+.closing .closing-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.closing .closing-marquee ul {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin: 0;
+  padding: 0 48px 0 0;
+  list-style: none;
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: var(--font-heading-weight);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.closing .closing-marquee ul li {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.closing .closing-marquee ul li::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 0.3em;
+  height: 0.3em;
+  background: var(--color-bg);
+}

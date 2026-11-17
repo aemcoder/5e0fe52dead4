@@ -1,0 +1,34 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 28px 0;
+  padding: 56px 0;
+}
+
+.stats .stat {
+  padding: 0 24px;
+  border-left: 2px solid var(--color-divider);
+}
+
+.stats .stat p {
+  margin: 0;
+}
+
+.stats .stat-num p {
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 5.4vw, 80px);
+  font-weight: var(--font-heading-weight);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats .stat-label p {
+  margin-top: 14px;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

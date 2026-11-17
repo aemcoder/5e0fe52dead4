@@ -1,306 +1,149 @@
 /**
- * Per-layer config keyed by image filename.
- * Positions are % of the 1440×1030 stage (captured from Figma).
- * role: 'bg' = static base, 'mockup' = staggered entrance + slight scroll
- * parallax, 'float' = gentle bob (logos), 'avatar' = lively collaboration motion.
+ * hero — opening band: two-line headline that slides up line by line, a lede and
+ * CTAs, then a full-bleed media plate unmasked by scroll (clip-path + scale) with
+ * a two-part caption.
+ *
+ * Authoring rows:
+ *   1. <h1> headline (Shift+Enter between lines; each line animates in on its own)
+ *   2. lede paragraph
+ *   3. CTAs — primary <strong><a>, secondary <em><a>
+ *   4. media — an image, and/or a link to an .mp4 (plays muted, looping, in view)
+ *   5. caption — two cells: plate label | technique note
+ *
+ * @ew-exempt integration — the .mp4 link in row 4 is a media source, replaced by <video>
  */
-const LAYERS = {
-  'background.png': {
-    role: 'circles', left: 0, top: 0, width: 100, depth: 0.15,
-  },
-  'hero-editor.png': {
-    role: 'mockup', left: 28.33, top: 41.75, width: 42.08, depth: 0.45, order: 2,
-  },
-  'hero-doc-left.png': {
-    role: 'mockup', left: 13.96, top: 60.1, width: 29.65, depth: 0.6, order: 3,
-  },
-  'hero-panel.png': {
-    role: 'mockup', left: 53.13, top: 48.93, width: 32.57, depth: 0.7, order: 4,
-  },
-  'hero-small.png': {
-    role: 'mockup', left: 66.94, top: 59.32, width: 29.58, depth: 0.85, order: 5,
-  },
-  'hero-publish.png': {
-    role: 'mockup', left: 68.96, top: 41.75, width: 11.74, depth: 0.9, order: 1,
-  },
-  'logo-adobe.png': {
-    role: 'float', left: 17.92, top: 42.62, width: 3.96, dur: 6, delay: -0.5,
-  },
-  'logo-claude.png': {
-    role: 'float', left: 30.07, top: 46.02, width: 4.17, dur: 7, delay: -2,
-  },
-  'avatar-1.png': {
-    role: 'avatar', left: 72.96, top: 73.55, width: 9.2, dur: 4.2, delay: 0, depth: 1.15,
-  },
-  'avatar-2.png': {
-    role: 'avatar', left: 34.96, top: 54.85, width: 10.76, dur: 5.1, delay: -1.6, depth: 1.05,
-  },
-  'avatar-3.png': {
-    role: 'avatar', left: 75.41, top: 36.44, width: 10.54, dur: 4.6, delay: -3, depth: 1.25,
-  },
-  'avatar-4.png': {
-    role: 'avatar', left: 12.67, top: 77.57, width: 10.4, dur: 5.8, delay: -0.8, depth: 1.1,
-  },
-};
 
-/**
- * loads and decorates the hero
- * @param {Element} block The hero block element
- */
-export default async function decorate(block) {
-  const content = block.querySelector(':scope > div > div') || block;
-  content.classList.add('hero-content');
-  const row = content.parentElement || block;
+const EASE = 'cubic-bezier(.2,.8,.1,1)';
+const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
-  // group the CTA button paragraphs into one actions row
-  const buttons = [...content.querySelectorAll('p.button-wrapper')];
-  if (buttons.length) {
+function wrapNode(node, className) {
+  const w = document.createElement('div');
+  w.className = className;
+  w.append(node);
+  return w;
+}
+
+const isVideoLink = (a) => a && /\.(mp4|webm)(\?|$)/i.test(a.getAttribute('href') || '');
+
+function buildVideo(a, preload = 'metadata') {
+  const v = document.createElement('video');
+  Object.assign(v, {
+    muted: true, loop: true, playsInline: true, preload,
+  });
+  v.setAttribute('playsinline', '');
+  v.src = a.href;
+  v.setAttribute('aria-label', a.textContent.trim());
+  return v;
+}
+
+/** splits the h1 at its <br>s into line spans (moves the authored nodes) */
+function splitLines(h1) {
+  const lines = [[]];
+  [...h1.childNodes].forEach((n) => {
+    if (n.nodeName === 'BR') {
+      n.remove();
+      lines.push([]);
+    } else lines[lines.length - 1].push(n);
+  });
+  lines.filter((l) => l.some((n) => n.textContent.trim())).forEach((nodes) => {
+    const outer = document.createElement('span');
+    outer.className = 'line';
+    const inner = document.createElement('span');
+    inner.className = 'line-inner';
+    inner.append(...nodes);
+    outer.append(inner);
+    h1.append(outer);
+  });
+}
+
+export default function decorate(block) {
+  const rows = [...block.children];
+  const h1 = block.querySelector('h1, h2');
+  const links = [...block.querySelectorAll('a')];
+  const videoLink = links.find(isVideoLink);
+  const ctas = links.filter((a) => a !== videoLink).map((a) => a.closest('p') || a);
+  const media = block.querySelector('picture') || block.querySelector('img');
+  const captionRow = rows.find((r) => r.children.length > 1
+    && !r.querySelector('a, picture, img, h1, h2'));
+  const lede = [...block.querySelectorAll('p')].find((p) => !p.querySelector('a, picture, img')
+    && !captionRow?.contains(p) && p.textContent.trim());
+
+  const copy = document.createElement('div');
+  copy.className = 'hero-copy';
+  if (h1) {
+    splitLines(h1);
+    copy.append(wrapNode(h1, 'hero-headline'));
+  }
+  const sub = document.createElement('div');
+  sub.className = 'hero-sub';
+  if (lede) sub.append(wrapNode(lede, 'hero-lede'));
+  if (ctas.length) {
     const actions = document.createElement('div');
     actions.className = 'hero-actions';
-    buttons[0].before(actions);
-    actions.append(...buttons);
+    actions.append(...ctas);
+    sub.append(actions);
   }
-
-  const pictures = [...content.querySelectorAll('picture')];
-  if (!pictures.length) return;
+  copy.append(sub);
 
   const stage = document.createElement('div');
-  stage.className = 'hero-stage';
-  const mockups = [];
-  const avatars = [];
-
-  pictures.forEach((picture) => {
-    const owner = picture.closest('p');
-    if (owner && !owner.textContent.trim()) owner.remove();
-    const img = picture.querySelector('img');
-    const file = (img ? img.getAttribute('src') : '').split('/').pop();
-    const cfg = LAYERS[file] || { role: 'mockup' };
-
-    if (cfg.role === 'bg') {
-      const scene = document.createElement('div');
-      scene.className = 'hero-scene';
-      scene.append(picture);
-      stage.append(scene);
-      return;
-    }
-
-    const layer = document.createElement('div');
-    layer.style.left = `${cfg.left}%`;
-    layer.style.width = `${cfg.width}%`;
-    if (cfg.bottom !== undefined) layer.style.bottom = `${cfg.bottom}%`;
-    else layer.style.top = `${cfg.top}%`;
-
-    // hide gracefully until the transparent PNG is supplied
-    if (img) {
-      const hideIfMissing = () => {
-        if (img.complete && img.naturalWidth === 0) layer.style.display = 'none';
-      };
-      img.addEventListener('error', () => { layer.style.display = 'none'; });
-      img.addEventListener('load', hideIfMissing);
-      hideIfMissing();
-    }
-
-    if (cfg.role === 'circles') {
-      layer.className = 'hero-circles';
-      layer.dataset.depth = cfg.depth || 0.15;
-      layer.append(picture);
-      mockups.push(layer); // shares the scroll-parallax loop
-    } else if (cfg.role === 'avatar') {
-      layer.className = 'hero-avatar';
-      layer.dataset.depth = cfg.depth || 1;
-      const bob = document.createElement('div');
-      bob.className = 'hero-avatar-bob';
-      bob.style.animationDuration = `${cfg.dur}s`;
-      bob.style.animationDelay = `${cfg.delay}s`;
-      bob.append(picture);
-      layer.append(bob);
-      avatars.push(layer);
-    } else if (cfg.role === 'float') {
-      layer.className = 'hero-float';
-      const bob = document.createElement('div');
-      bob.className = 'hero-float-bob';
-      bob.style.animationDuration = `${cfg.dur}s`;
-      bob.style.animationDelay = `${cfg.delay}s`;
-      bob.append(picture);
-      layer.append(bob);
-    } else {
-      layer.className = 'hero-mockup';
-      layer.style.setProperty('--enter-delay', `${0.22 * (cfg.order || 1)}s`);
-      layer.dataset.depth = cfg.depth || 0.4;
-      const inner = document.createElement('div');
-      inner.className = 'hero-mockup-in';
-      inner.append(picture);
-      layer.append(inner);
-      mockups.push(layer);
-    }
-
-    stage.append(layer);
-  });
-
-  row.append(stage);
-
-  if (mockups.length) {
-    // eslint-disable-next-line no-use-before-define
-    enableStageParallax(block, mockups);
+  stage.className = 'hero-media';
+  const layer = document.createElement('div');
+  layer.className = 'hero-media-layer grayscale';
+  stage.append(layer);
+  let video = null;
+  if (media) {
+    const img = media.querySelector('img') || media;
+    img.loading = 'eager';
+    img.fetchPriority = 'high';
+    layer.append(media.closest('p') || media);
+  }
+  if (videoLink) {
+    video = buildVideo(videoLink, 'auto');
+    (videoLink.closest('p') || videoLink).remove();
+    layer.append(video);
   }
 
-  if (avatars.length) {
-    // eslint-disable-next-line no-use-before-define
-    enableAvatarCollaboration(block, avatars);
+  const caption = document.createElement('div');
+  caption.className = 'hero-caption';
+  if (captionRow) [...captionRow.children].forEach((c) => caption.append(...c.children));
+
+  block.replaceChildren(copy, stage, caption);
+  if (!media && !videoLink) stage.remove();
+
+  // entrance
+  if (!reduced()) {
+    block.querySelectorAll('.line-inner').forEach((el, i) => el.animate(
+      [{ transform: 'translateY(105%)' }, { transform: 'none' }],
+      {
+        duration: 1200, delay: 120 + i * 140, easing: EASE, fill: 'backwards',
+      },
+    ));
+    [...sub.children].forEach((el, i) => el.animate(
+      [{ opacity: 0, transform: 'translateY(20px)' }, { opacity: 1, transform: 'none' }],
+      {
+        duration: 900, delay: 560 + i * 120, easing: EASE, fill: 'backwards',
+      },
+    ));
   }
-}
 
-/**
- * Scroll + pointer parallax on stage layers. Closer items (higher depth) drift
- * more on scroll and react more to cursor position. Skipped under reduced-motion
- * or on coarse pointers. Entrance animation lives on an inner wrapper so it does
- * not fight these transforms.
- * @param {Element} block the hero block
- * @param {Element[]} layers the parallax layers
- */
-function enableStageParallax(block, layers) {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const stage = block.querySelector('.hero-stage');
-  const surface = block.querySelector(':scope > div') || block;
-  if (!stage || !surface) return;
-
-  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  let scrollProgress = 0;
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  let hovering = false;
-  let ticking = false;
-  let animating = false;
-
-  const apply = () => {
-    ticking = false;
-    const ease = hovering ? 0.08 : 0.06;
-    currentX += (targetX - currentX) * ease;
-    currentY += (targetY - currentY) * ease;
-
-    const settling = !hovering
-      && Math.abs(currentX) < 0.002
-      && Math.abs(currentY) < 0.002;
-    if (settling) {
-      currentX = 0;
-      currentY = 0;
-    }
-
-    layers.forEach((layer) => {
-      const depth = parseFloat(layer.dataset.depth) || 0.4;
-      const scrollY = (-scrollProgress * 0.05 * depth);
-      const moveX = currentX * depth * 26;
-      const moveY = currentY * depth * 18;
-      layer.style.transform = `translate3d(${moveX.toFixed(2)}px, ${(scrollY + moveY).toFixed(2)}px, 0)`;
-
-      const inner = layer.querySelector('.hero-mockup-in');
-      if (inner) {
-        if (!settling) {
-          inner.style.transform = `translate3d(${(currentX * depth * 10).toFixed(2)}px, ${(currentY * depth * 7).toFixed(2)}px, 0)`;
-        } else {
-          inner.style.transform = '';
-        }
-      }
-    });
-
-    animating = hovering || !settling;
-    if (animating) request();
-  };
-
-  const request = () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(apply);
-    }
-  };
-
+  // scroll-linked unmask
+  const moving = layer.querySelector('video, img');
   const onScroll = () => {
-    scrollProgress = block.getBoundingClientRect().top;
-    request();
+    const vh = window.innerHeight;
+    const p = reduced() ? 1 : clamp(window.scrollY / (vh * 0.6));
+    const edge = Math.min(72, window.innerWidth * 0.05);
+    stage.style.clipPath = `inset(0 ${((1 - p) * edge).toFixed(1)}px)`;
+    if (moving) moving.style.transform = `scale(${(1.12 - 0.12 * p).toFixed(4)})`;
   };
-
-  const onPointerMove = (e) => {
-    if (!canHover) return;
-    const rect = stage.getBoundingClientRect();
-    targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    request();
-  };
-
-  const onPointerEnter = () => {
-    if (!canHover) return;
-    hovering = true;
-    stage.classList.add('hero-stage-hover');
-    request();
-  };
-
-  const onPointerLeave = () => {
-    if (!canHover) return;
-    hovering = false;
-    targetX = 0;
-    targetY = 0;
-    stage.classList.remove('hero-stage-hover');
-    request();
-  };
-
   window.addEventListener('scroll', onScroll, { passive: true });
-  surface.addEventListener('pointerenter', onPointerEnter);
-  surface.addEventListener('pointerleave', onPointerLeave);
-  surface.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('resize', onScroll);
   onScroll();
-}
 
-/**
- * Ambient wander on collaborator avatars. Each avatar drifts to its own target
- * on a loose timer while the inner bob keeps a lively 2D float. Skipped under
- * reduced-motion.
- * @param {Element} block the hero block
- * @param {Element[]} avatars the avatar layers
- */
-function enableAvatarCollaboration(block, avatars) {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const actors = avatars.map((layer, index) => ({
-    layer,
-    x: 0,
-    y: 0,
-    targetX: 0,
-    targetY: 0,
-    nextWander: performance.now() + index * 900,
-    wanderX: 28 + (index % 3) * 8,
-    wanderY: 22 + (index % 2) * 6,
-  }));
-
-  let ticking = false;
-
-  const apply = (time) => {
-    ticking = false;
-
-    actors.forEach((actor) => {
-      if (time >= actor.nextWander) {
-        actor.targetX = (Math.random() - 0.5) * actor.wanderX * 2;
-        actor.targetY = (Math.random() - 0.5) * actor.wanderY * 2;
-        actor.nextWander = time + 2800 + Math.random() * 3200;
-      }
-
-      actor.x += (actor.targetX - actor.x) * 0.01;
-      actor.y += (actor.targetY - actor.y) * 0.01;
-
-      actor.layer.style.transform = `translate3d(${actor.x.toFixed(2)}px, ${actor.y.toFixed(2)}px, 0)`;
-    });
-
-    request();
-  };
-
-  const request = () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(apply);
-    }
-  };
-
-  request();
+  if (video) {
+    new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) video.play().catch(() => {});
+      else video.pause();
+    }), { threshold: 0.2 }).observe(video);
+  }
 }
