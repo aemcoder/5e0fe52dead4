@@ -1,0 +1,69 @@
+main > .section.pillars-container {
+  padding: 120px 0;
+}
+
+.pillars-container .default-content-wrapper p {
+  margin: 0 0 16px;
+  font-family: var(--sans);
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+
+.pillars-container .default-content-wrapper h2 {
+  margin: 0 0 72px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.pillars .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 48px;
+  counter-reset: pillar;
+}
+
+.pillars .pillar {
+  counter-increment: pillar;
+}
+
+.pillars .ordinal::before {
+  content: counter(pillar, decimal-leading-zero);
+  display: block;
+  margin-bottom: 16px;
+  font-family: var(--serif);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+  color: rgb(45 74 62 / 15%);
+}
+
+.pillars .title::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin: 16px 0 20px;
+  background: var(--terracotta);
+}
+
+.pillars .title :is(h2, h3, h4) {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.pillars .body p {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}

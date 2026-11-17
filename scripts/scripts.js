@@ -70,6 +70,23 @@ function buildAutoBlocks(main) {
     }
 
     buildHeroBlock(main);
+
+    // section-metadata fallback: when the delivery pipeline has not already applied
+    // the section `style` as classes, apply it here and drop the metadata table
+    main.querySelectorAll(':scope > div > .section-metadata').forEach((meta) => {
+      const section = meta.parentElement;
+      [...meta.children].forEach((row) => {
+        const [key, value] = [...row.children].map((c) => c.textContent.trim());
+        if (key && key.toLowerCase() === 'style' && value) {
+          value.split(',').map((v) => v.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-'))
+            .filter(Boolean).forEach((cls) => section.classList.add(cls));
+        } else if (key && value) {
+          const prop = key.toLowerCase().replace(/[^a-z0-9]+(.)/g, (m, c) => c.toUpperCase());
+          section.dataset[prop] = value;
+        }
+      });
+      meta.remove();
+    });
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
